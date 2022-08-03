@@ -2,6 +2,17 @@ html {
   box-sizing: border-box;
 }
 
+html,
+body {
+  min-height: 100vh;
+}
+
+#__next {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
 *,
 *:before,
 *:after {

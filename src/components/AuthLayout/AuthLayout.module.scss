@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+
+  height: 100%;
+}
+
+.logo-container {
+  margin-top: 28px;
+  margin-left: 40px;
+}
+
+.left-panel {
+  min-width: 50%;
+
+  background-size: 100% 100%;
+  background-image: url("/auth-wallpaper.png");
+}
+
+.right-panel {
+  border-radius: 40px;
+  margin-left: -40px;
+  background-color: white;
+  padding: 75px;
+  width: 100%;
+}
