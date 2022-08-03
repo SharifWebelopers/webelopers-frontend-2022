@@ -4,6 +4,7 @@
   align-items: stretch;
 
   height: 100%;
+  direction: ltr;
 }
 
 .logo-container {
@@ -12,7 +13,7 @@
 }
 
 .left-panel {
-  min-width: 50%;
+  min-width: 40%;
 
   background-size: 100% 100%;
   background-image: url("/auth-wallpaper.png");
@@ -23,5 +24,6 @@
   margin-left: -40px;
   background-color: white;
   padding: 75px;
+  padding-right: 150px;
   width: 100%;
 }
