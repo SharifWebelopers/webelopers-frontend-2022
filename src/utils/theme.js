@@ -18,6 +18,7 @@ export const theme = createTheme({
           fontSize: "2rem",
           backgroundColor: "#757575",
           color: "#040310",
+          fontFamily: "unset",
           "&:hover": {
             backgroundColor: "#013654",
             color: "#fff",

@@ -2,10 +2,10 @@ import type { ReactElement } from "react";
 import type { NextPageWithLayout } from "../_app";
 
 import Layout from "../../components/AuthLayout";
-import Login from "../../components/Login";
+import SignUp from "../../components/SignUp";
 
 const SignUpPage: NextPageWithLayout = () => {
-  return <Login />;
+  return <SignUp />;
 };
 
 SignUpPage.getLayout = function getLayout(page: ReactElement) {

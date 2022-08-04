@@ -3,7 +3,8 @@
   flex-direction: row;
   align-items: stretch;
 
-  height: 100%;
+  min-height: 100%;
+  height: fit-content;
   direction: ltr;
 }
 
@@ -23,7 +24,6 @@
   border-radius: 40px;
   margin-left: -40px;
   background-color: white;
-  padding: 75px;
-  padding-right: 150px;
+  padding: 2% 10% 2% 5%;
   width: 100%;
 }

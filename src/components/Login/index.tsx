@@ -8,8 +8,11 @@ import {
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Link from "next/link";
 
-import styles from "./Login.module.scss";
+import OAuth from "../OAuth";
+
+import styles from "../../styles/Auth.module.scss";
 
 function Login() {
   const [showPass, setShowPass] = useState(false);
@@ -52,19 +55,9 @@ function Login() {
           variant="middle"
           sx={{ backgroundColor: "#1C156D" }}
         />
-        <a href="">ثبت‌نام</a>
+        <Link href="/auth/signup">ثبت‌نام</Link>
       </div>
-      <Divider
-        variant="fullWidth"
-        sx={{ backgroundColor: "#1C156D", width: "100%" }}
-      />
-      <div className={styles["oauth-container"]}>
-        <div>ورود از طریق:</div>
-        <div className={styles["oauth-logos-container"]}>
-          <img src="/gmail-logo.png" alt="gmail" />
-          <img src="/github-logo.png" alt="github" />
-        </div>
-      </div>
+      <OAuth />
     </div>
   );
 }
