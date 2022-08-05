@@ -7,13 +7,20 @@ function OAuth() {
     <>
       <Divider
         variant="fullWidth"
-        sx={{ backgroundColor: "#1C156D", width: "100%" }}
+        sx={{ backgroundColor: "#757575", width: 390, height: 2 }}
       />
       <div className={styles["oauth-container"]}>
         <div>ورود از طریق:</div>
         <div className={styles["oauth-logos-container"]}>
-          <img src="/gmail-logo.png" alt="gmail" />
-          <img src="/github-logo.png" alt="github" />
+          <a href="">
+            <img src="/linkedin-logo.svg" alt="github" />
+          </a>
+          <a href="">
+            <img src="/gmail-logo.svg" alt="gmail" />
+          </a>
+          <a href="">
+            <img src="/github-logo.svg" alt="github" />
+          </a>
         </div>
       </div>
     </>

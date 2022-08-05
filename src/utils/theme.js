@@ -5,8 +5,14 @@ export const theme = createTheme({
   palette: {
     primary: {
       main: "#002C45",
-      contrastText: "#040310",
+      contrastText: "#fff",
     },
+    error: {
+      main: "#ff0000",
+    },
+  },
+  typography: {
+    fontFamily: ["unset"].join(","),
   },
   components: {
     MuiButton: {
@@ -16,12 +22,13 @@ export const theme = createTheme({
           height: 64,
           width: 390,
           fontSize: "2rem",
-          backgroundColor: "#757575",
-          color: "#040310",
           fontFamily: "unset",
           "&:hover": {
-            backgroundColor: "#013654",
-            color: "#fff",
+            backgroundColor: "#002C45",
+          },
+          "&:disabled": {
+            backgroundColor: "#757575",
+            color: "#040310",
           },
         },
       },
@@ -34,6 +41,18 @@ export const theme = createTheme({
           width: 390,
           fontSize: "1.5rem",
           padding: 12,
+          "& fieldset": {
+            borderColor: "#002C45 !important",
+            borderWidth: 2,
+          },
+          "& input::placeholder": {
+            color: "#002C45",
+            opacity: 1,
+          },
+          "&.Mui-focused input::placeholder": {
+            color: "#757575",
+            opacity: 0.7,
+          },
         },
       },
     },

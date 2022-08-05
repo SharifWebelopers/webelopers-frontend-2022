@@ -18,6 +18,7 @@ const HomePage: NextPage = () => {
       <br />
       <br />
       <TextField
+        color="primary"
         placeholder="PASS"
         type={showPass ? "text" : "password"}
         InputProps={{
