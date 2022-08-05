@@ -1,24 +1,20 @@
 import classNames from "classnames";
-import Image from "next/image";
 import React, { useState } from "react";
+import Staff from "../../components/Staff";
 import styles from "./staffs.module.scss";
-import randomUserImage from "../../assets/images/84.jpeg";
-import staffElipsisImg from "../../assets/images/staffElipsis.png";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import GitHubIcon from "@mui/icons-material/GitHub";
+
+const teamTitles = [
+  "دبیران",
+  "انسانی",
+  "فنی",
+  "علمی",
+  "مدیا",
+  "اجرایی",
+  "برندینگ",
+  "اسپانسرشیپ",
+];
 
 function Staffs() {
-  const teamTitles = [
-    "دبیران",
-    "انسانی",
-    "فنی",
-    "علمی",
-    "مدیا",
-    "اجرایی",
-    "برندینگ",
-    "اسپانسرشیپ",
-  ];
-
   const [activeTeamTitle, setactiveTeamTitle] = useState(teamTitles[0]);
 
   return (
@@ -40,32 +36,8 @@ function Staffs() {
       <div className={styles.teamStaffs}>
         {Array(8)
           .fill(null)
-          .map((value, index) => (
-            <div key={index} className={styles.teamStaff}>
-              <div className={styles.staffImgWrapper}>
-                <div className={styles.staffElipsis}>
-                  <Image
-                    src={staffElipsisImg}
-                    alt="elipsis"
-                    width={96}
-                    height={72}
-                  />
-                </div>
-                <Image
-                  src={randomUserImage}
-                  alt="staff image"
-                  width={198}
-                  height={198}
-                  className={styles.staffImg}
-                />
-              </div>
-              <p>نام/نام خانوادگی</p>
-              <p>مسئول ...</p>
-              <div className={styles.socials}>
-                <LinkedInIcon className={styles.socialIcon} />
-                <GitHubIcon className={styles.socialIcon} />
-              </div>
-            </div>
+          .map((_value, index) => (
+            <Staff key={index} />
           ))}
       </div>
     </div>
