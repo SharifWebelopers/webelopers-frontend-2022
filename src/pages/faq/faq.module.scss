@@ -1,0 +1,26 @@
+.faqPage {
+  overflow: visible;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  background-image: url(../../assets/images/space.png);
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.faqs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 256px;
+}
+
+.title {
+  font-size: 64px;
+  margin: 96px 0 52px;
+  font-weight: 600;
+  text-align: center;
+}

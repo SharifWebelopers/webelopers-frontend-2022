@@ -1,0 +1,34 @@
+.faq {
+  background-color: rgba(203, 203, 203, 0.1);
+  backdrop-filter: blur(50px);
+  margin: 12px;
+  padding: 24px 64px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 1224px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.faqSummary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.faqDescription {
+  line-height: 36px;
+  margin: 24px 0;
+}
+
+.arrowIcon {
+  transition: all 0.3s;
+  font-size: 32px !important;
+  font-weight: 600 !important;
+}
+
+.arrowFlip {
+  transform: rotate(180deg);
+  color: #757575;
+}
