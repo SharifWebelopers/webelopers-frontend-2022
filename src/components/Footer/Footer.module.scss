@@ -1,0 +1,31 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+  color: #908f98;
+}
+
+.socialItem {
+  color: #908f98;
+}
+.socialIcon {
+  font-size: 40px !important;
+  margin: 4px;
+  transition: all 0.3s;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.ssc {
+  margin-left: 16px !important;
+}
+
+.copyRight {
+  align-self: flex-end;
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
