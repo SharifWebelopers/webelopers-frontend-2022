@@ -1,0 +1,60 @@
+.staff {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  direction: rtl;
+  padding-top: 100px;
+  background-image: url(../../assets/images/space.png);
+  background-size: cover;
+  min-height: 100vh;
+
+  h1 {
+    color: #fff;
+    margin: 96px 0 64px;
+    font-size: 64px;
+    font-weight: 500;
+    text-align: center;
+  }
+}
+
+.teamTitles {
+  background-color: rgba(55, 37, 58, 0.88);
+  margin: 16px 16px 64px;
+  border-radius: 32px;
+  padding: 8px 0;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1090px;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 48px;
+}
+
+.teamTitle {
+  padding: 4px 16px;
+  border-radius: 32px;
+  margin: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.teamTitle:hover {
+  background-color: rgba(203, 203, 203, 0.3);
+}
+
+.teamTitleActive {
+  color: #37253a !important;
+  background-color: #cbcbcb !important;
+}
+
+.teamStaffs {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1440px;
+  flex-wrap: wrap;
+}
