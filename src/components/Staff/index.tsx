@@ -5,6 +5,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import staffElipsisImg from "../../assets/images/staffElipsis.png";
 import randomUserImage from "../../assets/images/84.jpeg";
 import styles from "./Staff.module.scss";
+import classNames from "classnames";
 
 function Staff() {
   return (
@@ -24,7 +25,9 @@ function Staff() {
       <p>نام/نام خانوادگی</p>
       <p>مسئول ...</p>
       <div className={styles.socials}>
-        <LinkedInIcon className={styles.socialIcon} />
+        <LinkedInIcon
+          className={classNames(styles.socialIcon, styles.linkedin)}
+        />
         <GitHubIcon className={styles.socialIcon} />
       </div>
     </div>

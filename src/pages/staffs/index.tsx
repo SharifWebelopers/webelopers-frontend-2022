@@ -1,5 +1,7 @@
 import classNames from "classnames";
 import React, { useState } from "react";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 import Staff from "../../components/Staff";
 import styles from "./staffs.module.scss";
 
@@ -19,6 +21,7 @@ function Staffs() {
 
   return (
     <div className={styles.staff}>
+      <Header />
       <h1>تیم برگزاری</h1>
       <div className={styles.teamTitles}>
         {teamTitles.map((teamTitle) => (
@@ -34,12 +37,13 @@ function Staffs() {
         ))}
       </div>
       <div className={styles.teamStaffs}>
-        {Array(8)
+        {Array(10)
           .fill(null)
           .map((_value, index) => (
             <Staff key={index} />
           ))}
       </div>
+      <Footer />
     </div>
   );
 }
