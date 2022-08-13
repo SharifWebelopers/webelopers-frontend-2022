@@ -142,7 +142,7 @@ function Login() {
         <Divider
           orientation="vertical"
           variant="middle"
-          sx={{ backgroundColor: "#1C156D" }}
+          sx={{ backgroundColor: "#ccb0a1", width: "1px", height: 40 }}
         />
         <Link href="/auth/signup">ثبت‌نام</Link>
       </div>

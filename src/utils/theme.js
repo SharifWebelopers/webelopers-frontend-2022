@@ -4,8 +4,8 @@ export const theme = createTheme({
   direction: "rtl",
   palette: {
     primary: {
-      main: "#002C45",
-      contrastText: "#fff",
+      main: "#ccb0a1",
+      contrastText: "#303030",
     },
     error: {
       main: "#ff0000",
@@ -24,11 +24,11 @@ export const theme = createTheme({
           fontSize: "2rem",
           fontFamily: "unset",
           "&:hover": {
-            backgroundColor: "#002C45",
+            backgroundColor: "#ccb0a1",
           },
           "&:disabled": {
             backgroundColor: "#757575",
-            color: "#040310",
+            color: "#ededed",
           },
         },
       },
@@ -41,12 +41,13 @@ export const theme = createTheme({
           width: 390,
           fontSize: "1.5rem",
           padding: 12,
+          backgroundColor: "white",
           "& fieldset": {
-            borderColor: "#002C45 !important",
+            borderColor: "#ccb0a1 !important",
             borderWidth: 2,
           },
           "& input::placeholder": {
-            color: "#002C45",
+            color: "#ccb0a1",
             opacity: 1,
           },
           "&.Mui-focused input::placeholder": {

@@ -1,29 +1,29 @@
 .container {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 
-  min-height: 100%;
+  min-height: 100vh;
   height: fit-content;
   direction: ltr;
-}
-
-.logo-container {
-  margin-top: 28px;
-  margin-left: 40px;
-}
-
-.left-panel {
-  min-width: 40%;
 
   background-size: cover;
   background-image: url("/auth-wallpaper.png");
 }
 
-.right-panel {
+.logo-container {
+  top: 28px;
+  left: 40px;
+
+  position: absolute;
+}
+
+.inputs-box {
   border-radius: 40px;
-  margin-left: -40px;
-  background-color: white;
-  padding: 75px 317px 262px 211px;
-  width: 100%;
+  margin: 96px 0;
+  background-color: rgba(203, 203, 203, 0.1);
+  padding: 100px 118px;
+  width: fit-content;
 }
