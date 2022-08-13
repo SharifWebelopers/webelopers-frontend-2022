@@ -3,12 +3,14 @@ import { Button, TextField, InputAdornment, IconButton } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Link from "next/link";
-
 import OAuth from "../OAuth";
+
+import { register } from "../../actions/auth";
 
 import styles from "../../styles/Auth.module.scss";
 
 function SignUp() {
+  const [submitted, setSubmitted] = useState(false);
   const [showPass1, setShowPass1] = useState(false);
   const [showPass2, setShowPass2] = useState(false);
   const [email, setEmail] = useState("");
@@ -88,105 +90,127 @@ function SignUp() {
 
   const handleFormSubmit = (e: any) => {
     e.preventDefault();
+
+    register({
+      email,
+      password: password1,
+    })
+      .then((res) => {
+        // TODO
+        setSubmitted(true);
+      })
+      .catch((err) => {
+        // TODO
+      });
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.title}>ثبت‌نام</div>
-      <form className={styles.form} onSubmit={handleFormSubmit}>
-        <TextField
-          className={styles.inputs}
-          placeholder="ایمیل"
-          type="email"
-          value={email}
-          error={!!emailError}
-          helperText={emailError}
-          onBlur={() => validateEmail()}
-          onFocus={() => {
-            setEmailError("");
-          }}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-        <TextField
-          className={styles.inputs}
-          placeholder="رمز عبور"
-          type={showPass1 ? "text" : "password"}
-          value={password1}
-          error={!!password1Error}
-          helperText={password1Error}
-          onBlur={() => validatePassword()}
-          onFocus={() => {
-            setPassword1Error("");
-          }}
-          onChange={(e) => {
-            setPassword1(e.target.value);
-          }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  color="info"
-                  onClick={() => {
-                    setShowPass1(!showPass1);
-                  }}
-                  onMouseDown={(e) => {
-                    e.preventDefault();
-                  }}
-                >
-                  {!showPass1 ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-        <TextField
-          className={styles.inputs}
-          placeholder="تکرار رمز عبور"
-          type={showPass2 ? "text" : "password"}
-          value={password2}
-          error={!!password2Error}
-          helperText={password2Error}
-          onBlur={() => validateRepeatPassword()}
-          onFocus={() => {
-            setPassword2Error("");
-          }}
-          onChange={(e) => {
-            setPassword2(e.target.value);
-          }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  color="info"
-                  onClick={() => {
-                    setShowPass2(!showPass2);
-                  }}
-                  onMouseDown={(e) => {
-                    e.preventDefault();
-                  }}
-                >
-                  {!showPass2 ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-        <Button
-          color="primary"
-          variant="contained"
-          type="submit"
-          disabled={disabled}
-        >
-          ثبت‌نام
-        </Button>
-      </form>
-      <div className={styles["bottom-links"]}>
-        حساب کاربری دارید؟
-        <Link href="/auth/login">ورود</Link>
-      </div>
-      <OAuth />
+      {submitted ? (
+        <>
+          <div className={styles["check-email"]}>
+            برای تایید ثبت‌نام لطفا ایمیل خود را چک کنید
+          </div>
+        </>
+      ) : (
+        <>
+          <form className={styles.form} onSubmit={handleFormSubmit}>
+            <TextField
+              className={styles.inputs}
+              placeholder="ایمیل"
+              type="email"
+              value={email}
+              error={!!emailError}
+              helperText={emailError}
+              onBlur={() => validateEmail()}
+              onFocus={() => {
+                setEmailError("");
+              }}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+            <TextField
+              className={styles.inputs}
+              placeholder="رمز عبور"
+              type={showPass1 ? "text" : "password"}
+              value={password1}
+              error={!!password1Error}
+              helperText={password1Error}
+              onBlur={() => validatePassword()}
+              onFocus={() => {
+                setPassword1Error("");
+              }}
+              onChange={(e) => {
+                setPassword1(e.target.value);
+              }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      color="info"
+                      onClick={() => {
+                        setShowPass1(!showPass1);
+                      }}
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                      }}
+                    >
+                      {!showPass1 ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextField
+              className={styles.inputs}
+              placeholder="تکرار رمز عبور"
+              type={showPass2 ? "text" : "password"}
+              value={password2}
+              error={!!password2Error}
+              helperText={password2Error}
+              onBlur={() => validateRepeatPassword()}
+              onFocus={() => {
+                setPassword2Error("");
+              }}
+              onChange={(e) => {
+                setPassword2(e.target.value);
+              }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      color="info"
+                      onClick={() => {
+                        setShowPass2(!showPass2);
+                      }}
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                      }}
+                    >
+                      {!showPass2 ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <Button
+              color="primary"
+              variant="contained"
+              type="submit"
+              disabled={disabled}
+            >
+              ثبت‌نام
+            </Button>
+          </form>
+          <div className={styles["bottom-links"]}>
+            حساب کاربری دارید؟
+            <Link href="/auth/login">ورود</Link>
+          </div>
+          <OAuth />
+        </>
+      )}
     </div>
   );
 }

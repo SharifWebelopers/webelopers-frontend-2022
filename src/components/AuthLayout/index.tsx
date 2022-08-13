@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { ReactElement } from "react";
+import Link from "next/link";
 
 import styles from "./AuthLayout.module.scss";
 
