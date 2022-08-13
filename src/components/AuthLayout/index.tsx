@@ -15,7 +15,7 @@ export default function Layout({ children }: Props) {
           <img src="/webelopers-logo.png" alt="logo" />
         </Link>
       </div>
-      <main className={styles["inputs-box"]}>{children}</main>
+      <div className={styles["inputs-box"]}>{children}</div>
     </div>
   );
 }

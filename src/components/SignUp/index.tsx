@@ -124,13 +124,10 @@ function SignUp() {
             setPassword1(e.target.value);
           }}
           InputProps={{
-            sx: {
-              paddingRight: "26px",
-            },
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton
-                  color="primary"
+                  color="info"
                   onClick={() => {
                     setShowPass1(!showPass1);
                   }}
@@ -159,13 +156,10 @@ function SignUp() {
             setPassword2(e.target.value);
           }}
           InputProps={{
-            sx: {
-              paddingRight: "26px",
-            },
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton
-                  color="primary"
+                  color="info"
                   onClick={() => {
                     setShowPass2(!showPass2);
                   }}

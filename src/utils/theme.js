@@ -10,6 +10,9 @@ export const theme = createTheme({
     error: {
       main: "#ff0000",
     },
+    info: {
+      main: "#a8573c",
+    },
   },
   typography: {
     fontFamily: ["unset"].join(","),
@@ -18,10 +21,10 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 40,
-          height: 64,
-          width: 390,
-          fontSize: "2rem",
+          borderRadius: "4vh",
+          height: "6vh",
+          width: "20vw",
+          fontSize: "3vh",
           fontFamily: "unset",
           "&:hover": {
             backgroundColor: "#ccb0a1",
@@ -36,24 +39,27 @@ export const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          borderRadius: 40,
-          height: 64,
-          width: 390,
-          fontSize: "1.5rem",
-          padding: 12,
+          borderRadius: "4vh",
+          height: "6vh",
+          width: "20vw",
+          fontSize: "2.5vh",
           backgroundColor: "white",
           "& fieldset": {
             borderColor: "#ccb0a1 !important",
             borderWidth: 2,
           },
           "& input::placeholder": {
-            color: "#ccb0a1",
+            color: "#484848",
             opacity: 1,
           },
-          "&.Mui-focused input::placeholder": {
-            color: "#757575",
-            opacity: 0.7,
-          },
+        },
+      },
+    },
+    MuiSvgIcon: {
+      styleOverrides: {
+        root: {
+          width: "3vh",
+          height: "3vh",
         },
       },
     },

@@ -10,20 +10,27 @@
   direction: ltr;
 
   background-size: cover;
+  background-repeat: no-repeat;
   background-image: url("/auth-wallpaper.png");
 }
 
 .logo-container {
-  top: 28px;
-  left: 40px;
+  top: 2.5vh;
+  left: 2vw;
 
   position: absolute;
 }
 
+.logo-container img {
+  width: 5vw;
+}
+
 .inputs-box {
-  border-radius: 40px;
-  margin: 96px 0;
+  border-radius: 4vh;
+  margin: 9vh 0;
   background-color: rgba(203, 203, 203, 0.1);
-  padding: 100px 118px;
+  padding: 9vh 6vw;
   width: fit-content;
+  position: relative;
+  backdrop-filter: blur(50px);
 }

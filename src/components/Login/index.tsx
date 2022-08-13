@@ -108,13 +108,10 @@ function Login() {
             setPassword(e.target.value);
           }}
           InputProps={{
-            sx: {
-              paddingRight: "26px",
-            },
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton
-                  color="primary"
+                  color="info"
                   onClick={() => {
                     setShowPass(!showPass);
                   }}
@@ -142,7 +139,7 @@ function Login() {
         <Divider
           orientation="vertical"
           variant="middle"
-          sx={{ backgroundColor: "#ccb0a1", width: "1px", height: 40 }}
+          sx={{ backgroundColor: "#ccb0a1", width: "1px", height: "4vh" }}
         />
         <Link href="/auth/signup">ثبت‌نام</Link>
       </div>

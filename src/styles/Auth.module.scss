@@ -5,33 +5,33 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 1.5vh;
 }
 
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 1.5vh;
 }
 
 .title {
   color: #ccb0a1;
-  font-size: 4rem;
-  margin-bottom: 32px;
+  font-size: 6vh;
+  margin-bottom: 3vh;
 }
 
 .inputs {
-  margin-bottom: 16px;
+  margin-bottom: 1.5vh;
 }
 
 .bottom-links {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 1vw;
   align-items: center;
-  margin-bottom: 8px;
-  font-size: 1.5rem;
+  margin-bottom: 0.5vh;
+  font-size: 2vh;
   align-self: flex-start;
   color: #ccb0a1;
 }

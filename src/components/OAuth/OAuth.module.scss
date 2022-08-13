@@ -1,14 +1,18 @@
 .oauth-logos-container {
   display: flex;
   flex-direction: row;
-  gap: 24px;
-  margin-top: 8px;
+  gap: 1.5vw;
+  margin-top: 0.5vh;
   justify-content: center;
+}
+
+.oauth-logos-container img {
+  height: 4vh;
 }
 
 .oauth-container {
   text-align: center;
-  font-size: 2rem;
+  font-size: 3vh;
   color: #ccb0a1;
-  line-height: 48px;
+  line-height: 4.5vh;
 }
