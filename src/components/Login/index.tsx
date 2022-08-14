@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import {
   Button,
   TextField,
@@ -9,18 +10,23 @@ import {
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Link from "next/link";
-
 import OAuth from "../OAuth";
+
+import { login } from "../../actions/auth";
 
 import styles from "../../styles/Auth.module.scss";
 
 function Login() {
+  const router = useRouter();
+
   const [showPass, setShowPass] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [disabled, setDisabled] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [showActivationPrompt, setShowActivationPrompt] = useState(false);
 
   const emailValidators = [
     (email: string) => (email ? false : "ایمیل الزامی است!"), // checking emptiness
@@ -63,87 +69,125 @@ function Login() {
   };
 
   useEffect(() => {
-    if (validateEmail(false) && validatePassword(false)) {
+    if (validateEmail(false) && validatePassword(false) && !loading) {
       setDisabled(false);
     } else {
       setDisabled(true);
     }
-  }, [password, email]);
+  }, [password, email, loading]);
 
   const handleFormSubmit = (e: any) => {
     e.preventDefault();
+
+    setLoading(true);
+    login({ email, password })
+      .then(() => {
+        // maybe so some other things? (store token for example)
+        router.push("/");
+      })
+      .catch((err) => {
+        if (err?.response?.status === 403) setShowActivationPrompt(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.title}>ورود</div>
-      <form className={styles.form} onSubmit={handleFormSubmit}>
-        <TextField
-          className={styles.inputs}
-          placeholder="ایمیل"
-          type="email"
-          value={email}
-          error={!!emailError}
-          helperText={emailError}
-          onBlur={() => validateEmail()}
-          onFocus={() => {
-            setEmailError("");
-          }}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-        <TextField
-          className={styles.inputs}
-          placeholder="رمز عبور"
-          type={showPass ? "text" : "password"}
-          value={password}
-          error={!!passwordError}
-          helperText={passwordError}
-          onBlur={() => validatePassword()}
-          onFocus={() => {
-            setPasswordError("");
-          }}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  color="info"
-                  onClick={() => {
-                    setShowPass(!showPass);
-                  }}
-                  onMouseDown={(e) => {
-                    e.preventDefault();
-                  }}
-                >
-                  {!showPass ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-        <Button
-          color="primary"
-          variant="contained"
-          type="submit"
-          disabled={disabled}
-        >
-          ورود
-        </Button>
-      </form>
-      <div className={styles["bottom-links"]}>
-        <a href="">رمز عبور خود را فراموش کردید؟</a>
-        <Divider
-          orientation="vertical"
-          variant="middle"
-          sx={{ backgroundColor: "#ccb0a1", width: "1px", height: "4vh" }}
-        />
-        <Link href="/auth/signup">ثبت‌نام</Link>
-      </div>
-      <OAuth />
+      {showActivationPrompt ? (
+        <div className={styles["verification-result"]}>
+          <img
+            className={styles["verification-icon"]}
+            src="/failed.svg"
+            alt="failed"
+          />
+          <div className={styles["verification-message"]}>
+            حساب کاربری شما غیرفعال است.
+          </div>
+          <Link href="/auth/request-verification">
+            <Button color="primary" variant="contained">
+              فعال‌سازی حساب
+            </Button>
+          </Link>
+          <Link href="/">
+            <Button color="primary" variant="contained">
+              بازگشت به صفحه اصلی
+            </Button>
+          </Link>
+        </div>
+      ) : (
+        <>
+          <form className={styles.form} onSubmit={handleFormSubmit}>
+            <TextField
+              className={styles.inputs}
+              placeholder="ایمیل"
+              type="email"
+              value={email}
+              error={!!emailError}
+              helperText={emailError}
+              onBlur={() => validateEmail()}
+              onFocus={() => {
+                setEmailError("");
+              }}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+            <TextField
+              className={styles.inputs}
+              placeholder="رمز عبور"
+              type={showPass ? "text" : "password"}
+              value={password}
+              error={!!passwordError}
+              helperText={passwordError}
+              onBlur={() => validatePassword()}
+              onFocus={() => {
+                setPasswordError("");
+              }}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      color="info"
+                      onClick={() => {
+                        setShowPass(!showPass);
+                      }}
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                      }}
+                    >
+                      {!showPass ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <Button
+              color="primary"
+              variant="contained"
+              type="submit"
+              disabled={disabled}
+            >
+              ورود
+            </Button>
+          </form>
+          <div className={styles["bottom-links"]}>
+            <a href="">رمز عبور خود را فراموش کردید؟</a>
+            <Divider
+              orientation="vertical"
+              variant="middle"
+              sx={{ backgroundColor: "#ccb0a1", width: "1px", height: "4vh" }}
+            />
+            <Link href="/auth/signup">ثبت‌نام</Link>
+          </div>
+          <OAuth />
+        </>
+      )}
     </div>
   );
 }

@@ -41,10 +41,30 @@
   color: #9d533a;
 }
 
-.check-email {
+.message-box {
   color: #ccb0a1;
   margin: 6vh 0 36vh 0;
   border: 2px solid #ccb0a1;
   border-radius: 1.5vh;
   padding: 2vh 1vw;
+}
+
+.verification-result {
+  margin-top: 6vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3vh;
+}
+
+.verification-icon {
+  width: 16vh;
+  height: 16vh;
+  margin-bottom: 3vh;
+}
+
+.verification-message {
+  color: #ccb0a1;
+  font-size: 3vh;
 }

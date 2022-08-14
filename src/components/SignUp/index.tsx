@@ -20,6 +20,8 @@ function SignUp() {
   const [password1Error, setPassword1Error] = useState("");
   const [password2Error, setPassword2Error] = useState("");
   const [disabled, setDisabled] = useState(true);
+  const [loading, setLoading] = useState(false);
+
   const emailValidators = [
     (email: string) => (email ? false : "ایمیل الزامی است!"), // checking emptiness
     (email: string) => {
@@ -80,27 +82,29 @@ function SignUp() {
     if (
       validateEmail(false) &&
       validatePassword(false) &&
-      validateRepeatPassword(false)
+      validateRepeatPassword(false) &&
+      !loading
     ) {
       setDisabled(false);
     } else {
       setDisabled(true);
     }
-  }, [password1, password2, email]);
+  }, [password1, password2, email, loading]);
 
   const handleFormSubmit = (e: any) => {
     e.preventDefault();
 
+    setLoading(true);
     register({
       email,
       password: password1,
     })
       .then((res) => {
-        // TODO
+        // maybe do some other things? (store token for example)
         setSubmitted(true);
       })
-      .catch((err) => {
-        // TODO
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -109,7 +113,7 @@ function SignUp() {
       <div className={styles.title}>ثبت‌نام</div>
       {submitted ? (
         <>
-          <div className={styles["check-email"]}>
+          <div className={styles["message-box"]}>
             برای تایید ثبت‌نام لطفا ایمیل خود را چک کنید
           </div>
         </>

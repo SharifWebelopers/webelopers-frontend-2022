@@ -21,6 +21,7 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
+          whiteSpace: "nowrap",
           borderRadius: "4vh",
           height: "6vh",
           width: "20vw",
