@@ -18,6 +18,11 @@ export const theme = createTheme({
     fontFamily: ["unset"].join(","),
   },
   components: {
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: true,
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
