@@ -34,3 +34,25 @@
   position: relative;
   backdrop-filter: blur(50px);
 }
+
+@media only screen and (max-width: 600px) {
+  .container {
+    background-image: url("/auth-wallpaper-rotated.png");
+  }
+
+  .logo-container {
+    top: 44px;
+    left: 6vw;
+
+    position: absolute;
+  }
+
+  .logo-container img {
+    width: 17vw;
+  }
+
+  .inputs-box {
+    padding: 6.5vh 8vw;
+    margin: 0 9vw;
+  }
+}

@@ -6,6 +6,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5vh;
+  text-align: center;
 }
 
 .form {
@@ -67,4 +68,20 @@
 .verification-message {
   color: #ccb0a1;
   font-size: 3vh;
+}
+
+@media only screen and (max-width: 600px) {
+  .verification-result {
+    margin-top: 0;
+  }
+
+  .verification-icon {
+    margin-bottom: 0;
+  }
+
+  .message-box {
+    margin: 3vh 0 30vh 0;
+    padding: 2vh;
+    width: 100%;
+  }
 }

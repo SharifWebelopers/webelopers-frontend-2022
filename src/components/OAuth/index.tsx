@@ -23,7 +23,12 @@ function OAuth() {
     <>
       <Divider
         variant="fullWidth"
-        sx={{ backgroundColor: "#757575", width: "20vw", height: 2 }}
+        sx={{
+          backgroundColor: "#757575",
+          minWidth: "20vw",
+          width: "100%",
+          height: 2,
+        }}
       />
       <div className={styles["oauth-container"]}>
         <div>ورود از طریق:</div>

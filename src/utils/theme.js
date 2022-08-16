@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
-export const theme = createTheme({
+const theme = createTheme({
   direction: "rtl",
   palette: {
     primary: {
@@ -71,3 +71,14 @@ export const theme = createTheme({
     },
   },
 });
+
+theme.components.MuiButton.styleOverrides.root[theme.breakpoints.down("sm")] = {
+  minWidth: "64vw",
+};
+theme.components.MuiOutlinedInput.styleOverrides.root[
+  theme.breakpoints.down("sm")
+] = {
+  minWidth: "64vw",
+};
+
+export { theme };
