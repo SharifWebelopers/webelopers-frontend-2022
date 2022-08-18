@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React from "react";
 import FaqItem from "../../components/FaqItem";
 import Footer from "../../components/Footer";
@@ -7,6 +8,9 @@ import styles from "./faq.module.scss";
 function FaqPage() {
   return (
     <div className={styles.faqPage}>
+      <Head>
+        <title>سوالات متداول</title>
+      </Head>
       <Header />
       <h1 className={styles.title}>سوالات متداول</h1>
       <div className={styles.faqs}>

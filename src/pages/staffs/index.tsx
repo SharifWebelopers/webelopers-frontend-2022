@@ -8,6 +8,7 @@ import useCollapse from "react-collapsed";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import styles from "./staffs.module.scss";
 import { useMediaQuery } from "@mui/material";
+import Head from "next/head";
 
 const teamTitles = [
   "دبیران",
@@ -28,6 +29,9 @@ function Staffs() {
 
   return (
     <div className={styles.staff}>
+      <Head>
+        <title>تیم برگزاری</title>
+      </Head>
       <Header />
       <h1>تیم برگزاری</h1>
       {isMobile ? (
