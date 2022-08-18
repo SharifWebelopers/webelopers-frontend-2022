@@ -33,19 +33,33 @@
 }
 
 .sponsorName {
-  font-size: 28px;
-  font-weight: 400;
-  margin: 0 0 24px;
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.sponsorContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .sponsorDescription {
   font-size: 18px;
-  line-height: 28px;
+  line-height: 32px;
 }
 
 //mobile design
 @media (max-width: 768px) {
   .title {
     margin: 32px 0;
+  }
+
+  .sponsorContent {
+    flex-direction: column;
+  }
+
+  .sponsorImage {
+    margin-top: 16px;
   }
 }

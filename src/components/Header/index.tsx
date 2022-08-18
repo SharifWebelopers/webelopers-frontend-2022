@@ -61,7 +61,7 @@ function Header() {
                 <div className={styles.navItemMobile}>تیم برگزاری</div>
               </Link>
               <Link href={"/sponsors"}>
-                <div className={styles.navItemMobile}>حامی مالی</div>
+                <div className={styles.navItemMobile}>حامیان</div>
               </Link>
               <Link href={"/faq"}>
                 <div className={styles.navItemMobile}>سوالات متداول</div>
@@ -90,7 +90,7 @@ function Header() {
                 <div className={styles.navItem}>تیم برگزاری</div>
               </Link>
               <Link href={"/sponsors"}>
-                <div className={styles.navItem}>حامی مالی</div>
+                <div className={styles.navItem}>حامیان</div>
               </Link>
               <Link href={"/faq"}>
                 <div className={styles.navItem}>سوالات متداول</div>
