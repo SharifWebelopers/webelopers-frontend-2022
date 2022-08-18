@@ -1,14 +1,22 @@
 .footer {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 32px;
+  padding: 32px 0 0;
   color: #908f98;
 }
 
+.footerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1224px;
+}
+
 .socialItem {
-  color: #908f98;
+  color: #cbcbcb;
 }
 .socialIcon {
   font-size: 40px !important;
@@ -24,8 +32,33 @@
 }
 
 .copyRight {
-  align-self: flex-end;
-  margin-bottom: 16px;
+  margin: 16px 24px 24px;
   font-size: 16px;
+  line-height: 24px;
   font-weight: 500;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .footerTop {
+    flex-direction: column-reverse;
+  }
+
+  .socialItems {
+    margin-bottom: 16px;
+  }
+
+  .sharifLogos {
+    margin-bottom: 8px;
+  }
+
+  .ssc {
+    width: 105px;
+    height: 52px;
+  }
+
+  .sharif {
+    width: 52px;
+    height: 52px;
+  }
 }
