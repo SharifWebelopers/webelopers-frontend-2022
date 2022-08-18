@@ -66,3 +66,76 @@
 .logo {
   cursor: pointer;
 }
+
+//mobile styles
+.headerMobile {
+  background-color: #1d1b26;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #d9d9d9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  padding: 16px;
+}
+
+.menuIcon {
+  border-radius: 50%;
+  border: 2px solid #37253a;
+  padding: 6px;
+  display: flex;
+}
+
+.modal {
+  background-color: #1d1b26;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.closeIcon {
+  border-radius: 50%;
+  padding: 6px;
+  display: flex;
+  background-color: #d9d9d9;
+  align-self: flex-start;
+  margin: 16px;
+}
+
+.navItemMobile {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  margin: 24px;
+
+  &:hover {
+    color: #a8573c;
+  }
+}
+
+.modalBtn {
+  border: 2px solid #757575;
+  background: none;
+  color: #c9c2c2;
+  padding: 8px;
+  width: 120px;
+  border-radius: 60px;
+  font-size: 20px;
+  font-weight: 300;
+  margin: 8px 0;
+
+  &:hover {
+    background-color: #ccb0a1;
+    color: #1d1b26;
+    border: 2px solid transparent;
+  }
+}
+
+.modalRegisterBtn {
+  margin-top: 40px;
+}

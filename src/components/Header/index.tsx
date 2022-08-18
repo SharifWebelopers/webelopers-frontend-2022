@@ -4,36 +4,112 @@ import logo from "../../assets/images/logo.png";
 import styles from "./Header.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import MenuIcon from "@mui/icons-material/Menu";
+import useMobile from "../../utils/useMobile";
+import Slide from "@mui/material/Slide";
+import { TransitionProps } from "@mui/material/transitions";
+import Dialog from "@mui/material/Dialog";
+import CloseIcon from "@mui/icons-material/Close";
+import classNames from "classnames";
+
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement;
+  },
+  ref: React.Ref<unknown>
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 function Header() {
+  const isMobile = useMobile();
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
-    <header className={styles.header}>
-      <div className={styles.container}>
-        <button className={styles.loginBtn}>
-          <LoginIcon className={styles.loginIcon} />
-          ورود | ثبت نام
-        </button>
-        <nav className={styles.nav}>
+    <>
+      {isMobile ? (
+        <header className={styles.headerMobile}>
+          <div className={styles.menuIcon} onClick={handleClickOpen}>
+            <MenuIcon fontSize="large" />
+          </div>
           <Link href={"/"}>
-            <div className={styles.navItem}>خانه</div>
+            <a className={styles.logo}>
+              <Image src={logo} alt="webelopers logo" width={56} height={32} />
+            </a>
           </Link>
-          <Link href={"/staffs"}>
-            <div className={styles.navItem}>تیم برگزاری</div>
-          </Link>
-          <Link href={"/sponsorship"}>
-            <div className={styles.navItem}>حامی مالی</div>
-          </Link>
-          <Link href={"/faq"}>
-            <div className={styles.navItem}>سوالات متداول</div>
-          </Link>
-        </nav>
-        <Link href={"/"}>
-          <a className={styles.logo}>
-            <Image src={logo} alt="webelopers logo" width={100} height={60} />
-          </a>
-        </Link>
-      </div>
-    </header>
+          <Dialog
+            fullScreen
+            open={open}
+            onClose={handleClose}
+            TransitionComponent={Transition}
+          >
+            <div className={styles.modal}>
+              <div className={styles.closeIcon} onClick={handleClose}>
+                <CloseIcon fontSize="large" />
+              </div>
+              <Link href={"/"}>
+                <div className={styles.navItemMobile}>خانه</div>
+              </Link>
+              <Link href={"/staffs"}>
+                <div className={styles.navItemMobile}>تیم برگزاری</div>
+              </Link>
+              <Link href={"/sponsorship"}>
+                <div className={styles.navItemMobile}>حامی مالی</div>
+              </Link>
+              <Link href={"/faq"}>
+                <div className={styles.navItemMobile}>سوالات متداول</div>
+              </Link>
+              <button
+                className={classNames(styles.modalBtn, styles.modalRegisterBtn)}
+              >
+                ثبت نام
+              </button>
+              <button className={styles.modalBtn}>ورود</button>
+            </div>
+          </Dialog>
+        </header>
+      ) : (
+        <header className={styles.header}>
+          <div className={styles.container}>
+            <button className={styles.loginBtn}>
+              <LoginIcon className={styles.loginIcon} />
+              ورود | ثبت نام
+            </button>
+            <nav className={styles.nav}>
+              <Link href={"/"}>
+                <div className={styles.navItem}>خانه</div>
+              </Link>
+              <Link href={"/staffs"}>
+                <div className={styles.navItem}>تیم برگزاری</div>
+              </Link>
+              <Link href={"/sponsorship"}>
+                <div className={styles.navItem}>حامی مالی</div>
+              </Link>
+              <Link href={"/faq"}>
+                <div className={styles.navItem}>سوالات متداول</div>
+              </Link>
+            </nav>
+            <Link href={"/"}>
+              <a className={styles.logo}>
+                <Image
+                  src={logo}
+                  alt="webelopers logo"
+                  width={100}
+                  height={60}
+                />
+              </a>
+            </Link>
+          </div>
+        </header>
+      )}
+    </>
   );
 }
 

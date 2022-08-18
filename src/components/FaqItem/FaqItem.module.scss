@@ -2,12 +2,12 @@
   background-color: rgba(203, 203, 203, 0.1);
   backdrop-filter: blur(50px);
   margin: 12px;
-  padding: 24px 64px;
+  padding: 24px 32px;
   border-radius: 8px;
-  width: 100%;
+  width: calc(100% - 32px);
   max-width: 1224px;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .faqSummary {
@@ -19,6 +19,7 @@
 
 .faqDescription {
   line-height: 36px;
+  font-size: 18px;
   margin: 24px 0;
 }
 
