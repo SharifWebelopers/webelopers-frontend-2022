@@ -6,7 +6,6 @@
   border-radius: 8px;
   width: calc(100% - 32px);
   max-width: 1224px;
-  font-size: 20px;
   font-weight: 500;
 }
 
@@ -14,6 +13,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 24px;
   cursor: pointer;
 }
 
@@ -32,4 +32,14 @@
 .arrowFlip {
   transform: rotate(180deg);
   color: #757575;
+}
+
+@media (max-width: 768px) {
+  .faqSummary {
+    font-size: 20px;
+  }
+  
+  .faqDescription {
+    font-size: 16px;
+  }
 }
