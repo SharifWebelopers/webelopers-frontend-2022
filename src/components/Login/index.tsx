@@ -177,7 +177,9 @@ function Login() {
             </Button>
           </form>
           <div className={styles["bottom-links"]}>
-            <a href="">رمز عبور خود را فراموش کردید؟</a>
+            <Link href="/auth/forgot-password">
+              رمز عبور خود را فراموش کردید؟
+            </Link>
             <Divider
               orientation="vertical"
               variant="middle"

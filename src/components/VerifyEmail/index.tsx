@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 import Link from "next/link";
-
 import { Button } from "@mui/material";
 
 import { verify } from "../../actions/auth";
@@ -58,11 +56,13 @@ function VerifyEmail() {
               ? "حساب کاربری شما با موفقیت فعال شد."
               : "لینک مربوطه منقضی شده است."}
           </div>
-          <Link href="/auth/request-verification">
-            <Button color="primary" variant="contained">
-              ارسال مجدد ایمیل
-            </Button>
-          </Link>
+          {!verified && (
+            <Link href="/auth/request-verification">
+              <Button color="primary" variant="contained">
+                ارسال مجدد ایمیل
+              </Button>
+            </Link>
+          )}
           <Link href="/">
             <Button color="primary" variant="contained">
               بازگشت به صفحه اصلی
