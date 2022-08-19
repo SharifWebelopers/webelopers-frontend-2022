@@ -63,7 +63,7 @@ import NiloufarSanjari from "../../assets/images/staff/branding/NiloufarSanjari.
 
 //sponsorships
 import MohammadMousavifar from "../../assets/images/staff/sponsorship/MohammadMousavifar.png";
-import MohammadAliMohammadKhani from "../../assets/images/staff/sponsorship/MohammadAliMohammadKhani.png";
+import MohammadAliMohammadKhani from "../../assets/images/staff/sponsorship/MohammadAlimohammadKhani.png";
 import AmirrezaMirzaei from "../../assets/images/staff/sponsorship/AmirrezaMirzaei.png";
 import SanaMansouri from "../../assets/images/staff/sponsorship/SanaMansouri.png";
 import MohammadAbolnejadian from "../../assets/images/staff/sponsorship/MohammadAbolnejadian.png";
