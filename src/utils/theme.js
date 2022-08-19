@@ -30,7 +30,7 @@ const theme = createTheme({
           borderRadius: "4vh",
           height: "6vh",
           width: "20vw",
-          fontSize: "2rem",
+          fontSize: "3vh",
           fontFamily: "unset",
           "&:hover": {
             backgroundColor: "#ccb0a1",
@@ -48,7 +48,7 @@ const theme = createTheme({
           borderRadius: "4vh",
           height: "6vh",
           width: "20vw",
-          fontSize: "1.5rem",
+          fontSize: "2.5vh",
           backgroundColor: "white",
           "& fieldset": {
             borderColor: "#ccb0a1 !important",
