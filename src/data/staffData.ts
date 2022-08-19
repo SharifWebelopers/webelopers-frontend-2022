@@ -149,7 +149,7 @@ const marketings = [
     role: "محتوا",
     linkedin: "https://www.linkedin.com/in/fatemeh-iraji-1b9b261ba",
   },
-  { fullName: "علی هاشمی", image: AliHashemi, role: "", linkedin: "" },
+  { fullName: "علی هاشمی", image: AliHashemi, role: "محتوا", linkedin: "" },
   {
     fullName: "سینا سیدجلالی",
     image: SinaSeyyedJalali,
@@ -210,14 +210,8 @@ const scientifics = [
   {
     fullName: "حسین علی حسینی",
     image: HosseinAliHosseini,
-    role: "بک‌اند",
-    linkedin: "https://www.linkedin.com/in/hossein-alihosseini",
-  },
-  {
-    fullName: "حسین علی حسینی",
-    image: HosseinAliHosseini,
     role: "تیم ویدیو",
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/hossein-alihosseini",
   },
   {
     fullName: "محمدرضا بابایی",
