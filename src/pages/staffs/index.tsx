@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Staff from "../../components/Staff";
-import staffsData from "./staffData";
+import staffsData from "../../data/staffData";
 import useCollapse from "react-collapsed";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import styles from "./staffs.module.scss";
