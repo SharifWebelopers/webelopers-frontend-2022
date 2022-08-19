@@ -1,32 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import {
-  Button,
-  TextField,
-  InputAdornment,
-  IconButton,
-  Divider,
-} from "@mui/material";
+import { Button, TextField, InputAdornment, IconButton } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Link from "next/link";
 import OAuth from "../OAuth";
 
-import { login } from "../../actions/auth";
+import { register } from "../../actions/auth";
 
 import styles from "../../styles/Auth.module.scss";
 
-function Login() {
-  const router = useRouter();
-
-  const [showPass, setShowPass] = useState(false);
+function SignUp() {
+  const [submitted, setSubmitted] = useState(false);
+  const [showPass1, setShowPass1] = useState(false);
+  const [showPass2, setShowPass2] = useState(false);
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password1, setPassword1] = useState("");
+  const [password2, setPassword2] = useState("");
   const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const [password1Error, setPassword1Error] = useState("");
+  const [password2Error, setPassword2Error] = useState("");
   const [disabled, setDisabled] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [showActivationPrompt, setShowActivationPrompt] = useState(false);
 
   const emailValidators = [
     (email: string) => (email ? false : "ایمیل الزامی است!"), // checking emptiness
@@ -46,6 +40,11 @@ function Login() {
     },
   ];
 
+  const repeatPasswordValidators = [
+    (pass: string) =>
+      pass === password1 ? false : "تکرار رمز عبور با رمز عبور یکسان نیست!", // must be same with first password
+  ];
+
   const validateEmail = (showError = true) => {
     for (const validator of emailValidators) {
       const error = validator(email);
@@ -59,9 +58,20 @@ function Login() {
 
   const validatePassword = (showError = true) => {
     for (const validator of passwordValidators) {
-      const error = validator(password);
+      const error = validator(password1);
       if (error) {
-        if (showError) setPasswordError(error);
+        if (showError) setPassword1Error(error);
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const validateRepeatPassword = (showError = true) => {
+    for (const validator of repeatPasswordValidators) {
+      const error = validator(password2);
+      if (error) {
+        if (showError) setPassword2Error(error);
         return false;
       }
     }
@@ -69,24 +79,29 @@ function Login() {
   };
 
   useEffect(() => {
-    if (validateEmail(false) && validatePassword(false) && !loading) {
+    if (
+      validateEmail(false) &&
+      validatePassword(false) &&
+      validateRepeatPassword(false) &&
+      !loading
+    ) {
       setDisabled(false);
     } else {
       setDisabled(true);
     }
-  }, [password, email, loading]);
+  }, [password1, password2, email, loading]);
 
   const handleFormSubmit = (e: any) => {
     e.preventDefault();
 
     setLoading(true);
-    login({ email, password })
-      .then(() => {
-        // maybe so some other things? (store token for example)
-        router.push("/");
-      })
-      .catch((err) => {
-        if (err?.response?.status === 403) setShowActivationPrompt(true);
+    register({
+      email,
+      password: password1,
+    })
+      .then((res) => {
+        // maybe do some other things? (store token for example)
+        setSubmitted(true);
       })
       .finally(() => {
         setLoading(false);
@@ -95,28 +110,13 @@ function Login() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.title}>ورود</div>
-      {showActivationPrompt ? (
-        <div className={styles["verification-result"]}>
-          <img
-            className={styles["verification-icon"]}
-            src="/failed.svg"
-            alt="failed"
-          />
-          <div className={styles["verification-message"]}>
-            حساب کاربری شما غیرفعال است.
+      <div className={styles.title}>ثبت‌نام</div>
+      {submitted ? (
+        <>
+          <div className={styles["message-box"]}>
+            برای تایید ثبت‌نام لطفا ایمیل خود را چک کنید
           </div>
-          <Link href="/auth/request-verification">
-            <Button color="primary" variant="contained">
-              فعال‌سازی حساب
-            </Button>
-          </Link>
-          <Link href="/">
-            <Button color="primary" variant="contained">
-              بازگشت به صفحه اصلی
-            </Button>
-          </Link>
-        </div>
+        </>
       ) : (
         <>
           <form className={styles.form} onSubmit={handleFormSubmit}>
@@ -138,16 +138,16 @@ function Login() {
             <TextField
               className={styles.inputs}
               placeholder="رمز عبور"
-              type={showPass ? "text" : "password"}
-              value={password}
-              error={!!passwordError}
-              helperText={passwordError}
+              type={showPass1 ? "text" : "password"}
+              value={password1}
+              error={!!password1Error}
+              helperText={password1Error}
               onBlur={() => validatePassword()}
               onFocus={() => {
-                setPasswordError("");
+                setPassword1Error("");
               }}
               onChange={(e) => {
-                setPassword(e.target.value);
+                setPassword1(e.target.value);
               }}
               InputProps={{
                 endAdornment: (
@@ -155,13 +155,45 @@ function Login() {
                     <IconButton
                       color="info"
                       onClick={() => {
-                        setShowPass(!showPass);
+                        setShowPass1(!showPass1);
                       }}
                       onMouseDown={(e) => {
                         e.preventDefault();
                       }}
                     >
-                      {!showPass ? <VisibilityOff /> : <Visibility />}
+                      {!showPass1 ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextField
+              className={styles.inputs}
+              placeholder="تکرار رمز عبور"
+              type={showPass2 ? "text" : "password"}
+              value={password2}
+              error={!!password2Error}
+              helperText={password2Error}
+              onBlur={() => validateRepeatPassword()}
+              onFocus={() => {
+                setPassword2Error("");
+              }}
+              onChange={(e) => {
+                setPassword2(e.target.value);
+              }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      color="info"
+                      onClick={() => {
+                        setShowPass2(!showPass2);
+                      }}
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                      }}
+                    >
+                      {!showPass2 ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
                 ),
@@ -173,19 +205,12 @@ function Login() {
               type="submit"
               disabled={disabled}
             >
-              ورود
+              ثبت‌نام
             </Button>
           </form>
           <div className={styles["bottom-links"]}>
-            <Link href="/auth/forgot-password">
-              رمز عبور خود را فراموش کردید؟
-            </Link>
-            <Divider
-              orientation="vertical"
-              variant="middle"
-              sx={{ backgroundColor: "#ccb0a1", width: "1px", height: "4vh" }}
-            />
-            <Link href="/auth/signup">ثبت‌نام</Link>
+            حساب کاربری دارید؟
+            <Link href="/auth/login">ورود</Link>
           </div>
           <OAuth />
         </>
@@ -194,4 +219,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignUp;

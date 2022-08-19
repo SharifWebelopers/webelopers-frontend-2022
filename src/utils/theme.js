@@ -1,26 +1,43 @@
 import { createTheme } from "@mui/material/styles";
 
-export const theme = createTheme({
+const theme = createTheme({
   direction: "rtl",
   palette: {
     primary: {
-      main: "#002C45",
-      contrastText: "#040310",
+      main: "#ccb0a1",
+      contrastText: "#303030",
+    },
+    error: {
+      main: "#ff0000",
+    },
+    info: {
+      main: "#a8573c",
     },
   },
+  typography: {
+    fontFamily: ["unset"].join(","),
+  },
   components: {
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: true,
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 40,
-          height: 64,
-          width: 390,
-          fontSize: "2rem",
-          backgroundColor: "#757575",
-          color: "#040310",
+          whiteSpace: "nowrap",
+          borderRadius: "4vh",
+          height: "6vh",
+          width: "20vw",
+          fontSize: "3vh",
+          fontFamily: "unset",
           "&:hover": {
-            backgroundColor: "#013654",
-            color: "#fff",
+            backgroundColor: "#ccb0a1",
+          },
+          "&:disabled": {
+            backgroundColor: "#757575",
+            color: "#ededed",
           },
         },
       },
@@ -28,13 +45,40 @@ export const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          borderRadius: 40,
-          height: 64,
-          width: 390,
-          fontSize: "1.5rem",
-          padding: 12,
+          borderRadius: "4vh",
+          height: "6vh",
+          width: "20vw",
+          fontSize: "2.5vh",
+          backgroundColor: "white",
+          "& fieldset": {
+            borderColor: "#ccb0a1 !important",
+            borderWidth: 2,
+          },
+          "& input::placeholder": {
+            color: "#484848",
+            opacity: 1,
+          },
+        },
+      },
+    },
+    MuiSvgIcon: {
+      styleOverrides: {
+        root: {
+          width: "3vh",
+          height: "3vh",
         },
       },
     },
   },
 });
+
+theme.components.MuiButton.styleOverrides.root[theme.breakpoints.down("sm")] = {
+  minWidth: "64vw",
+};
+theme.components.MuiOutlinedInput.styleOverrides.root[
+  theme.breakpoints.down("sm")
+] = {
+  minWidth: "64vw",
+};
+
+export { theme };
