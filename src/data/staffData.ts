@@ -1,73 +1,73 @@
 // hrs
-import NafiseAbabafha from "../../assets/images/staff/hr/NafiseAbabafha.png";
-import AmirhosseinGhazimoradi from "../../assets/images/staff/hr/AmirhosseinGhazimoradi.png";
-import ParisaGheibi from "../../assets/images/staff/hr/ParisaGheibi.png";
-import AmirhosseinTahani from "../../assets/images/staff/hr/AmirhosseinTahani.png";
-import MahdiSharifkhani from "../../assets/images/staff/hr/MahdiSharifkhani.png";
-import SinaImani from "../../assets/images/staff/hr/SinaImani.png";
+import NafiseAbabafha from "../assets/images/staff/hr/NafiseAbabafha.png";
+import AmirhosseinGhazimoradi from "../assets/images/staff/hr/AmirhosseinGhazimoradi.png";
+import ParisaGheibi from "../assets/images/staff/hr/ParisaGheibi.png";
+import AmirhosseinTahani from "../assets/images/staff/hr/AmirhosseinTahani.png";
+import MahdiSharifkhani from "../assets/images/staff/hr/MahdiSharifkhani.png";
+import SinaImani from "../assets/images/staff/hr/SinaImani.png";
 
 //heads
-import MohammadAminKarimi from "../../assets/images/staff/heads/MohammadAminKarimi.png";
-import MohammadMosayyebi from "../../assets/images/staff/heads/MohammadMosayyebi.png";
-import RoyaMohammadi from "../../assets/images/staff/heads/RoyaMohammadi.png";
-import ImanMohammadi from "../../assets/images/staff/heads/ImanMohammadi.png";
-import FatemehAbdolhay from "../../assets/images/staff/heads/FatemehAbdolhay.png";
-import MahdieEbrahimpour from "../../assets/images/staff/heads/MahdieEbrahimpour.png";
-import SoroushJahanzad from "../../assets/images/staff/heads/SoroushJahanzad.png";
-import SinaElahimanesh from "../../assets/images/staff/heads/SinaElahimanesh.png";
-import HosseinAliHosseini from "../../assets/images/staff/heads/HosseinAliHosseini.png";
+import MohammadAminKarimi from "../assets/images/staff/heads/MohammadAminKarimi.png";
+import MohammadMosayyebi from "../assets/images/staff/heads/MohammadMosayyebi.png";
+import RoyaMohammadi from "../assets/images/staff/heads/RoyaMohammadi.png";
+import ImanMohammadi from "../assets/images/staff/heads/ImanMohammadi.png";
+import FatemehAbdolhay from "../assets/images/staff/heads/FatemehAbdolhay.png";
+import MahdieEbrahimpour from "../assets/images/staff/heads/MahdieEbrahimpour.png";
+import SoroushJahanzad from "../assets/images/staff/heads/SoroushJahanzad.png";
+import SinaElahimanesh from "../assets/images/staff/heads/SinaElahimanesh.png";
+import HosseinAliHosseini from "../assets/images/staff/heads/HosseinAliHosseini.png";
 
 //techs
-import AliAsgharGhanati from "../../assets/images/staff/tech/AliAsgharGhanati.png";
-import AliEsmaeeli from "../../assets/images/staff/tech/AliEsmaeeli.png";
-import AliRezaee from "../../assets/images/staff/tech/AliRezaee.png";
-import MortezaShahrabi from "../../assets/images/staff/tech/MortezaShahrabi.png";
-import MohammadMahdiBehnasr from "../../assets/images/staff/tech/MohammadMahdiBehnasr.png";
-import AfshinZanganeh from "../../assets/images/staff/tech/AfshinZanganeh.png";
-import MasihBeigi from "../../assets/images/staff/tech/MasihBeigi.png";
-import KomeilYahyaZadeh from "../../assets/images/staff/tech/KomeilYahyaZadeh.png";
+import AliAsgharGhanati from "../assets/images/staff/tech/AliAsgharGhanati.png";
+import AliEsmaeeli from "../assets/images/staff/tech/AliEsmaeeli.png";
+import AliRezaee from "../assets/images/staff/tech/AliRezaee.png";
+import MortezaShahrabi from "../assets/images/staff/tech/MortezaShahrabi.png";
+import MohammadMahdiBehnasr from "../assets/images/staff/tech/MohammadMahdiBehnasr.png";
+import AfshinZanganeh from "../assets/images/staff/tech/AfshinZanganeh.png";
+import MasihBeigi from "../assets/images/staff/tech/MasihBeigi.png";
+import KomeilYahyaZadeh from "../assets/images/staff/tech/KomeilYahyaZadeh.png";
 
 //scientifics
-import MohammadHosseinDolatAbadi from "../../assets/images/staff/scientific/MohammadHosseinDolatAbadi.png";
-import MohammadRezaBabaei from "../../assets/images/staff/scientific/MohammadRezaBabaei.png";
-import MahdiAbbasTabar from "../../assets/images/staff/scientific/MahdiAbbasTabar.png";
-import MohammadHosseiniRad from "../../assets/images/staff/scientific/MohammadHosseiniRad.png";
-import ZahraAzar from "../../assets/images/staff/scientific/ZahraAzar.png";
-import MohammadKhosravi from "../../assets/images/staff/scientific/MohammadKhosravi.png";
-import MohammadRezaKarimiNejad from "../../assets/images/staff/scientific/MohammadRezaKarimiNejad.png";
-import ZahraGhanbari from "../../assets/images/staff/scientific/ZahraGhanbari.png";
-import MohammadAskari from "../../assets/images/staff/scientific/MohammadAskari.png";
-import SoroushSherafat from "../../assets/images/staff/scientific/SoroushSherafat.png";
-import AlirezaHosseinkhani from "../../assets/images/staff/scientific/AlirezaHosseinkhani.png";
-import HastiKarimi from "../../assets/images/staff/scientific/HastiKarimi.png";
+import MohammadHosseinDolatAbadi from "../assets/images/staff/scientific/MohammadHosseinDolatAbadi.png";
+import MohammadRezaBabaei from "../assets/images/staff/scientific/MohammadRezaBabaei.png";
+import MahdiAbbasTabar from "../assets/images/staff/scientific/MahdiAbbasTabar.png";
+import MohammadHosseiniRad from "../assets/images/staff/scientific/MohammadHosseiniRad.png";
+import ZahraAzar from "../assets/images/staff/scientific/ZahraAzar.png";
+import MohammadKhosravi from "../assets/images/staff/scientific/MohammadKhosravi.png";
+import MohammadRezaKarimiNejad from "../assets/images/staff/scientific/MohammadRezaKarimiNejad.png";
+import ZahraGhanbari from "../assets/images/staff/scientific/ZahraGhanbari.png";
+import MohammadAskari from "../assets/images/staff/scientific/MohammadAskari.png";
+import SoroushSherafat from "../assets/images/staff/scientific/SoroushSherafat.png";
+import AlirezaHosseinkhani from "../assets/images/staff/scientific/AlirezaHosseinkhani.png";
+import HastiKarimi from "../assets/images/staff/scientific/HastiKarimi.png";
 
 //executives
-import ArianZamani from "../../assets/images/staff/executive/ArianZamani.png";
-import AbolfazlEshagh from "../../assets/images/staff/executive/AbolfazlEshagh.png";
-import DonyaRoshanZamir from "../../assets/images/staff/executive/DonyaRoshanZamir.png";
-import DonyaNavvabi from "../../assets/images/staff/executive/DonyaNavvabi.png";
+import ArianZamani from "../assets/images/staff/executive/ArianZamani.png";
+import AbolfazlEshagh from "../assets/images/staff/executive/AbolfazlEshagh.png";
+import DonyaRoshanZamir from "../assets/images/staff/executive/DonyaRoshanZamir.png";
+import DonyaNavvabi from "../assets/images/staff/executive/DonyaNavvabi.png";
 
 //marketings
-import SanaDoshabchi from "../../assets/images/staff/marketing/SanaDoshabchi.png";
-import AliHashemi from "../../assets/images/staff/marketing/AliHashemi.png";
-import SinaSeyyedJalali from "../../assets/images/staff/marketing/SinaSeyyedJalali.png";
-import AliJavanmard from "../../assets/images/staff/marketing/AliJavanmard.png";
-import FatemehIraji from "../../assets/images/staff/marketing/FatemehIraji.png";
+import SanaDoshabchi from "../assets/images/staff/marketing/SanaDoshabchi.png";
+import AliHashemi from "../assets/images/staff/marketing/AliHashemi.png";
+import SinaSeyyedJalali from "../assets/images/staff/marketing/SinaSeyyedJalali.png";
+import AliJavanmard from "../assets/images/staff/marketing/AliJavanmard.png";
+import FatemehIraji from "../assets/images/staff/marketing/FatemehIraji.png";
 
 //brandings
-import ArinaGhaheri from "../../assets/images/staff/branding/ArinaGhaheri.png";
-import ShaghayeghBagherZadeh from "../../assets/images/staff/branding/ShaghayeghBagherZadeh.png";
-import AidaSalehKheir from "../../assets/images/staff/branding/AidaSalehKheir.png";
-import AliBalaPour from "../../assets/images/staff/branding/AliBalaPour.png";
-import NiloufarSanjari from "../../assets/images/staff/branding/NiloufarSanjari.png";
+import ArinaGhaheri from "../assets/images/staff/branding/ArinaGhaheri.png";
+import ShaghayeghBagherZadeh from "../assets/images/staff/branding/ShaghayeghBagherZadeh.png";
+import AidaSalehKheir from "../assets/images/staff/branding/AidaSalehKheir.png";
+import AliBalaPour from "../assets/images/staff/branding/AliBalaPour.png";
+import NiloufarSanjari from "../assets/images/staff/branding/NiloufarSanjari.png";
 
 //sponsorships
-import MohammadMousavifar from "../../assets/images/staff/sponsorship/MohammadMousavifar.png";
-import MohammadAliMohammadKhani from "../../assets/images/staff/sponsorship/MohammadAlimohammadKhani.png";
-import AmirrezaMirzaei from "../../assets/images/staff/sponsorship/AmirrezaMirzaei.png";
-import SanaMansouri from "../../assets/images/staff/sponsorship/SanaMansouri.png";
-import MohammadAbolnejadian from "../../assets/images/staff/sponsorship/MohammadAbolnejadian.png";
-import SaraZahedi from "../../assets/images/staff/sponsorship/SaraZahedi.png";
+import MohammadMousavifar from "../assets/images/staff/sponsorship/MohammadMousavifar.png";
+import MohammadAliMohammadKhani from "../assets/images/staff/sponsorship/MohammadAlimohammadKhani.png";
+import AmirrezaMirzaei from "../assets/images/staff/sponsorship/AmirrezaMirzaei.png";
+import SanaMansouri from "../assets/images/staff/sponsorship/SanaMansouri.png";
+import MohammadAbolnejadian from "../assets/images/staff/sponsorship/MohammadAbolnejadian.png";
+import SaraZahedi from "../assets/images/staff/sponsorship/SaraZahedi.png";
 
 const sponsorships = [
   {
