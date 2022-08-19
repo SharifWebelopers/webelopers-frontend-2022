@@ -26,6 +26,7 @@ import MohammadMahdiBehnasr from "../assets/images/staff/tech/MohammadMahdiBehna
 import AfshinZanganeh from "../assets/images/staff/tech/AfshinZanganeh.png";
 import MasihBeigi from "../assets/images/staff/tech/MasihBeigi.png";
 import KomeilYahyaZadeh from "../assets/images/staff/tech/KomeilYahyaZadeh.png";
+import NavidMadanNejad from "../assets/images/staff/tech/NavidMadanNejad.png";
 
 //scientifics
 import MohammadHosseinDolatAbadi from "../assets/images/staff/scientific/MohammadHosseinDolatAbadi.png";
@@ -293,11 +294,31 @@ const scientifics = [
 
 const techs = [
   {
+    fullName: "نوید معدن نژاد",
+    image: NavidMadanNejad,
+    role: "فرانت‌اند",
+    linkedin: "https://www.linkedin.com/in/navidmnzh/",
+  },
+  {
+    fullName: "افشین زنگنه",
+    image: AfshinZanganeh,
+    role: "فرانت‌اند",
+    linkedin: "https://www.linkedin.com/in/afshin-zanganeh/",
+    github: "https://github.com/Afshin-Zanganeh",
+  },
+  {
     fullName: "علی اصغر قناتی",
     image: AliAsgharGhanati,
     role: "فرانت‌اند",
     linkedin: "https://www.linkedin.com/in/ali-asghar-ghanati-2457a2186",
     github: "https://github.com/alilordloss",
+  },
+  {
+    fullName: "محمد مهدی به نصر",
+    image: MohammadMahdiBehnasr,
+    role: "فرانت‌اند",
+    linkedin: "https://www.linkedin.com/in/mohmmadmahdi-behnasr-978122177/",
+    github: "https://github.com/mbehnasr",
   },
   {
     fullName: "علی اسماعیلی",
@@ -320,20 +341,6 @@ const techs = [
     linkedin:
       "https://www.linkedin.com/in/morteza-shahrabi-farahani-70b618201/",
     github: "https://github.com/morteza-shahrabi-farahani",
-  },
-  {
-    fullName: "محمد مهدی به نصر",
-    image: MohammadMahdiBehnasr,
-    role: "فرانت‌اند",
-    linkedin: "https://www.linkedin.com/in/mohmmadmahdi-behnasr-978122177/",
-    github: "https://github.com/mbehnasr",
-  },
-  {
-    fullName: "افشین زنگنه",
-    image: AfshinZanganeh,
-    role: "فرانت‌اند",
-    linkedin: "https://www.linkedin.com/in/afshin-zanganeh/",
-    github: "https://github.com/Afshin-Zanganeh",
   },
   {
     fullName: "مسیح بیگی",
