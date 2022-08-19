@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { Button, TextField } from "@mui/material";
 import OAuth from "../OAuth";
+import Context from "../../context/context";
 
 import { requestEmailVerification } from "../../actions/auth";
 
 import styles from "../../styles/Auth.module.scss";
 
 function RequestVerification() {
+  const [context, setContext] = useContext(Context);
+
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -37,10 +40,30 @@ function RequestVerification() {
 
   const handleFormSubmit = (e: any) => {
     e.preventDefault();
+
     setLoading(true);
     requestEmailVerification({ email })
       .then(() => {
         setEmailSent(true);
+      })
+      .catch((err) => {
+        const status = err.response?.status;
+        const message =
+          status === 400
+            ? "ایمیل وجود ندارد!"
+            : status === 429
+            ? "تعداد درخواست‌های شما از مجاز بیشتر است، لطفا کمی صبر کنید و سپس دوباره تلاش کنید."
+            : status === 406
+            ? "حساب شما قبلا فعال شده است!"
+            : "خطایی رخ داده است!";
+        setContext({
+          snackbar: {
+            open: true,
+            message,
+            variant: "error",
+          },
+          ...context,
+        });
       })
       .finally(() => {
         setLoading(false);

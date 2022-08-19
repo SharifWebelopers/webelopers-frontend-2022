@@ -22,6 +22,10 @@ body {
   line-height: 2vh;
 }
 
+.MuiAlert-action {
+  padding: 4px 16px 0 0;
+}
+
 input:-webkit-autofill {
   padding: 0 14px;
   box-shadow: 0 0 0px 1000px #fff inset !important;

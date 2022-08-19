@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, TextField, InputAdornment, IconButton } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Link from "next/link";
 import OAuth from "../OAuth";
+import Context from "../../context/context";
 
 import { register } from "../../actions/auth";
 
 import styles from "../../styles/Auth.module.scss";
 
 function SignUp() {
+  const [context, setContext] = useContext(Context);
+
   const [submitted, setSubmitted] = useState(false);
   const [showPass1, setShowPass1] = useState(false);
   const [showPass2, setShowPass2] = useState(false);
@@ -100,8 +103,23 @@ function SignUp() {
       password: password1,
     })
       .then((res) => {
-        // maybe do some other things? (store token for example)
+        localStorage.setItem("accessToken", res.data.accessToken);
+        localStorage.setItem("refreshToken", res.data.refreshToken);
         setSubmitted(true);
+      })
+      .catch((err) => {
+        const message =
+          err.response?.status === 400
+            ? "این ایمیل قبلا ثبت شده است!"
+            : "خطایی رخ داده است!";
+        setContext({
+          snackbar: {
+            open: true,
+            message,
+            variant: "error",
+          },
+          ...context,
+        });
       })
       .finally(() => {
         setLoading(false);

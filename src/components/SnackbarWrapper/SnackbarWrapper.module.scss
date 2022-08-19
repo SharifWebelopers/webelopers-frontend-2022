@@ -1,0 +1,11 @@
+.alert {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 400px;
+}
+
+.text {
+  font-size: 1.5rem;
+  margin: 12px;
+}

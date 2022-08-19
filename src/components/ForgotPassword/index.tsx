@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import OAuth from "../OAuth";
 import { Button, TextField } from "@mui/material";
+import Context from "../../context/context";
 
 import { requestResetPassword } from "../../actions/auth";
 
 import styles from "../../styles/Auth.module.scss";
 
 function VerifyEmail() {
+  const [context, setContext] = useContext(Context);
+
   const [requested, setRequested] = useState(false);
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -48,11 +51,29 @@ function VerifyEmail() {
 
     setLoading(true);
     requestResetPassword({ email })
-      .then((res) => {
+      .then(() => {
         setRequested(true);
       })
       .catch((err) => {
-        // show errors
+        const status = err.response?.status;
+        const message =
+          status === 400
+            ? "ایمیل وجود ندارد!"
+            : status === 406
+            ? "این حساب رمزعبور ندارد!"
+            : status === 429
+            ? "تعداد درخواست‌های شما از مجاز بیشتر است، لطفا کمی صبر کنید و سپس دوباره تلاش کنید."
+            : status === 403
+            ? "لطفا ابتدا ایمیل خود را فعال کنید!"
+            : "خطایی رخ داده است!";
+        setContext({
+          snackbar: {
+            open: true,
+            message,
+            variant: "error",
+          },
+          ...context,
+        });
       })
       .finally(() => {
         setLoading(false);
