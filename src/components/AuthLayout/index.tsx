@@ -12,7 +12,7 @@ export default function Layout({ children }: Props) {
     <div className={styles.container}>
       <div className={styles["logo-container"]}>
         <Link className={styles.logo} href="/">
-          <img src="/webelopers-logo.png" alt="logo" />
+          <img src="/webelopers-logo.svg" alt="logo" />
         </Link>
       </div>
       <div className={styles["inputs-box"]}>{children}</div>
