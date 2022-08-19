@@ -60,6 +60,7 @@ import ShaghayeghBagherZadeh from "../assets/images/staff/branding/ShaghayeghBag
 import AidaSalehKheir from "../assets/images/staff/branding/AidaSalehKheir.png";
 import AliBalaPour from "../assets/images/staff/branding/AliBalaPour.png";
 import NiloufarSanjari from "../assets/images/staff/branding/NiloufarSanjari.png";
+import AlirezaTanha from "../assets/images/staff/branding/AlirezaTanha.png";
 
 //sponsorships
 import MohammadMousavifar from "../assets/images/staff/sponsorship/MohammadMousavifar.png";
@@ -139,6 +140,12 @@ const brandings = [
     image: NiloufarSanjari,
     role: "طراح گرافیک",
     linkedin: "https://www.linkedin.com/in/niloofar-sanjari-623b03236",
+  },
+  {
+    fullName: "علیرضا تنها",
+    image: AlirezaTanha,
+    role: "موشن گرافیست",
+    linkedin: "https://www.linkedin.com/in/alireza-tanha-9639401b7",
   },
 ];
 
