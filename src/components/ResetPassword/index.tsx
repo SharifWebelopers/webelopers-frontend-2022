@@ -141,6 +141,7 @@ function VerifyEmail() {
                 onChange={(e) => {
                   setPassword1(e.target.value);
                 }}
+                tabIndex={1}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -152,6 +153,7 @@ function VerifyEmail() {
                         onMouseDown={(e) => {
                           e.preventDefault();
                         }}
+                        tabIndex={4}
                       >
                         {!showPass1 ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
@@ -173,6 +175,7 @@ function VerifyEmail() {
                 onChange={(e) => {
                   setPassword2(e.target.value);
                 }}
+                tabIndex={2}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -184,6 +187,7 @@ function VerifyEmail() {
                         onMouseDown={(e) => {
                           e.preventDefault();
                         }}
+                        tabIndex={4}
                       >
                         {!showPass2 ? <VisibilityOff /> : <Visibility />}
                       </IconButton>

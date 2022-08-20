@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, TextField, InputAdornment, IconButton } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Link from "next/link";
 import OAuth from "../OAuth";
+import Context from "../../context/context";
 
 import { register } from "../../actions/auth";
 
 import styles from "../../styles/Auth.module.scss";
 
 function SignUp() {
+  const [context, setContext] = useContext(Context);
+
   const [submitted, setSubmitted] = useState(false);
   const [showPass1, setShowPass1] = useState(false);
   const [showPass2, setShowPass2] = useState(false);
@@ -100,8 +103,23 @@ function SignUp() {
       password: password1,
     })
       .then((res) => {
-        // maybe do some other things? (store token for example)
+        localStorage.setItem("accessToken", res.data.accessToken);
+        localStorage.setItem("refreshToken", res.data.refreshToken);
         setSubmitted(true);
+      })
+      .catch((err) => {
+        const message =
+          err.response?.status === 400
+            ? "این ایمیل قبلا ثبت شده است!"
+            : "خطایی رخ داده است!";
+        setContext({
+          ...context,
+          snackbar: {
+            open: true,
+            message,
+            variant: "error",
+          },
+        });
       })
       .finally(() => {
         setLoading(false);
@@ -134,6 +152,7 @@ function SignUp() {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
+              tabIndex={1}
             />
             <TextField
               className={styles.inputs}
@@ -149,6 +168,7 @@ function SignUp() {
               onChange={(e) => {
                 setPassword1(e.target.value);
               }}
+              tabIndex={2}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -160,6 +180,7 @@ function SignUp() {
                       onMouseDown={(e) => {
                         e.preventDefault();
                       }}
+                      tabIndex={5}
                     >
                       {!showPass1 ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
@@ -181,6 +202,7 @@ function SignUp() {
               onChange={(e) => {
                 setPassword2(e.target.value);
               }}
+              tabIndex={3}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -192,6 +214,7 @@ function SignUp() {
                       onMouseDown={(e) => {
                         e.preventDefault();
                       }}
+                      tabIndex={5}
                     >
                       {!showPass2 ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
