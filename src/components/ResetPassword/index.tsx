@@ -201,7 +201,7 @@ function VerifyEmail() {
                 type="submit"
                 disabled={disabled}
               >
-                ارسال ایمیل
+                ثبت
               </Button>
             </form>
             <div className={styles["bottom-links"]}>
