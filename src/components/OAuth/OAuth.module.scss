@@ -24,6 +24,11 @@
   cursor: pointer;
 }
 
+.github-login img {
+  width: 4vw;
+  height: 4vh;
+}
+
 @media only screen and (max-width: 600px) {
   .oauth-logos-container button {
     height: 9vw;

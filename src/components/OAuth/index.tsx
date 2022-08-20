@@ -34,8 +34,10 @@ function OAuth() {
         router.push("/dashboard");
       })
       .catch((err) => {
-        // TODO make errors more informative
-        const message = "خطایی رخ داده است!";
+        const message =
+          err.response?.status === 401
+            ? "اگر قبلا از طریق دیگری ثبت‌نام کرده‌اید، از همان طریق وارد شوید."
+            : "خطایی رخ داده است!";
         setContext({
           ...context,
           snackbar: {
@@ -64,8 +66,10 @@ function OAuth() {
         router.push("/dashboard");
       })
       .catch((err) => {
-        // TODO make errors more informative
-        const message = "خطایی رخ داده است!";
+        const message =
+          err.response?.status === 401
+            ? "اگر قبلا از طریق دیگری ثبت‌نام کرده‌اید، از همان طریق وارد شوید."
+            : "خطایی رخ داده است!";
         setContext({
           ...context,
           snackbar: {
