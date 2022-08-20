@@ -62,6 +62,7 @@ import AidaSalehKheir from "../assets/images/staff/branding/AidaSalehKheir.png";
 import AliBalaPour from "../assets/images/staff/branding/AliBalaPour.png";
 import NiloufarSanjari from "../assets/images/staff/branding/NiloufarSanjari.png";
 import AlirezaTanha from "../assets/images/staff/branding/AlirezaTanha.png";
+import KosarFadavi from "../assets/images/staff/branding/KosarFadavi.png";
 
 //sponsorships
 import MohammadMousavifar from "../assets/images/staff/sponsorship/MohammadMousavifar.png";
@@ -75,7 +76,7 @@ const sponsorships = [
   {
     fullName: "محمد موسوی فر",
     image: MohammadMousavifar,
-    role: "اسپانسرشیپ",
+    role: "نایب دبیر اسپانسرشیپ",
     linkedin: "https://www.linkedin.com/in/mohamad-mousavifar-727061221",
   },
   {
@@ -113,12 +114,6 @@ const sponsorships = [
 const brandings = [
   { fullName: "آرینا قاهری", image: ArinaGhaheri, role: "UI/UX", linkedin: "" },
   {
-    fullName: "ثنا دوشابچی",
-    image: SanaDoshabchi,
-    role: "طراح گرافیک",
-    linkedin: "https://www.linkedin.com/in/sanadoushabchi",
-  },
-  {
     fullName: "شقایق باقرزاده",
     image: ShaghayeghBagherZadeh,
     role: "طراح گرافیک",
@@ -147,6 +142,12 @@ const brandings = [
     image: AlirezaTanha,
     role: "موشن گرافیست",
     linkedin: "https://www.linkedin.com/in/alireza-tanha-9639401b7",
+  },
+  {
+    fullName: "کوثر فدوی حسینی",
+    image: KosarFadavi,
+    role: "تدوینگر",
+    linkedin: "",
   },
 ];
 
@@ -268,7 +269,7 @@ const scientifics = [
     fullName: "محمد عسکری",
     image: MohammadAskari,
     role: "مستندسازی",
-    linkedin: "www.linkedin.com/in/mohamad-askari-18365a206",
+    linkedin: "https://www.linkedin.com/in/mohamad-askari-18365a206",
   },
   {
     fullName: "سروش شرافت",
@@ -411,18 +412,18 @@ const heads = [
     linkedin:
       "https://www.linkedin.com/in/roya-mohammadi-431940217?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view",
   },
-  {
-    fullName: "ایمان محمدی",
-    image: ImanMohammadi,
-    role: "دبیر علمی",
-    linkedin: "https://www.linkedin.com/in/imanmohammadi02/",
-    github: "https://github.com/Imanm02",
-  },
+
   {
     fullName: "فاطمه عبدالحی",
     image: FatemehAbdolhay,
     role: "دبیر مارکتینگ",
     linkedin: "https://www.linkedin.com/in/fatemeh-abdolhay-0453461aa",
+  },
+  {
+    fullName: "ثنا دوشابچی",
+    image: SanaDoshabchi,
+    role: "دبیر مدیا",
+    linkedin: "https://www.linkedin.com/in/sanadoushabchi",
   },
   {
     fullName: "مهدیه ابراهیم‌پور",
@@ -435,6 +436,13 @@ const heads = [
     image: SoroushJahanzad,
     role: "دبیر فنی",
     linkedin: "https://www.linkedin.com/in/soroush-jahanzad/",
+  },
+  {
+    fullName: "ایمان محمدی",
+    image: ImanMohammadi,
+    role: "دبیر علمی",
+    linkedin: "https://www.linkedin.com/in/imanmohammadi02/",
+    github: "https://github.com/Imanm02",
   },
   {
     fullName: "سینا الهی منش",
