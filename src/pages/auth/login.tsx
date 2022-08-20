@@ -1,19 +1,23 @@
-import type { ReactElement } from 'react'
-import type { NextPageWithLayout } from '../_app'
+import type { ReactElement } from "react";
+import type { NextPageWithLayout } from "../_app";
 
-import Layout from '../../components/AuthLayout'
+import Head from "next/head";
+import Layout from "../../components/AuthLayout";
 import Login from "../../components/Login";
 
 const LoginPage: NextPageWithLayout = () => {
-  return <Login />
-}
+  return <Login />;
+};
 
 LoginPage.getLayout = function getLayout(page: ReactElement) {
   return (
-    <Layout>
-      {page}
-    </Layout>
-  )
-}
+    <>
+      <Head>
+        <title>ورود</title>
+      </Head>
+      <Layout>{page}</Layout>
+    </>
+  );
+};
 
-export default LoginPage
+export default LoginPage;
