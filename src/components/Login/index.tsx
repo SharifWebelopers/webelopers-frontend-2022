@@ -92,7 +92,7 @@ function Login() {
           snackbar: {
             open: true,
             message: "ورود موفقیت‌آمیز بود!",
-            variant: "error",
+            variant: "success",
           },
           loggedIn: true,
         });
