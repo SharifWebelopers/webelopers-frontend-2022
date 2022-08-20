@@ -12,6 +12,7 @@ import Dialog from "@mui/material/Dialog";
 import CloseIcon from "@mui/icons-material/Close";
 import classNames from "classnames";
 import Context from "../../context/context";
+import { useRouter } from "next/router";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -27,6 +28,7 @@ function Header() {
 
   const isMobile = useMobile();
   const [open, setOpen] = React.useState(false);
+  const router = useRouter();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -71,10 +73,16 @@ function Header() {
               </Link>
               <button
                 className={classNames(styles.modalBtn, styles.modalRegisterBtn)}
+                onClick={() => router.push("/auth/signup")}
               >
                 ثبت نام
               </button>
-              <button className={styles.modalBtn}>ورود</button>
+              <button
+                className={styles.modalBtn}
+                onClick={() => router.push("/auth/login")}
+              >
+                ورود
+              </button>
             </div>
           </Dialog>
         </header>

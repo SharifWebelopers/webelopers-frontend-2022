@@ -26,6 +26,7 @@ import MohammadMahdiBehnasr from "../assets/images/staff/tech/MohammadMahdiBehna
 import AfshinZanganeh from "../assets/images/staff/tech/AfshinZanganeh.png";
 import MasihBeigi from "../assets/images/staff/tech/MasihBeigi.png";
 import KomeilYahyaZadeh from "../assets/images/staff/tech/KomeilYahyaZadeh.png";
+import NavidMadanNejad from "../assets/images/staff/tech/NavidMadanNejad.png";
 
 //scientifics
 import MohammadHosseinDolatAbadi from "../assets/images/staff/scientific/MohammadHosseinDolatAbadi.png";
@@ -60,6 +61,7 @@ import ShaghayeghBagherZadeh from "../assets/images/staff/branding/ShaghayeghBag
 import AidaSalehKheir from "../assets/images/staff/branding/AidaSalehKheir.png";
 import AliBalaPour from "../assets/images/staff/branding/AliBalaPour.png";
 import NiloufarSanjari from "../assets/images/staff/branding/NiloufarSanjari.png";
+import AlirezaTanha from "../assets/images/staff/branding/AlirezaTanha.png";
 
 //sponsorships
 import MohammadMousavifar from "../assets/images/staff/sponsorship/MohammadMousavifar.png";
@@ -140,6 +142,12 @@ const brandings = [
     role: "طراح گرافیک",
     linkedin: "https://www.linkedin.com/in/niloofar-sanjari-623b03236",
   },
+  {
+    fullName: "علیرضا تنها",
+    image: AlirezaTanha,
+    role: "موشن گرافیست",
+    linkedin: "https://www.linkedin.com/in/alireza-tanha-9639401b7",
+  },
 ];
 
 const marketings = [
@@ -149,7 +157,7 @@ const marketings = [
     role: "محتوا",
     linkedin: "https://www.linkedin.com/in/fatemeh-iraji-1b9b261ba",
   },
-  { fullName: "علی هاشمی", image: AliHashemi, role: "", linkedin: "" },
+  { fullName: "علی هاشمی", image: AliHashemi, role: "محتوا", linkedin: "" },
   {
     fullName: "سینا سیدجلالی",
     image: SinaSeyyedJalali,
@@ -210,14 +218,8 @@ const scientifics = [
   {
     fullName: "حسین علی حسینی",
     image: HosseinAliHosseini,
-    role: "بک‌اند",
-    linkedin: "https://www.linkedin.com/in/hossein-alihosseini",
-  },
-  {
-    fullName: "حسین علی حسینی",
-    image: HosseinAliHosseini,
     role: "تیم ویدیو",
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/hossein-alihosseini",
   },
   {
     fullName: "محمدرضا بابایی",
@@ -292,11 +294,31 @@ const scientifics = [
 
 const techs = [
   {
+    fullName: "نوید معدن نژاد",
+    image: NavidMadanNejad,
+    role: "فرانت‌اند",
+    linkedin: "https://www.linkedin.com/in/navidmnzh/",
+  },
+  {
+    fullName: "افشین زنگنه",
+    image: AfshinZanganeh,
+    role: "فرانت‌اند",
+    linkedin: "https://www.linkedin.com/in/afshin-zanganeh/",
+    github: "https://github.com/Afshin-Zanganeh",
+  },
+  {
     fullName: "علی اصغر قناتی",
     image: AliAsgharGhanati,
     role: "فرانت‌اند",
     linkedin: "https://www.linkedin.com/in/ali-asghar-ghanati-2457a2186",
     github: "https://github.com/alilordloss",
+  },
+  {
+    fullName: "محمد مهدی به نصر",
+    image: MohammadMahdiBehnasr,
+    role: "فرانت‌اند",
+    linkedin: "https://www.linkedin.com/in/mohmmadmahdi-behnasr-978122177/",
+    github: "https://github.com/mbehnasr",
   },
   {
     fullName: "علی اسماعیلی",
@@ -319,20 +341,6 @@ const techs = [
     linkedin:
       "https://www.linkedin.com/in/morteza-shahrabi-farahani-70b618201/",
     github: "https://github.com/morteza-shahrabi-farahani",
-  },
-  {
-    fullName: "محمد مهدی به نصر",
-    image: MohammadMahdiBehnasr,
-    role: "فرانت‌اند",
-    linkedin: "https://www.linkedin.com/in/mohmmadmahdi-behnasr-978122177/",
-    github: "https://github.com/mbehnasr",
-  },
-  {
-    fullName: "افشین زنگنه",
-    image: AfshinZanganeh,
-    role: "فرانت‌اند",
-    linkedin: "https://www.linkedin.com/in/afshin-zanganeh/",
-    github: "https://github.com/Afshin-Zanganeh",
   },
   {
     fullName: "مسیح بیگی",
