@@ -1,4 +1,5 @@
 import axios from "axios";
+import { SERVER_ROOT_URL } from "../configs";
 
 function getHeaders() {
   let accessToken = sessionStorage.getItem("accessToken");
@@ -10,7 +11,7 @@ function getHeaders() {
 
 function createAxiosInstance() {
   const instance = axios.create({
-    baseURL: "https://webeloperssut.com/api",
+    baseURL: SERVER_ROOT_URL,
     headers: getHeaders(),
   });
 
