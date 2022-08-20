@@ -90,9 +90,16 @@ function Header() {
         <header className={styles.header}>
           <div className={styles.container}>
             {context.loggedIn ? (
-              <Link href={"/dashboard"}>داشبرد</Link>
+              <Link href={"/dashboard"}>
+                <div className={styles.navItem}>داشبرد</div>
+              </Link>
             ) : (
-              <button className={styles.loginBtn}>
+              <button
+                className={styles.loginBtn}
+                onClick={() => {
+                  router.push("/auth");
+                }}
+              >
                 <LoginIcon className={styles.loginIcon} />
                 ورود | ثبت نام
               </button>
