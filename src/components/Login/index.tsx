@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import {
   Button,
@@ -15,9 +15,12 @@ import OAuth from "../OAuth";
 import { login } from "../../actions/auth";
 
 import styles from "../../styles/Auth.module.scss";
+import Context from "../../context/context";
 
 function Login() {
   const router = useRouter();
+
+  const [context, setContext] = useContext(Context);
 
   const [showPass, setShowPass] = useState(false);
   const [email, setEmail] = useState("");
@@ -81,12 +84,35 @@ function Login() {
 
     setLoading(true);
     login({ email, password })
-      .then(() => {
-        // maybe so some other things? (store token for example)
+      .then((res) => {
+        localStorage.setItem("accessToken", res.data.accessToken);
+        localStorage.setItem("refreshToken", res.data.refreshToken);
+        setContext({
+          ...context,
+          snackbar: {
+            open: true,
+            message: "ورود موفقیت‌آمیز بود!",
+            variant: "error",
+          },
+          loggedIn: true,
+        });
         router.push("/");
       })
       .catch((err) => {
-        if (err?.response?.status === 403) setShowActivationPrompt(true);
+        if (err.response?.status === 403) return setShowActivationPrompt(true);
+
+        const message =
+          err.response?.status === 404
+            ? "رمز عبور یا نام کاربری اشتباه است (یا با شبکه‌های اجتماعی ثبت‌نام شده است)."
+            : "خطایی رخ داده است!";
+        setContext({
+          ...context,
+          snackbar: {
+            open: true,
+            message,
+            variant: "error",
+          },
+        });
       })
       .finally(() => {
         setLoading(false);

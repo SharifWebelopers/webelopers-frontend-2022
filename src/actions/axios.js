@@ -10,7 +10,7 @@ function getHeaders() {
 
 function createAxiosInstance() {
   const instance = axios.create({
-    baseURL: "http://130.185.120.219:800",
+    baseURL: "https://webeloperssut.com/api",
     headers: getHeaders(),
   });
 
