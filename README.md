@@ -2,7 +2,21 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, install the packages used in the project:
+
+```bash
+npm i
+# or
+yarn
+```
+
+And define a .env.local file to store environment variables
+for example:
+NEXT_PUBLIC_GOOGLE_CLIENT_ID=822653110358-6nj7gqmu1cv7mcmdv1uuf2qbbhv02o3n.apps.googleusercontent.com
+NEXT_PUBLIC_GITHUB_CLIENT_ID=32055ce3d4275ad0049d
+NEXT_PUBLIC_GITHUB_REDIRECT_URI=http://localhost:3000
+
+Finally run the development server:
 
 ```bash
 npm run dev

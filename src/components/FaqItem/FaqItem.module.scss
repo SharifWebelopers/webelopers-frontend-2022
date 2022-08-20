@@ -14,6 +14,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 24px;
+  line-height: 40px;
   cursor: pointer;
 }
 
@@ -27,6 +28,7 @@
   transition: all 0.3s;
   font-size: 32px !important;
   font-weight: 600 !important;
+  margin-right: 8px;
 }
 
 .arrowFlip {
@@ -37,6 +39,7 @@
 @media (max-width: 768px) {
   .faqSummary {
     font-size: 20px;
+    line-height: 32px;
   }
   
   .faqDescription {

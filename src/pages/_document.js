@@ -12,7 +12,9 @@ class MyDocument extends Document {
     <Html dir="rtl" lang="fa">
       <Head>
         <link rel="shortcut icon" href="/favicon.jpg" />
+        <title>وبلوپرز ۲۰۲۲</title>
       </Head>
+
       <body>
         <Main />
         <NextScript />
