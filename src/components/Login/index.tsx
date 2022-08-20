@@ -88,13 +88,13 @@ function Login() {
         localStorage.setItem("accessToken", res.data.accessToken);
         localStorage.setItem("refreshToken", res.data.refreshToken);
         setContext({
+          ...context,
           snackbar: {
             open: true,
             message: "ورود موفقیت‌آمیز بود!",
             variant: "error",
           },
           loggedIn: true,
-          ...context,
         });
         router.push("/");
       })
@@ -102,16 +102,16 @@ function Login() {
         if (err.response?.status === 403) return setShowActivationPrompt(true);
 
         const message =
-          err.response?.status !== 404
+          err.response?.status === 404
             ? "رمز عبور یا نام کاربری اشتباه است (یا با شبکه‌های اجتماعی ثبت‌نام شده است)."
             : "خطایی رخ داده است!";
         setContext({
+          ...context,
           snackbar: {
             open: true,
             message,
             variant: "error",
           },
-          ...context,
         });
       })
       .finally(() => {

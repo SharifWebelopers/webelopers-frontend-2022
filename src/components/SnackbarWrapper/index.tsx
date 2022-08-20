@@ -9,12 +9,12 @@ const SnackbarWrapper = () => {
 
   const closeSnackbar = () => {
     setContext({
+      ...context,
       snackbar: {
         open: false,
         message: "",
         variant: context.snackbar.variant,
       },
-      ...context,
     });
   };
 

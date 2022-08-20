@@ -18,6 +18,12 @@
   line-height: 4.5vh;
 }
 
+.github-login {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 600px) {
   .oauth-logos-container button {
     height: 9vw;

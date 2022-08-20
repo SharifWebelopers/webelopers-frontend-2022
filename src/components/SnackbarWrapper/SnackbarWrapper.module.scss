@@ -3,6 +3,10 @@
   flex-direction: row;
   align-items: center;
   max-width: 400px;
+
+  & div:nth-child(3) {
+    padding: 4px 16px 0 0;
+  }
 }
 
 .text {

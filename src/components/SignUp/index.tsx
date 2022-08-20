@@ -113,12 +113,12 @@ function SignUp() {
             ? "این ایمیل قبلا ثبت شده است!"
             : "خطایی رخ داده است!";
         setContext({
+          ...context,
           snackbar: {
             open: true,
             message,
             variant: "error",
           },
-          ...context,
         });
       })
       .finally(() => {
@@ -152,6 +152,7 @@ function SignUp() {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
+              tabIndex={1}
             />
             <TextField
               className={styles.inputs}
@@ -167,6 +168,7 @@ function SignUp() {
               onChange={(e) => {
                 setPassword1(e.target.value);
               }}
+              tabIndex={2}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -178,6 +180,7 @@ function SignUp() {
                       onMouseDown={(e) => {
                         e.preventDefault();
                       }}
+                      tabIndex={5}
                     >
                       {!showPass1 ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
@@ -199,6 +202,7 @@ function SignUp() {
               onChange={(e) => {
                 setPassword2(e.target.value);
               }}
+              tabIndex={3}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -210,6 +214,7 @@ function SignUp() {
                       onMouseDown={(e) => {
                         e.preventDefault();
                       }}
+                      tabIndex={5}
                     >
                       {!showPass2 ? <VisibilityOff /> : <Visibility />}
                     </IconButton>

@@ -23,13 +23,13 @@ function OAuth() {
         localStorage.setItem("accessToken", res.data.accessToken);
         localStorage.setItem("refreshToken", res.data.refreshToken);
         setContext({
+          ...context,
           snackbar: {
             open: true,
             message: "ورود موفقیت‌آمیز بود!",
-            variant: "error",
+            variant: "success",
           },
           loggedIn: true,
-          ...context,
         });
         router.push("/dashboard");
       })
@@ -37,12 +37,12 @@ function OAuth() {
         // TODO make errors more informative
         const message = "خطایی رخ داده است!";
         setContext({
+          ...context,
           snackbar: {
             open: true,
             message,
             variant: "error",
           },
-          ...context,
         });
       });
   };
@@ -53,13 +53,13 @@ function OAuth() {
         localStorage.setItem("accessToken", res.data.accessToken);
         localStorage.setItem("refreshToken", res.data.refreshToken);
         setContext({
+          ...context,
           snackbar: {
             open: true,
             message: "ورود موفقیت‌آمیز بود!",
-            variant: "error",
+            variant: "success",
           },
           loggedIn: true,
-          ...context,
         });
         router.push("/dashboard");
       })
@@ -67,12 +67,12 @@ function OAuth() {
         // TODO make errors more informative
         const message = "خطایی رخ داده است!";
         setContext({
+          ...context,
           snackbar: {
             open: true,
             message,
             variant: "error",
           },
-          ...context,
         });
       });
   };
@@ -82,12 +82,12 @@ function OAuth() {
     onError: () => {
       const message = "خطایی رخ داده است!";
       setContext({
+        ...context,
         snackbar: {
           open: true,
           message,
           variant: "error",
         },
-        ...context,
       });
     },
   });
@@ -113,21 +113,21 @@ function OAuth() {
           <GitHubLogin
             clientId={process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID || ""}
             redirectUri={process.env.NEXT_PUBLIC_GITHUB_REDIRECT_URI}
-            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+            className={styles["github-login"]}
             onSuccess={responseGithub}
             onFailure={() => {
               const message = "خطایی رخ داده است!";
               setContext({
+                ...context,
                 snackbar: {
                   open: true,
                   message,
                   variant: "error",
                 },
-                ...context,
               });
             }}
           >
-            <Image src="/github-logo.svg" alt="github" layout="fill" />
+            <img src="/github-logo.svg" alt="github" />
           </GitHubLogin>
         </div>
       </div>

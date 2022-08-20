@@ -67,12 +67,12 @@ function VerifyEmail() {
             ? "لطفا ابتدا ایمیل خود را فعال کنید!"
             : "خطایی رخ داده است!";
         setContext({
+          ...context,
           snackbar: {
             open: true,
             message,
             variant: "error",
           },
-          ...context,
         });
       })
       .finally(() => {

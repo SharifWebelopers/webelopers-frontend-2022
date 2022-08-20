@@ -57,12 +57,12 @@ function RequestVerification() {
             ? "حساب شما قبلا فعال شده است!"
             : "خطایی رخ داده است!";
         setContext({
+          ...context,
           snackbar: {
             open: true,
             message,
             variant: "error",
           },
-          ...context,
         });
       })
       .finally(() => {
