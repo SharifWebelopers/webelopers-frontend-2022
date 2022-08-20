@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import LoginIcon from "@mui/icons-material/Login";
 import logo from "../../assets/images/logo.png";
 import styles from "./Header.module.scss";
@@ -11,6 +11,7 @@ import { TransitionProps } from "@mui/material/transitions";
 import Dialog from "@mui/material/Dialog";
 import CloseIcon from "@mui/icons-material/Close";
 import classNames from "classnames";
+import Context from "../../context/context";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -22,6 +23,8 @@ const Transition = React.forwardRef(function Transition(
 });
 
 function Header() {
+  const [context, _] = useContext(Context);
+
   const isMobile = useMobile();
   const [open, setOpen] = React.useState(false);
 
@@ -78,10 +81,14 @@ function Header() {
       ) : (
         <header className={styles.header}>
           <div className={styles.container}>
-            <button className={styles.loginBtn}>
-              <LoginIcon className={styles.loginIcon} />
-              ورود | ثبت نام
-            </button>
+            {context.loggedIn ? (
+              <Link href={"/dashboard"}>داشبرد</Link>
+            ) : (
+              <button className={styles.loginBtn}>
+                <LoginIcon className={styles.loginIcon} />
+                ورود | ثبت نام
+              </button>
+            )}
             <nav className={styles.nav}>
               <Link href={"/"}>
                 <div className={styles.navItem}>خانه</div>
