@@ -6,7 +6,8 @@
   justify-content: center;
 }
 
-.oauth-logos-container button {
+.oauth-logos-container button,
+.github-login img {
   height: 4vh;
   width: 4vw;
 }
@@ -24,13 +25,9 @@
   cursor: pointer;
 }
 
-.github-login img {
-  width: 4vw;
-  height: 4vh;
-}
-
 @media only screen and (max-width: 600px) {
-  .oauth-logos-container button {
+  .oauth-logos-container button,
+  .github-login img {
     height: 9vw;
     width: 12vw;
   }
