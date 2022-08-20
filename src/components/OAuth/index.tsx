@@ -12,8 +12,6 @@ import { sendSocialAuthToken } from "../../actions/auth";
 
 import styles from "./OAuth.module.scss";
 
-import { GITHUB_CLIENT_ID, GITHUB_REDIRECT_URI } from "../../configs";
-
 function OAuth() {
   const router = useRouter();
 
@@ -117,8 +115,8 @@ function OAuth() {
           </IconButton>
 
           <GitHubLogin
-            clientId={GITHUB_CLIENT_ID}
-            redirectUri={GITHUB_REDIRECT_URI}
+            clientId={process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID || ""}
+            redirectUri={process.env.NEXT_PUBLIC_GITHUB_REDIRECT_URI}
             className={styles["github-login"]}
             onSuccess={responseGithub}
             onFailure={() => {

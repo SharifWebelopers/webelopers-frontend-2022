@@ -9,8 +9,6 @@ import Snackbar from "../components/SnackbarWrapper";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "../utils/theme";
 
-import { GOOGLE_CLIENT_ID } from "../configs";
-
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
@@ -24,7 +22,9 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
-    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+    <GoogleOAuthProvider
+      clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || ""}
+    >
       <ThemeProvider theme={theme}>
         <ContextProvider>
           {getLayout(<Component {...pageProps} />)}
