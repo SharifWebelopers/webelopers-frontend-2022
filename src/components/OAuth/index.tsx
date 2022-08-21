@@ -20,8 +20,8 @@ function OAuth() {
   const responseGoogle = async (res: any) => {
     sendSocialAuthToken("google", { auth_token: res.access_token })
       .then((res) => {
-        localStorage.setItem("accessToken", res.data.accessToken);
-        localStorage.setItem("refreshToken", res.data.refreshToken);
+        localStorage.setItem("accessToken", res.data.tokens.access);
+        localStorage.setItem("refreshToken", res.data.tokens.refresh);
         setContext({
           ...context,
           snackbar: {
@@ -52,8 +52,8 @@ function OAuth() {
   const responseGithub = (res: any) => {
     sendSocialAuthToken("github", { auth_token: res.code })
       .then((res) => {
-        localStorage.setItem("accessToken", res.data.accessToken);
-        localStorage.setItem("refreshToken", res.data.refreshToken);
+        localStorage.setItem("accessToken", res.data.tokens.access);
+        localStorage.setItem("refreshToken", res.data.tokens.refresh);
         setContext({
           ...context,
           snackbar: {
