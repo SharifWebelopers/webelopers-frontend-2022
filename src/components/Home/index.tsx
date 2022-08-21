@@ -11,69 +11,35 @@ import Image from "next/future/image";
 import classNames from "classnames";
 import Footer from "../Footer";
 
-import MohammadAminKarami from "../../assets/images/staff/heads/MohammadAminKarami.png";
-import MohammadMosayyebi from "../../assets/images/staff/heads/MohammadMosayyebi.png";
-import RoyaMohammadi from "../../assets/images/staff/heads/RoyaMohammadi.png";
-import SanaDoshabchi from "../../assets/images/staff/marketing/SanaDoshabchi.png";
 import planet1 from "../../assets/images/1.png";
 import planet2 from "../../assets/images/2.png";
 import planet3 from "../../assets/images/3.png";
 import planet4 from "../../assets/images/4.png";
 import sun from "../../assets/images/sun2.png";
 import fullSun from "../../assets/images/fullSun.png";
-import Staff from "../Staff";
+import Staff, { Person } from "../Staff";
 import useMobile from "../../utils/useMobile";
 
-const selectedStaffsDesktop = [
-  {
-    fullName: "محمدامین کرمی",
-    image: MohammadAminKarami,
-    role: "دبیر رویداد",
-    linkedin: "https://www.linkedin.com/in/mohamadaminkarami",
-    github: "https://github.com/mohamadaminkarami",
-  },
-  {
-    fullName: "محمد مصیبی",
-    image: MohammadMosayyebi,
-    role: "نایب دبیر رویداد",
-    linkedin: "",
-  },
-  {
-    fullName: "رویا محمدی",
-    image: RoyaMohammadi,
-    role: "دبیر انسانی",
-    linkedin:
-      "https://www.linkedin.com/in/roya-mohammadi-431940217?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view",
-  },
-  {
-    fullName: "ثنا دوشابچی",
-    image: SanaDoshabchi,
-    role: "دبیر مدیا",
-    linkedin: "https://www.linkedin.com/in/sanadoushabchi",
-  },
-];
+import staffsData from "../../data/staffData";
 
-const selectedStaffsMobile = [
-  {
-    fullName: "محمدامین کرمی",
-    image: MohammadAminKarami,
-    role: "دبیر رویداد",
-    linkedin: "https://www.linkedin.com/in/mohamadaminkarami",
-    github: "https://github.com/mohamadaminkarami",
-  },
-  {
-    fullName: "ثنا دوشابچی",
-    image: SanaDoshabchi,
-    role: "دبیر مدیا",
-    linkedin: "https://www.linkedin.com/in/sanadoushabchi",
-  },
-];
+function shuffle(array: any) {
+  const temp = [...array];
+  const flattedStaffData = temp.flat();
+  flattedStaffData.sort(() => Math.random() - 0.5);
+  return flattedStaffData;
+}
 
 const countDownDate = new Date("Sep 11, 2022 24:00:00").getTime();
 
 function Home() {
   const router = useRouter();
   const isMobile = useMobile();
+  const [selectedStaffsMobile, setSelectedStaffsMobile] = useState<Person[]>(
+    []
+  );
+  const [selectedStaffsDesktop, setSelectedStaffsDesktop] = useState<Person[]>(
+    []
+  );
   const selectedStaffs = isMobile
     ? selectedStaffsMobile
     : selectedStaffsDesktop;
@@ -83,6 +49,24 @@ function Home() {
     minutes: 0,
     seconds: 0,
   });
+
+  useEffect(() => {
+    const shuffledArray = shuffle(staffsData);
+
+    const selectedStaffsDesktopTemp = [
+      shuffledArray[0],
+      shuffledArray[1],
+      shuffledArray[2],
+      shuffledArray[3],
+    ];
+
+    const selectedStaffsMobileTemp = [shuffledArray[0], shuffledArray[1]];
+
+    setSelectedStaffsDesktop(selectedStaffsDesktopTemp);
+
+    setSelectedStaffsMobile(selectedStaffsMobileTemp);
+  }, []);
+
   useEffect(() => {
     // Update the count down every 1 second
     const x = setInterval(function () {

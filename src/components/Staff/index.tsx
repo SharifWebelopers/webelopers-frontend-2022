@@ -6,14 +6,15 @@ import staffElipsisImg from "../../assets/images/staffElipsis.png";
 import styles from "./Staff.module.scss";
 import classNames from "classnames";
 
+export interface Person {
+  fullName: string;
+  image: StaticImageData;
+  role?: string;
+  linkedin?: string;
+  github?: string;
+}
 interface StaffProps {
-  data: {
-    fullName: string;
-    image: StaticImageData;
-    role?: string;
-    linkedin?: string;
-    github?: string;
-  };
+  data: Person;
 }
 
 function Staff({ data }: StaffProps) {
