@@ -47,7 +47,7 @@ function SponsorPage() {
               src={quera}
               alt="quera"
               width={100}
-              height={72}
+              height={50}
               className={styles.sponsorImage}
             />
           </div>
