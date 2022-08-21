@@ -26,3 +26,11 @@
   max-width: 540px;
   height: auto;
 }
+
+@media (max-width: 768px) {
+  .footer {
+    position: static;
+    bottom: 0;
+    width: 100vw;
+  }
+}
