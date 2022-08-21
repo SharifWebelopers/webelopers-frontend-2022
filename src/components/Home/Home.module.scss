@@ -3,8 +3,8 @@
   background-image: url(../../assets/images/space.jpg);
   padding-top: 64px;
   min-height: 100vh;
-  background-size: 100% 100%;
-  width: 100vw;
+  background-size: cover;
+  overflow-x: hidden;
 }
 
 .section1 {
@@ -17,10 +17,10 @@
 
 .sun {
   position: absolute;
-  height: 110vh;
+  height: 140vh;
   width: auto;
   left: 0;
-  top: 0;
+  top: -50px;
 }
 
 .sunRight {

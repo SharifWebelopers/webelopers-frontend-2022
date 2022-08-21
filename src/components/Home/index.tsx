@@ -280,7 +280,7 @@ function Home() {
               src={quera}
               alt="quera"
               width={200}
-              height={100}
+              height={90}
               className={styles.sponsorImage}
             />
           </div>
