@@ -20,7 +20,10 @@ function DashboardPage() {
         <title>داشبورد</title>
       </Head>
       <Header />
-      <h1 className={styles.text}>این قسمت به زودی تکمیل خواهد شد‌ :)</h1>
+      <h1 className={styles.text}>
+        ثبت نام شما با موفقیت انجام شد. <br />
+        این قسمت به زودی تکمیل خواهد شد‌ :)
+      </h1>
       <Image src={underconstructor} className={styles.image} />
       <div className={styles.footer}>
         <Footer />

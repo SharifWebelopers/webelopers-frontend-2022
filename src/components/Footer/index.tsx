@@ -21,12 +21,16 @@ function Footer() {
           </Link>
           <Link href={"https://www.sharif.edu/"}>
             <a target="_blank">
-              <Image src={sharif} alt="sharif university" className={styles.sharif} />
+              <Image
+                src={sharif}
+                alt="sharif university"
+                className={styles.sharif}
+              />
             </a>
           </Link>
         </div>
         <div className={styles.socialItems}>
-          <Link href={"https://t.me/webelopers"}>
+          <Link href={"https://t.me/webeloperssut"}>
             <a target="_blank" className={styles.socialItem}>
               <TelegramIcon className={styles.socialIcon} />
             </a>
@@ -36,11 +40,7 @@ function Footer() {
               <TwitterIcon className={styles.socialIcon} />
             </a>
           </Link>
-          <Link
-            href={
-              "https://www.linkedin.com/in/webelopers-sharif-bb3374204?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B223UN38ESI%2Btv%2Fln7qcdTg%3D%3D"
-            }
-          >
+          <Link href={"https://www.linkedin.com/company/webelopers-sut/"}>
             <a target="_blank" className={styles.socialItem}>
               <LinkedInIcon className={styles.socialIcon} />
             </a>
