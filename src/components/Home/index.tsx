@@ -16,8 +16,9 @@ import MohammadMosayyebi from "../../assets/images/staff/heads/MohammadMosayyebi
 import RoyaMohammadi from "../../assets/images/staff/heads/RoyaMohammadi.png";
 import SanaDoshabchi from "../../assets/images/staff/marketing/SanaDoshabchi.png";
 import Staff from "../Staff";
+import useMobile from "../../utils/useMobile";
 
-const selectedStaffs = [
+const selectedStaffsDesktop = [
   {
     fullName: "محمدامین کرمی",
     image: MohammadAminKarami,
@@ -46,10 +47,30 @@ const selectedStaffs = [
   },
 ];
 
+const selectedStaffsMobile = [
+  {
+    fullName: "محمدامین کرمی",
+    image: MohammadAminKarami,
+    role: "دبیر رویداد",
+    linkedin: "https://www.linkedin.com/in/mohamadaminkarami",
+    github: "https://github.com/mohamadaminkarami",
+  },
+  {
+    fullName: "ثنا دوشابچی",
+    image: SanaDoshabchi,
+    role: "دبیر مدیا",
+    linkedin: "https://www.linkedin.com/in/sanadoushabchi",
+  },
+];
+
 const countDownDate = new Date("Sep 11, 2022 24:00:00").getTime();
 
 function Home() {
   const router = useRouter();
+  const isMobile = useMobile();
+  const selectedStaffs = isMobile
+    ? selectedStaffsMobile
+    : selectedStaffsDesktop;
   const [countdown, setCountdown] = useState({
     days: 0,
     hours: 0,
@@ -250,20 +271,22 @@ function Home() {
         </div>
       </div>
       <div className={styles.section6}>
-        <div className={styles.staffsTitle}>تیم برگزاری</div>
-        <div className={styles.teamStaffs}>
-          {selectedStaffs.map((data, index) => (
-            <Staff key={index} data={data} />
-          ))}
+        <div className={styles.staffs}>
+          <div className={styles.staffsTitle}>تیم برگزاری</div>
+          <div className={styles.teamStaffs}>
+            {selectedStaffs.map((data, index) => (
+              <Staff key={index} data={data} />
+            ))}
+          </div>
+          <div
+            className={styles.seeAllStaff}
+            onClick={() => router.push("/staffs")}
+          >
+            <ArrowCircleLeftOutlinedIcon />
+            مشاهده تمام اعضا
+          </div>
+          <Footer />
         </div>
-        <div
-          className={styles.seeAllStaff}
-          onClick={() => router.push("/staffs")}
-        >
-          <ArrowCircleLeftOutlinedIcon />
-          مشاهده تمام اعضا
-        </div>
-        <Footer />
       </div>
     </div>
   );
