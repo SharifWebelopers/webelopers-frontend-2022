@@ -362,7 +362,7 @@
 @media (max-width: 768px) {
   .homePage {
     background-color: #1d1b26;
-    //   background-image: url(../../assets/images/space.jpg);
+    background-image: url(../../assets/images/space.jpg);
     padding-top: 0px;
     //   min-height: 100vh;
     background-size: 100% 100%;
@@ -370,21 +370,30 @@
 
   .section1 {
     width: 100vw;
-    height: 100vh;
-    background-image: url(../../assets/images/mobileBg1.png);
+    height: auto;
+    min-height: auto;
+    // background-image: url(../../assets/images/mobileBg1.png);
     background-size: 100% 100%;
     position: relative;
-    margin-top: -48px;
+    padding-top: 74px;
     z-index: 99;
+  }
+
+  .sun {
+    position: unset;
+    height: auto;
+    width: 100vw;
+    left: 0;
+    top: 0px;
   }
 
   .section1Right {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
-    top: 77vh;
-    right: unset;
+    position: static;
+    // top: 77vh;
+    // right: unset;
     border-bottom: 2px solid #757575;
     padding-bottom: 24px;
     margin: 0 16px;
@@ -427,10 +436,10 @@
     backdrop-filter: blur(50px);
     border-radius: 8px;
     color: #fff;
-    position: absolute;
+    position: static;
     left: 50%;
     top: 0px;
-    transform: translateX(-50%);
+    // transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -473,7 +482,7 @@
   .section2 {
     width: 100vw;
     height: 100vh;
-    background-image: url(../../assets/images/mobileBg2.png);
+    // background-image: url(../../assets/images/mobileBg2.png);
     background-size: 100% 100%;
     position: relative;
   }
@@ -486,7 +495,7 @@
     color: #fff;
     position: absolute;
     text-align: justify;
-    top: 30%;
+    // top: 30%;
     left: 50%;
     transform: translateX(-50%);
     width: 320px;
@@ -505,7 +514,7 @@
   .section3 {
     width: 100vw;
     height: 125vh;
-    background-image: url(../../assets/images/mobileBg3.png);
+    // background-image: url(../../assets/images/mobileBg3.png);
     background-size: 100% 100%;
     position: relative;
   }
@@ -519,6 +528,7 @@
     top: 0%;
     right: 50%;
     transform: translateX(50%);
+    margin: 0;
   }
 
   .timingTitle {
@@ -558,9 +568,10 @@
   .section4 {
     width: 100vw;
     height: 110vh;
-    background-image: url(../../assets/images/mobileBg4.png);
+    // background-image: url(../../assets/images/mobileBg4.png);
     background-size: 100% 100%;
     position: relative;
+    margin-top: 96px;
   }
 
   .gifts {
@@ -572,6 +583,7 @@
     top: 0%;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 99;
   }
 
   .giftsTitle {
@@ -614,9 +626,10 @@
   .section5 {
     width: 100vw;
     height: 120vh;
-    background-image: url(../../assets/images/mobileBg5.png);
+    // background-image: url(../../assets/images/mobileBg5.png);
     background-size: 100% 100%;
     position: relative;
+    margin-top: 32px;
   }
 
   .sponsors {
@@ -629,9 +642,9 @@
     align-items: center;
     color: #fff;
     position: absolute;
-    top: 10%;
+    top: 40%;
     right: 50%;
-    transform: translateX(50%);
+    transform: translate(50%, -50%);
     width: 320px;
     height: auto;
     max-width: calc(100% - 32px);
@@ -664,8 +677,9 @@
 
   .section6 {
     width: 100vw;
-    height: 95vh;
-    background-image: url(../../assets/images/mobileBg6.png);
+    height: auto;
+    margin-top: 0;
+    // background-image: url(../../assets/images/mobileBg6.png);
     background-size: 100% 100%;
     position: relative;
     display: flex;

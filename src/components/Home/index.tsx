@@ -20,6 +20,7 @@ import planet2 from "../../assets/images/2.png";
 import planet3 from "../../assets/images/3.png";
 import planet4 from "../../assets/images/4.png";
 import sun from "../../assets/images/sun2.png";
+import fullSun from "../../assets/images/fullSun.png";
 import Staff from "../Staff";
 import useMobile from "../../utils/useMobile";
 
@@ -105,7 +106,7 @@ function Home() {
     <div className={styles.homePage}>
       <Header />
       <div className={styles.section1}>
-        <Image src={sun} className={styles.sun} />
+        <Image src={isMobile ? fullSun : sun} className={styles.sun} />
         <div className={styles.section1Right}>
           <div className={styles.title}>
             WEBELOPERS
