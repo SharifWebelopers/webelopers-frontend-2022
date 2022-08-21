@@ -15,7 +15,7 @@ ResetPasswordPage.getLayout = function getLayout(page: ReactElement) {
       <Head>
         <title>بازیابی رمز عبور</title>
       </Head>
-      <Layout>{page}</Layout>;
+      <Layout>{page}</Layout>
     </>
   );
 };
