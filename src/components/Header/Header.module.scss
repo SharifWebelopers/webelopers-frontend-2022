@@ -1,6 +1,6 @@
 .header {
   background-color: #1d1b26;
-  padding: 16px;
+  padding: 12px;
   color: #fff;
   font-size: 24px;
   font-weight: 400;
@@ -10,7 +10,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 999;
+  z-index: 999999;
 }
 
 .container {
@@ -96,6 +96,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 999999;
 }
 
 .closeIcon {
