@@ -85,8 +85,8 @@ function Login() {
     setLoading(true);
     login({ email, password })
       .then((res) => {
-        localStorage.setItem("accessToken", res.data.accessToken);
-        localStorage.setItem("refreshToken", res.data.refreshToken);
+        localStorage.setItem("accessToken", res.data.access);
+        localStorage.setItem("refreshToken", res.data.refresh);
         setContext({
           ...context,
           snackbar: {

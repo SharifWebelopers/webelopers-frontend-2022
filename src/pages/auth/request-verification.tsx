@@ -15,7 +15,7 @@ RequestVerificationPage.getLayout = function getLayout(page: ReactElement) {
       <Head>
         <title>فعال‌سازی حساب</title>
       </Head>
-      <Layout>{page}</Layout>;
+      <Layout>{page}</Layout>
     </>
   );
 };

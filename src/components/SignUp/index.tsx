@@ -103,8 +103,8 @@ function SignUp() {
       password: password1,
     })
       .then((res) => {
-        localStorage.setItem("accessToken", res.data.accessToken);
-        localStorage.setItem("refreshToken", res.data.refreshToken);
+        // localStorage.setItem("accessToken", res.data.access);
+        // localStorage.setItem("refreshToken", res.data.refresh);
         setSubmitted(true);
       })
       .catch((err) => {
