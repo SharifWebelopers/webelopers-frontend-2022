@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const Context = createContext();
 
@@ -11,6 +11,12 @@ export const ContextProvider = ({ children }) => {
     },
     loggedIn: false,
   });
+
+  useEffect(() => {
+    if (localStorage.getItem("accessToken")) {
+      setContext((old) => ({ ...old, loggedIn: true }));
+    }
+  }, []);
 
   return (
     <Context.Provider value={[context, setContext]}>

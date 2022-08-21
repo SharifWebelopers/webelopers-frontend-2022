@@ -71,18 +71,29 @@ function Header() {
               <Link href={"/faq"}>
                 <div className={styles.navItemMobile}>سوالات متداول</div>
               </Link>
-              <button
-                className={classNames(styles.modalBtn, styles.modalRegisterBtn)}
-                onClick={() => router.push("/auth/signup")}
-              >
-                ثبت نام
-              </button>
-              <button
-                className={styles.modalBtn}
-                onClick={() => router.push("/auth/login")}
-              >
-                ورود
-              </button>
+              {context.loggedIn ? (
+                <Link href={"/dashboard"}>
+                  <div className={styles.navItemMobile}>داشبورد</div>
+                </Link>
+              ) : (
+                <>
+                  <button
+                    className={classNames(
+                      styles.modalBtn,
+                      styles.modalRegisterBtn
+                    )}
+                    onClick={() => router.push("/auth/signup")}
+                  >
+                    ثبت نام
+                  </button>
+                  <button
+                    className={styles.modalBtn}
+                    onClick={() => router.push("/auth/login")}
+                  >
+                    ورود
+                  </button>
+                </>
+              )}
             </div>
           </Dialog>
         </header>
@@ -91,7 +102,7 @@ function Header() {
           <div className={styles.container}>
             {context.loggedIn ? (
               <Link href={"/dashboard"}>
-                <div className={styles.navItem}>داشبرد</div>
+                <div className={styles.navItem}>داشبورد</div>
               </Link>
             ) : (
               <button
