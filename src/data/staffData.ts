@@ -412,18 +412,17 @@ const heads = [
     linkedin:
       "https://www.linkedin.com/in/roya-mohammadi-431940217?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view",
   },
-
-  {
-    fullName: "فاطمه عبدالحی",
-    image: FatemehAbdolhay,
-    role: "دبیر مارکتینگ",
-    linkedin: "https://www.linkedin.com/in/fatemeh-abdolhay-0453461aa",
-  },
   {
     fullName: "ثنا دوشابچی",
     image: SanaDoshabchi,
     role: "دبیر مدیا",
     linkedin: "https://www.linkedin.com/in/sanadoushabchi",
+  },
+  {
+    fullName: "فاطمه عبدالحی",
+    image: FatemehAbdolhay,
+    role: "دبیر مارکتینگ",
+    linkedin: "https://www.linkedin.com/in/fatemeh-abdolhay-0453461aa",
   },
   {
     fullName: "مهدیه ابراهیم‌پور",

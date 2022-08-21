@@ -8,7 +8,7 @@ const HomePage: NextPage = () => {
       <Head>
         <title>وبلوپرز ۲۰۲۲</title>
       </Head>
-      <Home />;
+      <Home />
     </>
   );
 };
