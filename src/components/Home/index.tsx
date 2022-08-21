@@ -15,6 +15,12 @@ import MohammadAminKarami from "../../assets/images/staff/heads/MohammadAminKara
 import MohammadMosayyebi from "../../assets/images/staff/heads/MohammadMosayyebi.png";
 import RoyaMohammadi from "../../assets/images/staff/heads/RoyaMohammadi.png";
 import SanaDoshabchi from "../../assets/images/staff/marketing/SanaDoshabchi.png";
+import planet1 from "../../assets/images/1.png";
+import planet2 from "../../assets/images/2.png";
+import planet3 from "../../assets/images/3.png";
+import planet4 from "../../assets/images/4.png";
+import sun from "../../assets/images/sun2.png";
+import fullSun from "../../assets/images/fullSun.png";
 import Staff from "../Staff";
 import useMobile from "../../utils/useMobile";
 
@@ -100,6 +106,7 @@ function Home() {
     <div className={styles.homePage}>
       <Header />
       <div className={styles.section1}>
+        <Image src={isMobile ? fullSun : sun} className={styles.sun} />
         <div className={styles.section1Right}>
           <div className={styles.title}>
             WEBELOPERS
@@ -114,7 +121,7 @@ function Home() {
           </button>
         </div>
       </div>
-      <div className={styles.section2}>
+      <div className={styles.timeToStartWrapper}>
         <div className={styles.timeToStart}>
           <div className={styles.countdown}>
             <div className={styles.countdownItem}>
@@ -144,6 +151,9 @@ function Home() {
           </div>
           <div className={styles.timeToStartTitle}>تا شروع رویداد!</div>
         </div>
+      </div>
+      <div className={styles.section2}>
+        <Image src={planet1} className={styles.planet1} />
         <div className={styles.about}>
           <div className={styles.aboutTitle}>درباره رویداد</div>
           <p className={styles.aboutDescription}>
@@ -157,59 +167,65 @@ function Home() {
         </div>
       </div>
       <div className={styles.section3}>
-        <div className={styles.timing}>
-          <div className={styles.timingTitle}>زمانبندی</div>
-          <div className={styles.timeItem}>
-            <div className={styles.timeItemDate}>
-              ۳۰ <br /> مرداد
+        <Image src={planet2} className={styles.planet2} />
+        <div className={styles.timingWrapper}>
+          <div className={styles.timing}>
+            <div className={styles.timingTitle}>زمانبندی</div>
+            <div className={styles.timeItem}>
+              <div className={styles.timeItemDate}>
+                ۳۰ <br /> مرداد
+              </div>
+              <div className={styles.timeItemTitle}>آغاز ثبت نام</div>
             </div>
-            <div className={styles.timeItemTitle}>آغاز ثبت نام</div>
-          </div>
-          <div className={styles.timeItem}>
-            <div className={styles.timeItemDate}>
-              ۵ <br />
-              شهریور
+            <div className={styles.timeItem}>
+              <div className={styles.timeItemDate}>
+                ۵ <br />
+                شهریور
+              </div>
+              <div className={styles.timeItemTitle}> آغاز web talks</div>
             </div>
-            <div className={styles.timeItemTitle}> آغاز web talks</div>
-          </div>
-          <div className={styles.timeItem}>
-            <div className={styles.timeItemDate}>
-              ۱۱ <br />
-              شهریور
+            <div className={styles.timeItem}>
+              <div className={styles.timeItemDate}>
+                ۱۱ <br />
+                شهریور
+              </div>
+              <div className={styles.timeItemTitle}>آغاز تیم‌کشی</div>
             </div>
-            <div className={styles.timeItemTitle}>آغاز تیم‌کشی</div>
-          </div>
-          <div className={styles.timeItem}>
-            <div className={styles.timeItemDate}>
-              ۲۱ <br />
-              شهریور
+            <div className={styles.timeItem}>
+              <div className={styles.timeItemDate}>
+                ۲۱ <br />
+                شهریور
+              </div>
+              <div className={styles.timeItemTitle}>افتتاحیه</div>
             </div>
-            <div className={styles.timeItemTitle}>افتتاحیه</div>
-          </div>
-          <div className={styles.timeItem}>
-            <div className={styles.timeItemDate}>
-              ۲۲ <br />
-              شهریور
+            <div className={styles.timeItem}>
+              <div className={styles.timeItemDate}>
+                ۲۲ <br />
+                شهریور
+              </div>
+              <div className={styles.timeItemTitle}>آموزش و پیاده‌سازی</div>
             </div>
-            <div className={styles.timeItemTitle}>آموزش و پیاده‌سازی</div>
-          </div>
-          <div className={styles.timeItem}>
-            <div className={styles.timeItemDate}>
-              ۳۰ <br />
-              مهر
+            <div className={styles.timeItem}>
+              <div className={styles.timeItemDate}>
+                ۳۰ <br />
+                مهر
+              </div>
+              <div className={styles.timeItemTitle}>
+                ارائه و جذب سرمایه‌گذار
+              </div>
             </div>
-            <div className={styles.timeItemTitle}>ارائه و جذب سرمایه‌گذار</div>
-          </div>
-          <div className={styles.timeItem}>
-            <div className={styles.timeItemDate}>
-              ۱۴ <br />
-              آبان
+            <div className={styles.timeItem}>
+              <div className={styles.timeItemDate}>
+                ۱۴ <br />
+                آبان
+              </div>
+              <div className={styles.timeItemTitle}>اختتامیه</div>
             </div>
-            <div className={styles.timeItemTitle}>اختتامیه</div>
           </div>
         </div>
       </div>
       <div className={styles.section4}>
+        <Image src={planet3} className={styles.planet3} />
         <div className={styles.gifts}>
           <div className={styles.timingTitle}>جوایز</div>
           <div className={styles.giftItem}>
@@ -247,6 +263,7 @@ function Home() {
         </div>
       </div>
       <div className={styles.section5}>
+        <Image src={planet4} className={styles.planet4} />
         <div className={styles.sponsors}>
           <div className={classNames(styles.sponsor, styles.sponsorBazaar)}>
             <div className={styles.sponsorTitle}>حامی مالی رویداد</div>
@@ -264,7 +281,7 @@ function Home() {
               src={quera}
               alt="quera"
               width={200}
-              height={100}
+              height={90}
               className={styles.sponsorImage}
             />
           </div>
