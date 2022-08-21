@@ -15,7 +15,7 @@ SignUpPage.getLayout = function getLayout(page: ReactElement) {
       <Head>
         <title>ثبت‌نام</title>
       </Head>
-      <Layout>{page}</Layout>;
+      <Layout>{page}</Layout>
     </>
   );
 };
