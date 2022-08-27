@@ -1,0 +1,54 @@
+div.downloadFile{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 500px;
+    width: 90%;
+    
+    background-color: #1D1B26;
+    padding: 20px;
+
+    border-radius: 8px;
+    margin: 400px;
+}
+
+.title{
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+}
+
+.publishDate{
+    color: #C2A090;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.downloadFileButton{
+    border-radius: 100px;
+    border: 2px solid white;
+    display: flex;
+
+    align-items: center;
+    background-color: transparent;
+    transition: all 0.25s;
+
+    color: white;
+    padding: 10px 30px;
+    cursor: pointer;
+
+    span{
+        font-size: 18px;
+        font-weight: 500;
+        svg{
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    &:hover{
+        background-color: #9F6D61;
+        border: 2px solid #9F6D61;
+    }
+}
