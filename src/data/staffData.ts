@@ -63,6 +63,8 @@ import AliBalaPour from "../assets/images/staff/branding/AliBalaPour.png";
 import NiloufarSanjari from "../assets/images/staff/branding/NiloufarSanjari.png";
 import AlirezaTanha from "../assets/images/staff/branding/AlirezaTanha.png";
 import KosarFadavi from "../assets/images/staff/branding/KosarFadavi.png";
+import AlirezaRafie from "../assets/images/staff/branding/AlirezaRafie.png";
+import ZohaFasihi from "../assets/images/staff/branding/ZohaFasihi.png";
 
 //sponsorships
 import MohammadMousavifar from "../assets/images/staff/sponsorship/MohammadMousavifar.png";
@@ -148,6 +150,18 @@ const brandings = [
     image: KosarFadavi,
     role: "تدوینگر",
     linkedin: "",
+  },
+  {
+    fullName: "ضحی فصیحی",
+    image: ZohaFasihi,
+    role: "ویراستار",
+    linkedin: "https://www.linkedin.com/in/zohafasihi",
+  },
+  {
+    fullName: "علیرضا رفیعی",
+    image: AlirezaRafie,
+    role: "طراح گرافیک",
+    linkedin: "https://www.linkedin.com/in/alireza-rafiei-iut",
   },
 ];
 
