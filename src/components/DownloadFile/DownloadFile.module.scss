@@ -3,14 +3,13 @@ div.downloadFile{
     align-items: center;
     justify-content: space-between;
 
-    max-width: 500px;
+    max-width: 400px;
     width: 90%;
     
     background-color: #1D1B26;
     padding: 20px;
 
     border-radius: 8px;
-    margin: 400px;
 }
 
 .title{
@@ -50,5 +49,30 @@ div.downloadFile{
     &:hover{
         background-color: #9F6D61;
         border: 2px solid #9F6D61;
+    }
+}
+
+@media only screen and (max-width:768px){
+    div.downloadFile{
+        padding: 10px;
+    }
+    
+    .title{
+        font-size:16px;
+    }
+    
+    .publishDate{
+        font-size: 12px;
+    }
+    
+    .downloadFileButton{
+        padding: 10px 20px;
+        span{
+            font-size: 16px;
+            svg{
+                width: 20px;
+                height: 20px;
+            }
+        }
     }
 }

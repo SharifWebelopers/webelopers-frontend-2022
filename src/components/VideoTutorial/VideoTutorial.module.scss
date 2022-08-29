@@ -2,8 +2,6 @@
     width: 300px;
     background-color: #1D1B26;
     border-radius: 5px;
-
-    margin: 400px;
 }
 
 .video{
@@ -47,5 +45,21 @@ div.timingDetails{
     svg{
         width: 20px;
         height: 20px;
+    }
+}
+
+@media only screen and (max-width:768px){
+    
+    div.videoTitle{
+        font-size: 16px;
+    }
+    
+    div.videoDetails{
+        margin-top: 20px;
+        padding: 15% 30px 30px 30px;
+    }
+
+    div.timingDetails{
+        margin-top: 10px;
     }
 }
