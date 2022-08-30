@@ -13,6 +13,9 @@ const theme = createTheme({
     info: {
       main: "#a8573c",
     },
+    secondary: {
+      main: "#a4482d",
+    },
   },
   typography: {
     fontFamily: ["unset"].join(","),
@@ -42,6 +45,22 @@ const theme = createTheme({
         },
       },
     },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          width: "24vw",
+          "& div": {
+            width: "100%",
+          },
+          "&.settings-page-field fieldset": {
+            border: "none",
+          },
+          "&.settings-page-field input::placeholder": {
+            color: "#ccb0a1",
+          },
+        },
+      },
+    },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
@@ -57,6 +76,14 @@ const theme = createTheme({
           "& input::placeholder": {
             color: "#484848",
             opacity: 1,
+          },
+          "& .settings-page-input": {
+            boxSizing: "border-box",
+            minWidth: "24vw",
+            backgroundColor: "#1d1b26",
+            height: 44,
+            borderRadius: "3vh",
+            color: "#bf846b",
           },
         },
       },
