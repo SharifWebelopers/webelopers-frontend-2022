@@ -1,12 +1,18 @@
 import React from "react";
-import styles from "./ProfilePicture.module.scss";
 import { IconButton } from "@mui/material";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
+
+import styles from "./ProfilePicture.module.scss";
 
 const PorfilePicture = ({ src }: { src: string }) => {
   return (
     <>
-      <div>
+      <div className={styles["avatar-container"]}>
+        <img
+          className={styles["profile-ellipsis"]}
+          src="/profile-ellipsis.png"
+          alt="elipsis"
+        />
         <img className={styles.avatar} src={src} alt="no picture!" />
       </div>
       <IconButton

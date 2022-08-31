@@ -11,9 +11,6 @@ function DashboardSettingsPage() {
 DashboardSettingsPage.getLayout = function getLayout(page: ReactElement) {
   return (
     <>
-      <Head>
-        <title>تنظیمات</title>
-      </Head>
       <Layout>{page}</Layout>
     </>
   );

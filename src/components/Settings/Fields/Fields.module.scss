@@ -13,3 +13,10 @@
   justify-content: center;
   gap: 75px;
 }
+
+.checkbox {
+  align-self: flex-start;
+  & label {
+    margin-right: 0;
+  }
+}

@@ -42,6 +42,11 @@ const theme = createTheme({
             backgroundColor: "#757575",
             color: "#ededed",
           },
+          "&.save-button": {
+            backgroundColor: "#9e8379",
+            color: "#ededed",
+            minWidth: "25vw",
+          },
         },
       },
     },
@@ -61,6 +66,29 @@ const theme = createTheme({
         },
       },
     },
+    MuiSelect: {
+      styleOverrides: {
+        root: {
+          width: "24vw",
+          "& div": {
+            width: "100%",
+            paddingRight: "14px !important",
+          },
+          "&.settings-page-field fieldset": {
+            border: "none",
+          },
+          "& svg": {
+            color: "#d9d9d9",
+            right: "unset",
+            left: 7,
+          },
+          "&.placeholder > div": {
+            color: "#ccb0a1 !important",
+          },
+        },
+      },
+    },
+
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
@@ -69,6 +97,10 @@ const theme = createTheme({
           width: "20vw",
           fontSize: "2.5vh",
           backgroundColor: "white",
+          lineHeight: "2vh",
+          "& > div:focus": {
+            borderRadius: "4vh !important",
+          },
           "& fieldset": {
             borderColor: "#ccb0a1 !important",
             borderWidth: 2,
@@ -81,7 +113,7 @@ const theme = createTheme({
             boxSizing: "border-box",
             minWidth: "24vw",
             backgroundColor: "#1d1b26",
-            height: 44,
+            height: "44px !important",
             borderRadius: "3vh",
             color: "#bf846b",
           },
