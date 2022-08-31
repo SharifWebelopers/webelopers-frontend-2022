@@ -4,22 +4,23 @@ import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
 import styles from "./VideoTutorial.module.scss";
 
-interface video {
-    embedLink?: string;
+interface Video {
+    embed?: string;
     title?: string;
     publishedDate?: string;
+    duration?: string;
 }
 
 interface VideoProps{
-    data?: video
+    video?: Video
 }
 
-function VideoTutorial({ data }: VideoProps){
+function VideoTutorial({ video }: VideoProps){
 
     const videoRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const fragment = document.createRange().createContextualFragment(`<div id="84819769371"><script type="text/JavaScript" src="https://www.aparat.com/embed/HEDWK?data[rnddiv]=84819769371&data[responsive]=yes"></script></div>`);
+        const fragment = document.createRange().createContextualFragment(video.embed);
         videoRef.current.append(fragment);
     }, [])
 
@@ -29,12 +30,12 @@ function VideoTutorial({ data }: VideoProps){
             </div>
 
             <div className={styles.videoDetails}>
-                <div className={styles.videoTitle}>عنوان ویدیو</div>
+                <div className={styles.videoTitle}>{video.title}</div>
 
                 <div className={styles.timingDetails}>
-                    <div>دو هفته پیش</div>
+                    <div>{video.publishedDate}</div>
                     <div>
-                        <span>۲۳:۴۱</span>
+                        <span>{video.duration}</span>
                         <span><AccessTimeFilledIcon /></span>
                     </div>
                 </div>

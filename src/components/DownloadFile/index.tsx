@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import FileDownloadRoundedIcon from '@mui/icons-material/FileDownloadRounded';
 
 import styles from "./DownloadFile.module.scss";
+import shamsiDate from "../../utils/shamsiDate";
 
 interface File{
     url?: string;
@@ -11,26 +12,27 @@ interface File{
 }
 
 interface DownloadFileProps{
-    data?: FileList;
+    file?: File;
 }
 
-function DownloadFile({ data }: DownloadFileProps){
+function DownloadFile({ file }: DownloadFileProps){
+
     return (
         <div className={styles.downloadFile}>
             <div className={styles.fileDetails}>
                 <div className={styles.title}>
-                    عنوان فایل
+                    {file.title}
                 </div>
                 <div className={styles.publishDate}>
                     <span>تاریخ انتشار: </span>
-                    <span>۱/۱/۱</span>
+                    <span>{shamsiDate(file.publishedDate)}</span>
                 </div>
             </div>
 
-            <button className={styles.downloadFileButton}>
+            <a href={file.url} className={styles.downloadFileButton}>
                 <span>دانلود</span>
                 <span><FileDownloadRoundedIcon /></span>
-            </button>
+            </a>
         </div>
     )
 }

@@ -3,7 +3,18 @@ import VideoTutorial from "../VideoTutorial";
 import BackupTableOutlinedIcon from '@mui/icons-material/BackupTableOutlined';
 import styles from "./VideoTutorialsLayout.module.scss";
 
-const VideoTutorialsLayout = () => {
+interface videoTutorialData {
+    title: string;
+    embed: string;
+    publishedDate: string;
+    duration: string;
+}
+
+interface videoTutorialDataProps {
+    data: videoTutorialData[]
+}
+
+const VideoTutorialsLayout = ({ data }: videoTutorialDataProps) => {
     return (
         <div className={styles.dashboardChildContainer}>
             <div className={styles.videoTutorialLayout}>
@@ -12,10 +23,11 @@ const VideoTutorialsLayout = () => {
                     <span>آموزش‌های ویدیویی</span>
                 </p>
                 <div className={styles.videoContainer}>
-                    <VideoTutorial />
-                    <VideoTutorial />
-                    <VideoTutorial />
-                    <VideoTutorial />
+                    {
+                        data && data.map(video => (
+                            <VideoTutorial video={video}/>
+                        ))
+                    }
                 </div>
             </div>
         </div>
