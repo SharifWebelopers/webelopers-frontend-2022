@@ -50,6 +50,20 @@ const theme = createTheme({
         },
       },
     },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          color: "#fff !important",
+          borderRadius: "9vh",
+          fontSize: "3vh",
+          marginBottom: 12,
+          fontWeight: 700,
+          "&.Mui-selected": {
+            backgroundColor: "#404040",
+          },
+        },
+      },
+    },
     MuiTextField: {
       styleOverrides: {
         root: {

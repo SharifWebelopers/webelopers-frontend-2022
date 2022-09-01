@@ -6,3 +6,14 @@
   max-height: 100%;
   overflow: auto;
 }
+
+.tab-panel {
+  align-self: flex-start;
+}
+
+.tab-panel-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100%;
+}
