@@ -35,8 +35,8 @@ const Fields = () => {
   };
 
   return (
-    <div className={styles["row-container"]}>
-      <form onSubmit={handleSubmit} className={styles.row}>
+    <form onSubmit={handleSubmit} className={styles["row-container"]}>
+      <div className={styles.row}>
         <TextField
           className="settings-page-field"
           inputProps={{ className: "settings-page-input" }}
@@ -61,7 +61,7 @@ const Fields = () => {
             });
           }}
         />
-      </form>
+      </div>
       <div className={styles.row}>
         <TextField
           className="settings-page-field"
@@ -302,7 +302,7 @@ const Fields = () => {
           ذخیره اطلاعات
         </Button>
       </div>
-    </div>
+    </form>
   );
 };
 

@@ -1,8 +1,7 @@
 import React, { ReactElement } from "react";
 import Layout from "../../../components/DashboardLayout";
 
-import Head from "next/head";
-import SettingsContainer from "../../../components/Settings/Container";
+import SettingsContainer from "../../../components/Settings";
 
 function DashboardSettingsPage() {
   return <SettingsContainer />;

@@ -64,7 +64,7 @@ const theme = createTheme({
           "&.save-button": {
             backgroundColor: "#9e8379",
             color: "#ededed",
-            minWidth: "25vw",
+            // minWidth: "25vw",
           },
         },
       },
@@ -176,7 +176,10 @@ const theme = createTheme({
 theme.components.MuiButton.styleOverrides.root[theme.breakpoints.down("sm")] = {
   minWidth: "64vw",
 };
-theme.components.MuiOutlinedInput.styleOverrides.root[
+theme.components.MuiSelect.styleOverrides.root[theme.breakpoints.down("sm")] = {
+  minWidth: "64vw",
+};
+theme.components.MuiTextField.styleOverrides.root[
   theme.breakpoints.down("sm")
 ] = {
   minWidth: "64vw",
