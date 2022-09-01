@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import {
   Button,
   Checkbox,
@@ -8,30 +8,22 @@ import {
   TextField,
 } from "@mui/material";
 import { CheckboxOnIcon, CheckboxOffIcon } from "./Checkbox";
+import { updateUserInfo } from "../../../actions/dashboard";
 
 import styles from "./Fields.module.scss";
 
-const Fields = () => {
-  const [state, setState] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    email: "",
-    province: "placeholder",
-    grade: "placeholder",
-    entranceYear: "placeholder",
-    field: "placeholder",
-    school: "placeholder",
-    linkedinLink: "",
-    githubLink: "",
-    djangoBackground: "placeholder",
-    reactBackground: "placeholder",
-    devopsBackground: "placeholder",
-    shareInfo: false,
-  });
-
+const Fields = ({ state, setState }: { state: any; setState: any }) => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+
+    updateUserInfo(
+      Object.keys(state)
+        .filter(
+          (key) =>
+            key !== "email" && key !== "resume" && key !== "profile_image"
+        )
+        .reduce((acc, item) => ({ ...acc, [item]: state[item] }), {})
+    );
   };
 
   return (
@@ -41,11 +33,11 @@ const Fields = () => {
           className="settings-page-field"
           inputProps={{ className: "settings-page-input" }}
           placeholder="نام*"
-          value={state.firstName}
+          value={state.first_name}
           onChange={(e) => {
             setState({
               ...state,
-              firstName: e.target.value,
+              first_name: e.target.value,
             });
           }}
         />
@@ -53,11 +45,11 @@ const Fields = () => {
           className="settings-page-field"
           inputProps={{ className: "settings-page-input" }}
           placeholder="نام خانوادگی*"
-          value={state.lastName}
+          value={state.last_name}
           onChange={(e) => {
             setState({
               ...state,
-              lastName: e.target.value,
+              last_name: e.target.value,
             });
           }}
         />
@@ -67,11 +59,11 @@ const Fields = () => {
           className="settings-page-field"
           inputProps={{ className: "settings-page-input" }}
           placeholder="شماره همراه*"
-          value={state.phone}
+          value={state.phone_number}
           onChange={(e) => {
             setState({
               ...state,
-              phone: e.target.value,
+              phone_number: e.target.value,
             });
           }}
         />
@@ -80,12 +72,7 @@ const Fields = () => {
           inputProps={{ className: "settings-page-input" }}
           placeholder="ایمیل*"
           value={state.email}
-          onChange={(e) => {
-            setState({
-              ...state,
-              email: e.target.value,
-            });
-          }}
+          disabled
         />
       </div>
       <div className={styles.row}>
@@ -110,14 +97,14 @@ const Fields = () => {
         </Select>
         <Select
           className={`settings-page-field ${
-            state.grade === "placeholder" ? "placeholder" : ""
+            state.university_degree === "placeholder" ? "placeholder" : ""
           }`}
           inputProps={{ className: "settings-page-input" }}
-          value={state.grade}
+          value={state.university_degree}
           onChange={(e) => {
             setState({
               ...state,
-              grade: e.target.value,
+              university_degree: e.target.value,
             });
           }}
         >
@@ -131,14 +118,14 @@ const Fields = () => {
       <div className={styles.row}>
         <Select
           className={`settings-page-field ${
-            state.entranceYear === "placeholder" ? "placeholder" : ""
+            state.university_start_date === "placeholder" ? "placeholder" : ""
           }`}
           inputProps={{ className: "settings-page-input" }}
-          value={state.entranceYear}
+          value={state.university_start_date}
           onChange={(e) => {
             setState({
               ...state,
-              entranceYear: e.target.value,
+              university_start_date: e.target.value,
             });
           }}
         >
@@ -150,14 +137,14 @@ const Fields = () => {
         </Select>
         <Select
           className={`settings-page-field ${
-            state.field === "placeholder" ? "placeholder" : ""
+            state.field_study === "placeholder" ? "placeholder" : ""
           }`}
           inputProps={{ className: "settings-page-input" }}
-          value={state.field}
+          value={state.field_study}
           onChange={(e) => {
             setState({
               ...state,
-              field: e.target.value,
+              field_study: e.target.value,
             });
           }}
         >
@@ -171,14 +158,14 @@ const Fields = () => {
       <div className={styles.row}>
         <Select
           className={`settings-page-field ${
-            state.school === "placeholder" ? "placeholder" : ""
+            state.university === "placeholder" ? "placeholder" : ""
           }`}
           inputProps={{ className: "settings-page-input" }}
-          value={state.school}
+          value={state.university}
           onChange={(e) => {
             setState({
               ...state,
-              school: e.target.value,
+              university: e.target.value,
             });
           }}
         >
@@ -192,11 +179,11 @@ const Fields = () => {
           className="settings-page-field"
           inputProps={{ className: "settings-page-input" }}
           placeholder="لینک صفحه لینکدین"
-          value={state.linkedinLink}
+          value={state.linkedin_link}
           onChange={(e) => {
             setState({
               ...state,
-              linkedinLink: e.target.value,
+              linkedin_link: e.target.value,
             });
           }}
         />
@@ -206,24 +193,24 @@ const Fields = () => {
           className="settings-page-field"
           inputProps={{ className: "settings-page-input" }}
           placeholder="لینک صفحه گیتهاب"
-          value={state.githubLink}
+          value={state.github_link}
           onChange={(e) => {
             setState({
               ...state,
-              githubLink: e.target.value,
+              github_link: e.target.value,
             });
           }}
         />
         <Select
           className={`settings-page-field ${
-            state.djangoBackground === "placeholder" ? "placeholder" : ""
+            state.django_experience === "placeholder" ? "placeholder" : ""
           }`}
           inputProps={{ className: "settings-page-input" }}
-          value={state.djangoBackground}
+          value={state.django_experience}
           onChange={(e) => {
             setState({
               ...state,
-              djangoBackground: e.target.value,
+              django_experience: e.target.value,
             });
           }}
         >
@@ -237,14 +224,14 @@ const Fields = () => {
       <div className={styles.row}>
         <Select
           className={`settings-page-field ${
-            state.reactBackground === "placeholder" ? "placeholder" : ""
+            state.react_experience === "placeholder" ? "placeholder" : ""
           }`}
           inputProps={{ className: "settings-page-input" }}
-          value={state.reactBackground}
+          value={state.react_experience}
           onChange={(e) => {
             setState({
               ...state,
-              reactBackground: e.target.value,
+              react_experience: e.target.value,
             });
           }}
         >
@@ -256,14 +243,14 @@ const Fields = () => {
         </Select>
         <Select
           className={`settings-page-field ${
-            state.devopsBackground === "placeholder" ? "placeholder" : ""
+            state.devops_experience === "placeholder" ? "placeholder" : ""
           }`}
           inputProps={{ className: "settings-page-input" }}
-          value={state.devopsBackground}
+          value={state.devops_experience}
           onChange={(e) => {
             setState({
               ...state,
-              devopsBackground: e.target.value,
+              devops_experience: e.target.value,
             });
           }}
         >
@@ -281,15 +268,15 @@ const Fields = () => {
             <Checkbox
               disableRipple
               style={{
-                marginRight: state.shareInfo ? -3 : 0,
+                marginRight: state.share_info ? -3 : 0,
               }}
               icon={<CheckboxOffIcon />}
               checkedIcon={<CheckboxOnIcon />}
-              value={state.shareInfo}
+              value={state.share_info}
               onChange={(e) => {
                 setState({
                   ...state,
-                  shareInfo: e.target.checked,
+                  share_info: e.target.checked,
                 });
               }}
             />

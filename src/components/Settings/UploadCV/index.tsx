@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
 import FileIcon from "./FileIcon";
+import PlusIcon from "./PlusIcon";
+import { sendCV } from "../../../actions/dashboard";
 
 import styles from "./UploadCV.module.scss";
-import PlusIcon from "./PlusIcon";
 
 const UploadCV = ({ isDesktop }: { isDesktop: boolean }) => {
   const [file, setFile] = useState<null | any>(null);
@@ -11,9 +12,9 @@ const UploadCV = ({ isDesktop }: { isDesktop: boolean }) => {
 
   const postCV = () => {
     setLoading(true);
-    setTimeout(() => {
+    sendCV({ resume: file }).finally(() => {
       setLoading(false);
-    }, 2000);
+    });
   };
 
   return (

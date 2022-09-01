@@ -1,7 +1,7 @@
 import React, { useState, FormEvent } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
-
+import { changePassword } from "../../../actions/dashboard";
 import styles from "./ChangePassword.module.scss";
 
 const ChangePassword = ({ isDesktop }: { isDesktop: boolean }) => {
@@ -12,6 +12,10 @@ const ChangePassword = ({ isDesktop }: { isDesktop: boolean }) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    changePassword({
+      old_password: currentPassword,
+      new_password: newPassword,
+    });
   };
 
   return (
@@ -107,6 +111,13 @@ const ChangePassword = ({ isDesktop }: { isDesktop: boolean }) => {
           color="primary"
           variant="contained"
           type="submit"
+          disabled={
+            !currentPassword ||
+            currentPassword.length < 8 ||
+            !newPassword ||
+            newPassword.length < 8 ||
+            newPassword !== repeatNewPassword
+          }
         >
           تغییر رمز
         </Button>

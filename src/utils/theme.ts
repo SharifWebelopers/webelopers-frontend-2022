@@ -99,12 +99,15 @@ const theme = createTheme({
           "&.settings-page-field fieldset": {
             border: "none",
           },
-          "&.settings-page-field input::placeholder": {
-            color: "#ccb0a1",
+          "& input::placeholder": {
+            color: "#ccb0a1 !important",
           },
-          "&.change-password-field input::placeholder": {
-            color: "#ccb0a1",
-          },
+          // "&.settings-page-field input::placeholder": {
+          //   color: "#ccb0a1",
+          // },
+          // "&.change-password-field input::placeholder": {
+          //   color: "#ccb0a1",
+          // },
           "&.change-password-field > div": {
             backgroundColor: "#1d1b26",
           },
