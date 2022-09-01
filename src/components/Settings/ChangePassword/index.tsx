@@ -4,7 +4,7 @@ import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 
 import styles from "./ChangePassword.module.scss";
 
-const ChangePassword = () => {
+const ChangePassword = ({ isDesktop }: { isDesktop: boolean }) => {
   const [showPass, setShowPass] = useState(false);
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -16,7 +16,11 @@ const ChangePassword = () => {
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles["textfields-container"]}>
+      <form
+        onSubmit={handleSubmit}
+        className={styles["textfields-container"]}
+        style={isDesktop ? {} : { padding: "62px 14px" }}
+      >
         <TextField
           className={`change-password-field ${styles.textfield}`}
           inputProps={{ className: "change-password-input" }}

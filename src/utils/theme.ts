@@ -64,7 +64,13 @@ const theme = createTheme({
           "&.save-button": {
             backgroundColor: "#9e8379",
             color: "#ededed",
-            // minWidth: "25vw",
+          },
+          "&.settings-accordion": {
+            color: "#fff",
+            maxWidth: 140,
+            minWidth: "unset",
+            fontSize: "1rem",
+            fontWeight: 600,
           },
         },
       },
@@ -109,9 +115,10 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           width: "24vw",
-          "& div": {
+          "& > div": {
             width: "100%",
             paddingRight: "14px !important",
+            lineHeight: "3vh",
           },
           "&.settings-page-field fieldset": {
             border: "none",
@@ -124,6 +131,26 @@ const theme = createTheme({
           "&.placeholder > div": {
             color: "#ccb0a1 !important",
           },
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          color: "#bf846b",
+          "&.Mui-selected": {
+            backgroundColor: "unset",
+          },
+          "&.Mui-disabled": {
+            color: "#ccb0a1",
+          },
+        },
+      },
+    },
+    MuiList: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#1d1b26",
         },
       },
     },
@@ -151,7 +178,7 @@ const theme = createTheme({
             boxSizing: "border-box",
             minWidth: "24vw",
             backgroundColor: "#1d1b26",
-            height: "44px !important",
+            height: "6vh !important",
             borderRadius: "3vh",
             color: "#bf846b",
           },
@@ -167,6 +194,36 @@ const theme = createTheme({
         root: {
           width: "3vh",
           height: "3vh",
+        },
+      },
+    },
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          maxWidth: 140,
+          borderRadius: "24px !important",
+          alignSelf: "flex-start",
+          marginBottom: 48,
+          color: "#fff",
+          backgroundColor: "rgba(29, 27, 38, 0.4)",
+          fontSize: "1rem",
+          fontWeight: 600,
+          "& > div": {
+            padding: "0 14px",
+            whiteSpace: "nowrap",
+          },
+        },
+      },
+    },
+    MuiAccordionSummary: {
+      styleOverrides: {
+        root: {
+          "&.Mui-expanded": {
+            minHeight: 48,
+          },
+          "& .MuiAccordionSummary-content.Mui-expanded": {
+            margin: "12px 0",
+          },
         },
       },
     },

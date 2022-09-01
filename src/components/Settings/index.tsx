@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProfilePicture from "./ProfilePicture";
 import Fields from "./Fields";
 import UploadCV from "./UploadCV";
 import ChangePassword from "./ChangePassword";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Button,
+  Tab,
+  Tabs,
+} from "@mui/material";
+import { ExpandMoreOutlined } from "@mui/icons-material";
 
 import styles from "./Settings.module.scss";
-import { Box, Tab, Tabs } from "@mui/material";
 
 interface TabPanelProps {
   children: any;
@@ -26,9 +35,18 @@ const TabPanel = ({ children, value, index }: TabPanelProps) => {
 
 const SettingsContainer = () => {
   const [tab, setTab] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [accordion, setAccordion] = useState(false);
+
+  useEffect(() => {
+    setIsDesktop(window.innerWidth > 600);
+  }, []);
+
+  const tabLabel = ["اطلاعات کاربری", "ارسال رزومه", "تغییر رمز عبور"];
+
   return (
     <div className={styles.container}>
-      {window.innerWidth > 600 ? (
+      {isDesktop ? (
         <Box className={styles["tab-panel"]}>
           <Tabs
             value={tab}
@@ -37,13 +55,40 @@ const SettingsContainer = () => {
             }}
             TabIndicatorProps={{ style: { display: "none" } }}
           >
-            <Tab label="اطلاعات کاربری" />
-            <Tab label="ارسال رزومه" />
-            <Tab label="تغییر رمز عبور" />
+            <Tab label={tabLabel[0]} />
+            <Tab label={tabLabel[1]} />
+            <Tab label={tabLabel[2]} />
           </Tabs>
         </Box>
       ) : (
-        <></>
+        <Accordion
+          expanded={accordion}
+          onChange={(_, newValue) => {
+            setAccordion(newValue);
+          }}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreOutlined sx={{ color: "#fff" }} />}
+          >
+            {tabLabel[tab]}
+          </AccordionSummary>
+
+          {[0, 1, 2]
+            .filter((number) => number !== tab)
+            .map((number) => (
+              <AccordionDetails key={number}>
+                <Button
+                  className="settings-accordion"
+                  onClick={() => {
+                    setAccordion(false);
+                    setTab(number);
+                  }}
+                >
+                  {tabLabel[number]}
+                </Button>
+              </AccordionDetails>
+            ))}
+        </Accordion>
       )}
       <TabPanel value={tab} index={0}>
         <div className={styles["tab-panel-item"]}>
@@ -52,10 +97,10 @@ const SettingsContainer = () => {
         </div>
       </TabPanel>
       <TabPanel value={tab} index={1}>
-        <UploadCV />
+        <UploadCV isDesktop={isDesktop} />
       </TabPanel>
       <TabPanel value={tab} index={2}>
-        <ChangePassword />
+        <ChangePassword isDesktop={isDesktop} />
       </TabPanel>
     </div>
   );

@@ -5,7 +5,7 @@ import FileIcon from "./FileIcon";
 import styles from "./UploadCV.module.scss";
 import PlusIcon from "./PlusIcon";
 
-const UploadCV = () => {
+const UploadCV = ({ isDesktop }: { isDesktop: boolean }) => {
   const [file, setFile] = useState<null | any>(null);
   const [loading, setLoading] = useState(false);
 
@@ -18,14 +18,17 @@ const UploadCV = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles["upload-box"]}>
+      <div
+        className={styles["upload-box"]}
+        style={isDesktop ? {} : { padding: "70px 22px" }}
+      >
         <div className={styles["choose-file"]}>
           <div>
             {file
               ? file.name.length > 20
                 ? file.name.slice(0, 17) + "..."
                 : file.name
-              : "No file chosen"}
+              : "فایلی انتخاب نشده است!"}
           </div>
           <Button
             className={styles["choose-file-button"]}
@@ -39,7 +42,7 @@ const UploadCV = () => {
             component="label"
             color="gray"
           >
-            <div>choose file</div>
+            <div>انتخاب فایل</div>
             <input
               onChange={(e) => {
                 setFile(e.target.files?.[0]);
@@ -49,27 +52,29 @@ const UploadCV = () => {
             />
           </Button>
         </div>
-        <div
-          onDragOver={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-          }}
-          onDrop={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setFile(e.dataTransfer.items[0].getAsFile());
-          }}
-          className={styles["drag-n-drop"]}
-        >
-          {file ? (
-            <FileIcon />
-          ) : (
-            <>
-              <PlusIcon />
-              <div>رزومه‌تان را بکشید و رها کنید...</div>
-            </>
-          )}
-        </div>
+        {isDesktop && (
+          <div
+            onDragOver={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+            onDrop={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setFile(e.dataTransfer.items[0].getAsFile());
+            }}
+            className={styles["drag-n-drop"]}
+          >
+            {file ? (
+              <FileIcon />
+            ) : (
+              <>
+                <PlusIcon />
+                <div>رزومه‌تان را بکشید و رها کنید...</div>
+              </>
+            )}
+          </div>
+        )}
         <Button
           variant="contained"
           sx={{ width: "100%", color: "white" }}
