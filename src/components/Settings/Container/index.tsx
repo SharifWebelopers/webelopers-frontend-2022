@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ProfilePicture from "../ProfilePicture";
 import Fields from "../Fields";
+import UploadCV from "../UploadCV";
 
 import styles from "./Container.module.scss";
 import { Box, Tab, Tabs } from "@mui/material";
@@ -12,7 +13,14 @@ interface TabPanelProps {
 }
 
 const TabPanel = ({ children, value, index }: TabPanelProps) => {
-  return <div hidden={value !== index}>{children}</div>;
+  return (
+    <div
+      style={{ minHeight: "100%", minWidth: "100%", height: "fit-content" }}
+      hidden={value !== index}
+    >
+      {children}
+    </div>
+  );
 };
 
 const SettingsContainer = () => {
@@ -39,7 +47,7 @@ const SettingsContainer = () => {
         </div>
       </TabPanel>
       <TabPanel value={tab} index={1}>
-        Item Two
+        <UploadCV />
       </TabPanel>
       <TabPanel value={tab} index={2}>
         Item Three

@@ -5,6 +5,7 @@
   align-items: center;
   max-height: 100%;
   overflow: auto;
+  height: 100%;
 }
 
 .tab-panel {
@@ -15,5 +16,5 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-height: 100%;
+  padding-bottom: 20px;
 }

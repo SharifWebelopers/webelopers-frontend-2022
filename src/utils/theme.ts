@@ -1,4 +1,20 @@
+// @ts-nocheck
 import { createTheme } from "@mui/material/styles";
+
+declare module "@mui/material/styles" {
+  interface Palette {
+    gray: Palette["primary"];
+  }
+  interface PaletteOptions {
+    gray: PaletteOptions["primary"];
+  }
+}
+
+declare module "@mui/material" {
+  interface ButtonPropsColorOverrides {
+    gray;
+  }
+}
 
 const theme = createTheme({
   direction: "rtl",
@@ -15,6 +31,9 @@ const theme = createTheme({
     },
     secondary: {
       main: "#a4482d",
+    },
+    gray: {
+      main: "#757575",
     },
   },
   typography: {
