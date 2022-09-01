@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import {
   Button,
@@ -79,7 +79,7 @@ function Login() {
     }
   }, [password, email, loading]);
 
-  const handleFormSubmit = (e: any) => {
+  const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
 
     setLoading(true);

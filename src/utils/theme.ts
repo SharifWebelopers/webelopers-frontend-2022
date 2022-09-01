@@ -87,7 +87,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           width: "24vw",
-          "& div": {
+          "& > div": {
             width: "100%",
           },
           "&.settings-page-field fieldset": {
@@ -95,6 +95,12 @@ const theme = createTheme({
           },
           "&.settings-page-field input::placeholder": {
             color: "#ccb0a1",
+          },
+          "&.change-password-field input::placeholder": {
+            color: "#ccb0a1",
+          },
+          "&.change-password-field > div": {
+            backgroundColor: "#1d1b26",
           },
         },
       },
@@ -147,6 +153,10 @@ const theme = createTheme({
             backgroundColor: "#1d1b26",
             height: "44px !important",
             borderRadius: "3vh",
+            color: "#bf846b",
+          },
+          "& .change-password-input": {
+            backgroundColor: "#1d1b26",
             color: "#bf846b",
           },
         },

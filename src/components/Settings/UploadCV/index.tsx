@@ -20,7 +20,13 @@ const UploadCV = () => {
     <div className={styles.container}>
       <div className={styles["upload-box"]}>
         <div className={styles["choose-file"]}>
-          <div>{file ? file.name : "No file chosen"}</div>
+          <div>
+            {file
+              ? file.name.length > 20
+                ? file.name.slice(0, 17) + "..."
+                : file.name
+              : "No file chosen"}
+          </div>
           <Button
             className={styles["choose-file-button"]}
             sx={{

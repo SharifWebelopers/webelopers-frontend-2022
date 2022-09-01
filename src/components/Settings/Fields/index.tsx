@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import {
   Button,
   Checkbox,
@@ -30,9 +30,13 @@ const Fields = () => {
     shareInfo: false,
   });
 
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+  };
+
   return (
     <div className={styles["row-container"]}>
-      <div className={styles.row}>
+      <form onSubmit={handleSubmit} className={styles.row}>
         <TextField
           className="settings-page-field"
           inputProps={{ className: "settings-page-input" }}
@@ -57,7 +61,7 @@ const Fields = () => {
             });
           }}
         />
-      </div>
+      </form>
       <div className={styles.row}>
         <TextField
           className="settings-page-field"

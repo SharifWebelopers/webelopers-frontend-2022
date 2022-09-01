@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ProfilePicture from "../ProfilePicture";
 import Fields from "../Fields";
 import UploadCV from "../UploadCV";
+import ChangePassword from "../ChangePassword";
 
 import styles from "./Container.module.scss";
 import { Box, Tab, Tabs } from "@mui/material";
@@ -50,7 +51,7 @@ const SettingsContainer = () => {
         <UploadCV />
       </TabPanel>
       <TabPanel value={tab} index={2}>
-        Item Three
+        <ChangePassword />
       </TabPanel>
     </div>
   );
