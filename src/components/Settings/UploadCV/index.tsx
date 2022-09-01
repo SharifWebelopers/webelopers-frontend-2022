@@ -1,10 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button } from "@mui/material";
+import FileIcon from "./FileIcon";
 
 import styles from "./UploadCV.module.scss";
+import PlusIcon from "./PlusIcon";
 
 const UploadCV = () => {
   const [file, setFile] = useState<null | any>(null);
+  const [loading, setLoading] = useState(false);
+
+  const postCV = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  };
 
   return (
     <div className={styles.container}>
@@ -45,25 +55,20 @@ const UploadCV = () => {
           }}
           className={styles["drag-n-drop"]}
         >
-          <svg
-            width="61"
-            height="61"
-            viewBox="0 0 61 61"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M56.6429 34.8571H34.8571V56.6429C34.8571 59.0393 32.8964 61 30.5 61C28.1036 61 26.1429 59.0393 26.1429 56.6429V34.8571H4.35714C1.96071 34.8571 0 32.8964 0 30.5C0 28.1036 1.96071 26.1429 4.35714 26.1429H26.1429V4.35714C26.1429 1.96071 28.1036 0 30.5 0C32.8964 0 34.8571 1.96071 34.8571 4.35714V26.1429H56.6429C59.0393 26.1429 61 28.1036 61 30.5C61 32.8964 59.0393 34.8571 56.6429 34.8571Z"
-              fill="#CCB0A1"
-              fillOpacity="0.2"
-            />
-          </svg>
-          <div>رزومه‌تان را بکشید و رها کنید...</div>
+          {file ? (
+            <FileIcon />
+          ) : (
+            <>
+              <PlusIcon />
+              <div>رزومه‌تان را بکشید و رها کنید...</div>
+            </>
+          )}
         </div>
         <Button
           variant="contained"
           sx={{ width: "100%", color: "white" }}
-          disabled={!file}
+          disabled={!file || loading}
+          onClick={postCV}
         >
           ذخیره رزومه
         </Button>

@@ -121,7 +121,6 @@ const theme = createTheme({
         },
       },
     },
-
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
