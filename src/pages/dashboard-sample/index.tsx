@@ -33,6 +33,15 @@ function DashboardSamplePage() {
                     وضعیت
                 </div>
 
+                <div>
+                    مرحله
+                </div>
+                <div>
+                    دانلود فایل سوال
+                </div>
+                <div>
+                    مهلتت پایان ۵ شهریور
+                </div>
                 <div className={styles.countdown}>
                     <div className={styles.countdownItem}>
                         <div className={styles.countdownValue}>
