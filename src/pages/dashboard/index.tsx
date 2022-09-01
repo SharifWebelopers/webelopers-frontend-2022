@@ -2,7 +2,7 @@ import Head from "next/head";
 import React, { useEffect } from "react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import styles from "./dashboard.module.scss";
+import styles from "../dashboard-sample/dashboard-sample.module.scss";
 import underconstructor from "../../assets/images/underconstructor.png";
 import Image from "next/future/image";
 import { useRouter } from "next/router";
