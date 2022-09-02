@@ -40,6 +40,24 @@ const TabPanel = ({ children, value, index }: TabPanelProps) => {
   );
 };
 
+const PanelsWrapper = ({
+  isDesktop,
+  children,
+  tab,
+}: {
+  isDesktop: boolean;
+  children: any;
+  tab: number;
+}) => {
+  return isDesktop ? (
+    <SwipeableViews axis="x-reverse" index={tab}>
+      {children}
+    </SwipeableViews>
+  ) : (
+    <>{children}</>
+  );
+};
+
 interface StateType {
   profile_image: null | string;
   first_name: null | string;
@@ -166,15 +184,7 @@ const SettingsContainer = () => {
         </Accordion>
       )}
 
-      <SwipeableViews
-        // containerStyle={{ direction: "rtl" }}
-        axis="x-reverse"
-        index={tab}
-        onChangeIndex={(_: any, newValue: number) => {
-          debugger;
-          setTab(newValue);
-        }}
-      >
+      <PanelsWrapper tab={tab} isDesktop={isDesktop}>
         <TabPanel value={tab} index={0}>
           <div className={styles["tab-panel-item"]}>
             <ProfilePicture
@@ -190,7 +200,7 @@ const SettingsContainer = () => {
         <TabPanel value={tab} index={2}>
           <ChangePassword isDesktop={isDesktop} />
         </TabPanel>
-      </SwipeableViews>
+      </PanelsWrapper>
     </div>
   );
 };
