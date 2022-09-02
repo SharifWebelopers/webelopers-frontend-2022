@@ -27,6 +27,11 @@ input:-webkit-autofill {
   box-shadow: 0 0 0px 1000px #fff inset !important;
 }
 
+input.settings-page-input:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px #1d1b26 inset !important;
+  -webkit-text-fill-color: #bf846b !important;
+}
+
 *,
 *:before,
 *:after {

@@ -57,7 +57,7 @@ const theme = createTheme({
           "&:hover": {
             backgroundColor: "#ccb0a1",
           },
-          "&:disabled": {
+          "&:disabled, &.save-button:disabled": {
             backgroundColor: "#757575",
             color: "#ededed",
           },

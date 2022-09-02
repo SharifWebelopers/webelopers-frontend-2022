@@ -16,18 +16,122 @@ import experience from "../../../assets/data/experience.json";
 import styles from "./Fields.module.scss";
 
 const Fields = ({ state, setState }: { state: any; setState: any }) => {
+  const [loading, setLoading] = useState(false);
+  const [disabled, setDisabled] = useState(true);
+  const [phoneNumberError, setPhoneNumberError] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
+  const [yearError, setYearError] = useState("");
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    updateUserInfo(
-      Object.keys(state)
+    setLoading(true);
+
+    updateUserInfo({
+      ...Object.keys(state)
         .filter(
           (key) =>
             key !== "email" && key !== "resume" && key !== "profile_image"
         )
-        .reduce((acc, item) => ({ ...acc, [item]: state[item] }), {})
-    );
+        .reduce((acc, item) => ({ ...acc, [item]: state[item] }), {}),
+      university_start_date: +state.university_start_date || null,
+    }).finally(() => {
+      setLoading(false);
+    });
   };
+
+  const phoneNumbervalidators = [
+    (phone: string) => (phone ? false : "شماره همراه الزامی است!"), // checking emptiness
+    (phone: string) => {
+      // checking regex
+      const re = /^09[0-9]{9}$/;
+      return !re.test(phone) && "شماره همراه نامعتبر است!";
+    },
+  ];
+
+  const validatePhoneNumber = (showError = true) => {
+    for (const validator of phoneNumbervalidators) {
+      const error = validator(state.phone_number);
+      if (error) {
+        if (showError) setPhoneNumberError(error);
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const nameValidators = [
+    (name: string) => (name ? false : "نام الزامی است!"), // checking emptiness
+  ];
+
+  const validateName = (showError = true) => {
+    for (const validator of nameValidators) {
+      const error = validator(state.first_name);
+      if (error) {
+        if (showError) setNameError(error);
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const lastNameValidators = [
+    (name: string) => (name ? false : "نام خانوادگی الزامی است!"), // checking emptiness
+  ];
+
+  const validateLastName = (showError = true) => {
+    for (const validator of lastNameValidators) {
+      const error = validator(state.last_name);
+      if (error) {
+        if (showError) setLastNameError(error);
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const yearValidators = [
+    (year: string) => {
+      const re = /^(1[3-4][0-9]{2})$/;
+      return (
+        year &&
+        (!re.test(year) || +year > 1410 || +year < 1300) &&
+        "لطفا یک عدد بین ۱۳۰۰ و ۱۴۱۰ وارد کنید."
+      );
+    },
+  ];
+
+  const validateYear = (showError = true) => {
+    for (const validator of yearValidators) {
+      const error = validator(state.university_start_date);
+      if (error) {
+        if (showError) setYearError(error);
+        return false;
+      }
+    }
+    return true;
+  };
+
+  useEffect(() => {
+    if (
+      validateName(false) &&
+      validateLastName(false) &&
+      validatePhoneNumber(false) &&
+      validateYear(false) &&
+      !loading
+    ) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [
+    state.phone_number,
+    state.first_name,
+    state.last_name,
+    state.university_start_date,
+    loading,
+  ]);
 
   return (
     <form onSubmit={handleSubmit} className={styles["row-container"]}>
@@ -37,6 +141,12 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
           inputProps={{ className: "settings-page-input" }}
           placeholder="نام*"
           value={state.first_name}
+          error={!!nameError}
+          helperText={nameError}
+          onBlur={() => validateName()}
+          onFocus={() => {
+            setNameError("");
+          }}
           onChange={(e) => {
             setState({
               ...state,
@@ -49,6 +159,12 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
           inputProps={{ className: "settings-page-input" }}
           placeholder="نام خانوادگی*"
           value={state.last_name}
+          error={!!lastNameError}
+          helperText={lastNameError}
+          onBlur={() => validateLastName()}
+          onFocus={() => {
+            setLastNameError("");
+          }}
           onChange={(e) => {
             setState({
               ...state,
@@ -63,6 +179,12 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
           inputProps={{ className: "settings-page-input" }}
           placeholder="شماره همراه*"
           value={state.phone_number}
+          error={!!phoneNumberError}
+          helperText={phoneNumberError}
+          onBlur={() => validatePhoneNumber()}
+          onFocus={() => {
+            setPhoneNumberError("");
+          }}
           onChange={(e) => {
             setState({
               ...state,
@@ -140,6 +262,12 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
           inputProps={{ className: "settings-page-input" }}
           placeholder="سال ورود به مقطع تحصیلی فعلی"
           value={state.university_start_date}
+          error={!!yearError}
+          helperText={yearError}
+          onBlur={() => validateYear()}
+          onFocus={() => {
+            setYearError("");
+          }}
           onChange={(e) => {
             setState({
               ...state,
@@ -298,7 +426,12 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
         />
       </div>
       <div>
-        <Button className="save-button" variant="contained" type="submit">
+        <Button
+          className="save-button"
+          variant="contained"
+          type="submit"
+          disabled={disabled}
+        >
           ذخیره اطلاعات
         </Button>
       </div>
