@@ -118,7 +118,8 @@ const theme = createTheme({
           "& > div": {
             width: "100%",
             paddingRight: "14px !important",
-            lineHeight: "3vh",
+            display: "flex",
+            alignItems: "center",
           },
           "&.settings-page-field fieldset": {
             border: "none",
@@ -127,6 +128,7 @@ const theme = createTheme({
             color: "#d9d9d9",
             right: "unset",
             left: 7,
+            top: "30%",
           },
           "&.placeholder > div": {
             color: "#ccb0a1 !important",

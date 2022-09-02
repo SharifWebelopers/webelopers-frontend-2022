@@ -72,9 +72,16 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
         />
         <TextField
           className="settings-page-field"
-          inputProps={{ className: "settings-page-input" }}
+          inputProps={{
+            className: "settings-page-input",
+            style: {
+              // @ts-ignore
+              "-webkit-text-fill-color": "unset",
+            },
+          }}
           placeholder="ایمیل*"
           value={state.email}
+          disabled
         />
       </div>
       <div className={styles.row}>
