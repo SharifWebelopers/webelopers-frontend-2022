@@ -9,6 +9,9 @@ import {
 } from "@mui/material";
 import { CheckboxOnIcon, CheckboxOffIcon } from "./Checkbox";
 import { updateUserInfo } from "../../../actions/dashboard";
+import provinces from "../../../assets/data/provinces.json";
+import degree from "../../../assets/data/degree.json";
+import experience from "../../../assets/data/experience.json";
 
 import styles from "./Fields.module.scss";
 
@@ -72,16 +75,15 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
           inputProps={{ className: "settings-page-input" }}
           placeholder="ایمیل*"
           value={state.email}
-          disabled
         />
       </div>
       <div className={styles.row}>
         <Select
           className={`settings-page-field ${
-            state.province === "placeholder" ? "placeholder" : ""
+            !state.province ? "placeholder" : ""
           }`}
           inputProps={{ className: "settings-page-input" }}
-          value={state.province}
+          value={state.province || "placeholder"}
           onChange={(e) => {
             setState({
               ...state,
@@ -92,15 +94,20 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
           <MenuItem value={"placeholder"} disabled>
             استان
           </MenuItem>
-          <MenuItem value={"teh"}>tehran</MenuItem>
-          <MenuItem value={"hmm"}>hmmm</MenuItem>
+          {provinces.provinces.map((item: any, index: number) => {
+            return (
+              <MenuItem key={index} value={item.slug}>
+                {item.name}
+              </MenuItem>
+            );
+          })}
         </Select>
         <Select
           className={`settings-page-field ${
-            state.university_degree === "placeholder" ? "placeholder" : ""
+            !state.university_degree ? "placeholder" : ""
           }`}
           inputProps={{ className: "settings-page-input" }}
-          value={state.university_degree}
+          value={state.university_degree || "placeholder"}
           onChange={(e) => {
             setState({
               ...state,
@@ -111,16 +118,20 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
           <MenuItem value={"placeholder"} disabled>
             مقطع تحصیلی
           </MenuItem>
-          <MenuItem value={"teh"}>tehran</MenuItem>
-          <MenuItem value={"hmm"}>hmmm</MenuItem>
+          {degree.degree.map((item: any, index: number) => {
+            return (
+              <MenuItem key={index} value={item.slug}>
+                {item.name}
+              </MenuItem>
+            );
+          })}
         </Select>
       </div>
       <div className={styles.row}>
-        <Select
-          className={`settings-page-field ${
-            state.university_start_date === "placeholder" ? "placeholder" : ""
-          }`}
+        <TextField
+          className="settings-page-field"
           inputProps={{ className: "settings-page-input" }}
+          placeholder="سال ورود به مقطع تحصیلی فعلی"
           value={state.university_start_date}
           onChange={(e) => {
             setState({
@@ -128,18 +139,11 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
               university_start_date: e.target.value,
             });
           }}
-        >
-          <MenuItem value={"placeholder"} disabled>
-            سال ورود به مقطع تحصیلی فعلی
-          </MenuItem>
-          <MenuItem value={"teh"}>tehran</MenuItem>
-          <MenuItem value={"hmm"}>hmmm</MenuItem>
-        </Select>
-        <Select
-          className={`settings-page-field ${
-            state.field_study === "placeholder" ? "placeholder" : ""
-          }`}
+        />
+        <TextField
+          className="settings-page-field"
           inputProps={{ className: "settings-page-input" }}
+          placeholder="رشته تحصیلی"
           value={state.field_study}
           onChange={(e) => {
             setState({
@@ -147,20 +151,13 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
               field_study: e.target.value,
             });
           }}
-        >
-          <MenuItem value={"placeholder"} disabled>
-            رشته تحصیلی
-          </MenuItem>
-          <MenuItem value={"teh"}>tehran</MenuItem>
-          <MenuItem value={"hmm"}>hmmm</MenuItem>
-        </Select>
+        />
       </div>
       <div className={styles.row}>
-        <Select
-          className={`settings-page-field ${
-            state.university === "placeholder" ? "placeholder" : ""
-          }`}
+        <TextField
+          className="settings-page-field"
           inputProps={{ className: "settings-page-input" }}
+          placeholder="محل تحصیل"
           value={state.university}
           onChange={(e) => {
             setState({
@@ -168,13 +165,7 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
               university: e.target.value,
             });
           }}
-        >
-          <MenuItem value={"placeholder"} disabled>
-            محل تحصیل
-          </MenuItem>
-          <MenuItem value={"teh"}>tehran</MenuItem>
-          <MenuItem value={"hmm"}>hmmm</MenuItem>
-        </Select>
+        />
         <TextField
           className="settings-page-field"
           inputProps={{ className: "settings-page-input" }}
@@ -203,10 +194,10 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
         />
         <Select
           className={`settings-page-field ${
-            state.django_experience === "placeholder" ? "placeholder" : ""
+            !state.django_experience ? "placeholder" : ""
           }`}
           inputProps={{ className: "settings-page-input" }}
-          value={state.django_experience}
+          value={state.django_experience || "placeholder"}
           onChange={(e) => {
             setState({
               ...state,
@@ -217,17 +208,22 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
           <MenuItem value={"placeholder"} disabled>
             سابقه جنگو
           </MenuItem>
-          <MenuItem value={"teh"}>tehran</MenuItem>
-          <MenuItem value={"hmm"}>hmmm</MenuItem>
+          {experience.experience.map((item: any, index: number) => {
+            return (
+              <MenuItem key={index} value={item.slug}>
+                {item.name}
+              </MenuItem>
+            );
+          })}
         </Select>
       </div>
       <div className={styles.row}>
         <Select
           className={`settings-page-field ${
-            state.react_experience === "placeholder" ? "placeholder" : ""
+            !state.react_experience ? "placeholder" : ""
           }`}
           inputProps={{ className: "settings-page-input" }}
-          value={state.react_experience}
+          value={state.react_experience || "placeholder"}
           onChange={(e) => {
             setState({
               ...state,
@@ -238,15 +234,20 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
           <MenuItem value={"placeholder"} disabled>
             سابقه ری‌اکت
           </MenuItem>
-          <MenuItem value={"teh"}>tehran</MenuItem>
-          <MenuItem value={"hmm"}>hmmm</MenuItem>
+          {experience.experience.map((item: any, index: number) => {
+            return (
+              <MenuItem key={index} value={item.slug}>
+                {item.name}
+              </MenuItem>
+            );
+          })}
         </Select>
         <Select
           className={`settings-page-field ${
-            state.devops_experience === "placeholder" ? "placeholder" : ""
+            !state.devops_experience ? "placeholder" : ""
           }`}
           inputProps={{ className: "settings-page-input" }}
-          value={state.devops_experience}
+          value={state.devops_experience || "placeholder"}
           onChange={(e) => {
             setState({
               ...state,
@@ -257,8 +258,13 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
           <MenuItem value={"placeholder"} disabled>
             سابقه زیرساخت
           </MenuItem>
-          <MenuItem value={"teh"}>tehran</MenuItem>
-          <MenuItem value={"hmm"}>hmmm</MenuItem>
+          {experience.experience.map((item: any, index: number) => {
+            return (
+              <MenuItem key={index} value={item.slug}>
+                {item.name}
+              </MenuItem>
+            );
+          })}
         </Select>
       </div>
       <div className={`${styles.row} ${styles.checkbox}`}>
@@ -285,7 +291,7 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
         />
       </div>
       <div>
-        <Button className="save-button" variant="contained">
+        <Button className="save-button" variant="contained" type="submit">
           ذخیره اطلاعات
         </Button>
       </div>

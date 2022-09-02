@@ -6,15 +6,25 @@ import { sendCV } from "../../../actions/dashboard";
 
 import styles from "./UploadCV.module.scss";
 
-const UploadCV = ({ isDesktop }: { isDesktop: boolean }) => {
+const UploadCV = ({
+  isDesktop,
+  resume = null,
+}: {
+  isDesktop: boolean;
+  resume: null | string;
+}) => {
   const [file, setFile] = useState<null | any>(null);
   const [loading, setLoading] = useState(false);
 
   const postCV = () => {
     setLoading(true);
-    sendCV({ resume: file }).finally(() => {
-      setLoading(false);
-    });
+    const form_data = new FormData();
+    form_data.append("resume", file, file.name);
+    sendCV(form_data)
+      .then(() => {})
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -66,7 +76,7 @@ const UploadCV = ({ isDesktop }: { isDesktop: boolean }) => {
             }}
             className={styles["drag-n-drop"]}
           >
-            {file ? (
+            {file || resume ? (
               <FileIcon />
             ) : (
               <>
