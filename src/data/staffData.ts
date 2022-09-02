@@ -76,9 +76,16 @@ import SaraZahedi from "../assets/images/staff/sponsorship/SaraZahedi.png";
 
 const sponsorships = [
   {
+    fullName: "سینا الهی منش",
+    image: SinaElahimanesh,
+    role: "دبیر اسپانسرشیپ",
+    linkedin: "https://www.linkedin.com/in/sina-elahimanesh-094120158",
+    github: "https://github.com/SinaElahimanesh",
+  },
+  {
     fullName: "محمد موسوی فر",
     image: MohammadMousavifar,
-    role: "نایب دبیر اسپانسرشیپ",
+    role: "اسپانسرشیپ",
     linkedin: "https://www.linkedin.com/in/mohamad-mousavifar-727061221",
   },
   {
@@ -114,6 +121,19 @@ const sponsorships = [
 ];
 
 const brandings = [
+  {
+    fullName: "مهدیه ابراهیم‌پور",
+    image: MahdieEbrahimpour,
+    role: "دبیر برندینگ",
+    linkedin: "https://www.linkedin.com/in/mahdiyeh-ebrahimpour",
+  },
+  {
+    fullName: "ثنا دوشابچی",
+    image: SanaDoshabchi,
+    role: "دبیر مدیا",
+    linkedin: "https://www.linkedin.com/in/sanadoushabchi",
+  },
+
   { fullName: "آرینا قاهری", image: ArinaGhaheri, role: "UI/UX", linkedin: "" },
   {
     fullName: "شقایق باقرزاده",
@@ -126,12 +146,6 @@ const brandings = [
     image: AidaSalehKheir,
     role: "طراح گرافیک",
     linkedin: "https://www.linkedin.com/in/idasalehkheir",
-  },
-  {
-    fullName: "علی بالاپور",
-    image: AliBalaPour,
-    role: "طراح لوگو",
-    linkedin: "https://www.linkedin.com/in/alibalapour/",
   },
   {
     fullName: "نیلوفر سنجری",
@@ -166,6 +180,18 @@ const brandings = [
 ];
 
 const marketings = [
+  {
+    fullName: "مهدیه ابراهیم‌پور",
+    image: MahdieEbrahimpour,
+    role: "دبیر برندینگ",
+    linkedin: "https://www.linkedin.com/in/mahdiyeh-ebrahimpour",
+  },
+  {
+    fullName: "فاطمه عبدالحی",
+    image: FatemehAbdolhay,
+    role: "دبیر مارکتینگ",
+    linkedin: "https://www.linkedin.com/in/fatemeh-abdolhay-0453461aa",
+  },
   {
     fullName: "فاطمه ایرجی",
     image: FatemehIraji,
@@ -222,6 +248,13 @@ const executives = [
 ];
 
 const scientifics = [
+  {
+    fullName: "ایمان محمدی",
+    image: ImanMohammadi,
+    role: "دبیر علمی",
+    linkedin: "https://www.linkedin.com/in/imanmohammadi02/",
+    github: "https://github.com/Imanm02",
+  },
   {
     fullName: "محمدحسین دولت آبادی",
     image: MohammadHosseinDolatAbadi,
@@ -309,6 +342,12 @@ const scientifics = [
 
 const techs = [
   {
+    fullName: "سروش جهان زاد",
+    image: SoroushJahanzad,
+    role: "دبیر فنی",
+    linkedin: "https://www.linkedin.com/in/soroush-jahanzad/",
+  },
+  {
     fullName: "نوید معدن نژاد",
     image: NavidMadanNejad,
     role: "فرانت‌اند",
@@ -373,6 +412,13 @@ const techs = [
 ];
 
 const hrs = [
+  {
+    fullName: "رویا محمدی",
+    image: RoyaMohammadi,
+    role: "دبیر انسانی",
+    linkedin:
+      "https://www.linkedin.com/in/roya-mohammadi-431940217?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view",
+  },
   {
     fullName: "نفیسه عبابافها",
     image: NafiseAbabafha,
