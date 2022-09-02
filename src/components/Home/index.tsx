@@ -182,7 +182,7 @@ function Home() {
             </div>
             <div className={styles.timeItem}>
               <div className={styles.timeItemDate}>
-                ۱۱ <br />
+                ۱۸ <br />
                 شهریور
               </div>
               <div className={styles.timeItemTitle}>آغاز تیم‌کشی</div>
