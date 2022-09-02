@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { ExpandMoreOutlined } from "@mui/icons-material";
 import { getUserInfo } from "../../actions/dashboard";
+import SwipeableViews from "react-swipeable-views";
 
 import styles from "./Settings.module.scss";
 
@@ -30,7 +31,7 @@ const TabPanel = ({ children, value, index }: TabPanelProps) => {
         minHeight: "100%",
         minWidth: "100%",
         height: "fit-content",
-        transition: "all 0.7s",
+        direction: "rtl",
       }}
       hidden={value !== index}
     >
@@ -164,21 +165,32 @@ const SettingsContainer = () => {
             ))}
         </Accordion>
       )}
-      <TabPanel value={tab} index={0}>
-        <div className={styles["tab-panel-item"]}>
-          <ProfilePicture
-            src={state.profile_image}
-            setRefreshInfo={setRefreshInfo}
-          />
-          <Fields state={state} setState={setState} />
-        </div>
-      </TabPanel>
-      <TabPanel value={tab} index={1}>
-        <UploadCV isDesktop={isDesktop} resume={state.resume} />
-      </TabPanel>
-      <TabPanel value={tab} index={2}>
-        <ChangePassword isDesktop={isDesktop} />
-      </TabPanel>
+
+      <SwipeableViews
+        // containerStyle={{ direction: "rtl" }}
+        axis="x-reverse"
+        index={tab}
+        onChangeIndex={(_: any, newValue: number) => {
+          debugger;
+          setTab(newValue);
+        }}
+      >
+        <TabPanel value={tab} index={0}>
+          <div className={styles["tab-panel-item"]}>
+            <ProfilePicture
+              src={state.profile_image}
+              setRefreshInfo={setRefreshInfo}
+            />
+            <Fields state={state} setState={setState} />
+          </div>
+        </TabPanel>
+        <TabPanel value={tab} index={1}>
+          <UploadCV isDesktop={isDesktop} resume={state.resume} />
+        </TabPanel>
+        <TabPanel value={tab} index={2}>
+          <ChangePassword isDesktop={isDesktop} />
+        </TabPanel>
+      </SwipeableViews>
     </div>
   );
 };
