@@ -41,7 +41,6 @@ function DashboardSamplePage() {
                             <Divider
                                 orientation="vertical"
                                 flexItem
-
                             />}
 
                         <Grid classes={{root: "justify-center"}} item xs>

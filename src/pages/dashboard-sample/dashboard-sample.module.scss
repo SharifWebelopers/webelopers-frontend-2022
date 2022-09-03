@@ -21,7 +21,13 @@
 .container{
   /* width */
   &::-webkit-scrollbar {
-    width: 3px;
+    width: 4px;
+    height: 305px;
+    left: 9px;
+    top: 166px;
+    color: red;
+    background: #757575;
+    border-radius: 25px;
   }
   width: 100%;
   height: 100%;
@@ -43,20 +49,24 @@
   display: flex;
   align-items: center;
   text-align: center;
-  text-align: center;
+  justify-content: center;
+  padding: 8px;
   justify-self: center;
 
   width: 90%;
   min-width: 300px;
-  margin:auto;
+  margin:42px auto;
   color: white;
   border: 1px solid #C2A090;
   border-radius: 62px;
-
   :hover{
     background-color: #9E8379
   }
 }
 .status_container{
   padding: 32px;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 }
