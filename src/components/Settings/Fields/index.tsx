@@ -13,10 +13,19 @@ import provinces from "../../../assets/data/provinces.json";
 import degree from "../../../assets/data/degree.json";
 import experience from "../../../assets/data/experience.json";
 import Context from "../../../context/context";
+import { normalizePhoneNumber } from "../../../utils";
 
 import styles from "./Fields.module.scss";
 
-const Fields = ({ state, setState }: { state: any; setState: any }) => {
+const Fields = ({
+  state,
+  setState,
+  setRefreshInfo,
+}: {
+  state: any;
+  setState: any;
+  setRefreshInfo: any;
+}) => {
   const [context, setContext] = useContext(Context);
 
   const [loading, setLoading] = useState(false);
@@ -49,6 +58,7 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
             variant: "success",
           },
         });
+        setRefreshInfo(true);
       })
       .catch(() => {
         setContext({
@@ -212,7 +222,7 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
           onChange={(e) => {
             setState({
               ...state,
-              phone_number: e.target.value,
+              phone_number: normalizePhoneNumber(e.target.value),
             });
           }}
         />
@@ -221,8 +231,7 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
           inputProps={{
             className: "settings-page-input",
             style: {
-              // @ts-ignore
-              "-webkit-text-fill-color": "unset",
+              WebkitTextFillColor: "unset",
             },
           }}
           placeholder="ایمیل*"
@@ -433,15 +442,15 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
             <Checkbox
               disableRipple
               style={{
-                marginRight: state.share_info ? -3 : 0,
+                marginRight: state.can_sponsor_see_profile ? -3 : 0,
               }}
               icon={<CheckboxOffIcon />}
               checkedIcon={<CheckboxOnIcon />}
-              value={state.share_info}
+              checked={state.can_sponsor_see_profile}
               onChange={(e) => {
                 setState({
                   ...state,
-                  share_info: e.target.checked,
+                  can_sponsor_see_profile: e.target.checked,
                 });
               }}
             />

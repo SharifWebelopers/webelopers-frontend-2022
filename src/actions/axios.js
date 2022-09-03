@@ -43,11 +43,15 @@ function createAxiosInstance() {
             originalRequest.headers.Authorization = `Bearer ${res.data.access}`;
             return createAxiosInstance()(originalRequest);
           } catch (e) {
-            if (e.response.status === 401) logout();
+            if (
+              e.response.status === 401 &&
+              !window?.location?.href.includes("auth")
+            )
+              logout();
             return Promise.reject(e);
           }
         } else {
-          logout();
+          if (!window?.location?.href.includes("auth")) logout();
         }
       }
       return Promise.reject(error);

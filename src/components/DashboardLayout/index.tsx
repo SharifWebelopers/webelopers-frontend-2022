@@ -1,6 +1,6 @@
 import Image from "next/future/image";
 import Head from "next/head";
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, useContext } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import PersonIcon from "@mui/icons-material/Person";
@@ -14,10 +14,12 @@ import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import useMobile from "../../utils/useMobile";
 import logo from "../../assets/images/logo.png";
-import styles from "./DashboardLayout.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { IconButton } from "@mui/material";
+import Context from "../../context/context";
+
+import styles from "./DashboardLayout.module.scss";
 
 interface Dashboard {
   title?: string;
@@ -83,6 +85,8 @@ function DashboardLayout({
 }: PropsWithChildren<Dashboard>) {
   const router = useRouter();
   const isMobile = useMobile();
+
+  const [context, setContext] = useContext(Context);
 
   const navItems: NavItemProps[] = [
     {
@@ -153,7 +157,9 @@ function DashboardLayout({
           <MailOutlineIcon fontSize="large" className={styles.mailIcon} />
           <div className={styles.seperator}></div>
           <PersonIcon fontSize="large" className={styles.personIcon} />
-          <div className={styles.name}>نام و نام خانوادگی</div>
+          <div className={styles.name}>
+            {context.first_name} {context.last_name}
+          </div>
         </div>
         <Link href={"/"}>
           <Image
