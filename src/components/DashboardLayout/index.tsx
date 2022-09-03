@@ -16,16 +16,133 @@ import useMobile from "../../utils/useMobile";
 import logo from "../../assets/images/logo.png";
 import styles from "./DashboardLayout.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { IconButton } from "@mui/material";
 
 interface Dashboard {
   title?: string;
 }
 
+interface NavItemProps {
+  path: string;
+  title: string;
+  isMobile: boolean;
+  router: any;
+  Icon: any;
+  disabled: boolean;
+}
+
+interface LinkWrapperProps {
+  href: string;
+  disabled: boolean;
+  children: any;
+}
+
+const LinkWrapper = ({ href, disabled, children }: LinkWrapperProps) => {
+  return disabled ? (
+    <span>{children}</span>
+  ) : (
+    <Link href={href}>{children}</Link>
+  );
+};
+
+const NavItem = ({
+  path,
+  title,
+  isMobile,
+  router,
+  Icon,
+  disabled,
+}: NavItemProps) => {
+  return (
+    <LinkWrapper href={path} disabled={disabled}>
+      <Tooltip title={title} placement={isMobile ? "top" : "left"}>
+        <div className={styles.navItem}>
+          <IconButton
+            className={styles["nav-icon-button"]}
+            disabled={disabled}
+            style={
+              router.pathname === path
+                ? {
+                    color: "#916649",
+                  }
+                : {}
+            }
+          >
+            <Icon fontSize="large" />
+          </IconButton>
+        </div>
+      </Tooltip>
+    </LinkWrapper>
+  );
+};
+
 function DashboardLayout({
   title = "داشبورد",
   children,
 }: PropsWithChildren<Dashboard>) {
+  const router = useRouter();
   const isMobile = useMobile();
+
+  const navItems: NavItemProps[] = [
+    {
+      path: "/",
+      title: "خانه",
+      isMobile,
+      router,
+      Icon: HomeIcon,
+      disabled: false,
+    },
+    {
+      path: "/dashboard/tutorials",
+      title: "آموزش‌ها",
+      isMobile,
+      router,
+      Icon: MenuBookOutlinedIcon,
+      disabled: true,
+    },
+    {
+      path: "/dashboard/leaderboard",
+      title: "جدول امتیازات",
+      isMobile,
+      router,
+      Icon: LeaderboardIcon,
+      disabled: true,
+    },
+    {
+      path: "/dashboard/team",
+      title: "تیم",
+      isMobile,
+      router,
+      Icon: GroupsIcon,
+      disabled: true,
+    },
+    {
+      path: "/dashboard/code",
+      title: "بررسی کد",
+      isMobile,
+      router,
+      Icon: CodeIcon,
+      disabled: true,
+    },
+    {
+      path: "/dashboard/settings",
+      title: "تنظیمات",
+      isMobile,
+      router,
+      Icon: SettingsIcon,
+      disabled: false,
+    },
+    {
+      path: "/dashboard/request",
+      title: "ارسال درخواست",
+      isMobile,
+      router,
+      Icon: BorderColorOutlinedIcon,
+      disabled: true,
+    },
+  ];
+
   return (
     <div className={styles.layout}>
       <Head>
@@ -51,65 +168,18 @@ function DashboardLayout({
       <div className={styles.containerWrapper}>
         <div className={styles.container}>
           <nav className={styles.navbar}>
-            <Link href={"/"}>
-              <Tooltip title="خانه" placement={isMobile ? "top" : "left"}>
-                <div className={styles.navItem}>
-                  <HomeIcon fontSize="large" />
-                </div>
-              </Tooltip>
-            </Link>
-            <Link href={"/dashboard/tutorials"}>
-              <Tooltip title="آموزش‌ها" placement={isMobile ? "top" : "left"}>
-                <div className={styles.navItem}>
-                  <MenuBookOutlinedIcon fontSize="large" />
-                </div>
-              </Tooltip>
-            </Link>
-            <Link href={"/dashboard/leaderboard"}>
-              <Tooltip
-                title="جدول امتیازات"
-                placement={isMobile ? "top" : "left"}
-              >
-                <div className={styles.navItem}>
-                  <LeaderboardIcon fontSize="large" />
-                </div>
-              </Tooltip>
-            </Link>
-            <Link href={"/dashboard/team"}>
-              <Tooltip title="تیم" placement={isMobile ? "top" : "left"}>
-                <div className={styles.navItem}>
-                  <GroupsIcon fontSize="large" />
-                </div>
-              </Tooltip>
-            </Link>
-            <Link href={"/dashboard/code"}>
-              <Tooltip title="بررسی کد" placement={isMobile ? "top" : "left"}>
-                <div className={styles.navItem}>
-                  <CodeIcon fontSize="large" />
-                </div>
-              </Tooltip>
-            </Link>
-            <Link href={"/dashboard/settings"}>
-              <Tooltip title="تنظیمات" placement={isMobile ? "top" : "left"}>
-                <div className={styles.navItem}>
-                  <SettingsIcon fontSize="large" />
-                </div>
-              </Tooltip>
-            </Link>
-            <Link href={"/dashboard/request"}>
-              <Tooltip
-                title="ارسال درخواست"
-                placement={isMobile ? "top" : "left"}
-              >
-                <div className={styles.navItem}>
-                  <BorderColorOutlinedIcon fontSize="large" />
-                </div>
-              </Tooltip>
-            </Link>
+            {navItems.map((item) => {
+              return <NavItem {...item} />;
+            })}
             <div className={styles.hrSeperator}></div>
             <Tooltip title="خروج" placement={isMobile ? "top" : "left"}>
               <div className={styles.navItem}>
                 <LogoutOutlinedIcon
+                  onClick={() => {
+                    localStorage.removeItem("accessToken");
+                    localStorage.removeItem("refreshToken");
+                    router.push("/auth");
+                  }}
                   fontSize="large"
                   className={styles.logoutIcon}
                 />

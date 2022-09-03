@@ -94,6 +94,14 @@
   color: #983c4b;
 }
 
+.nav-icon-button {
+  color: inherit;
+}
+
+.nav-icon-button:disabled {
+  color: #454545;
+}
+
 @media (max-width: 768px) {
   .layout {
     background-image: url("../../assets//images//earthMobile.png");
@@ -117,6 +125,7 @@
     bottom: -20px;
     right: 50%;
     transform: translateX(50%);
+    z-index: 99;
   }
 
   .navItem {
