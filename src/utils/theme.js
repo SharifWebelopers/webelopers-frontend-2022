@@ -13,6 +13,7 @@ const theme = createTheme({
     info: {
       main: "#a8573c",
     },
+    orange: "#C2A090"
   },
   typography: {
     fontFamily: ["unset"].join(","),
