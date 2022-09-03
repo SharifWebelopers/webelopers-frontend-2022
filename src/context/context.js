@@ -10,6 +10,8 @@ export const ContextProvider = ({ children }) => {
       variant: "success",
     },
     loggedIn: false,
+    first_name: "نام و",
+    last_name: "نام خانوادگی",
   });
 
   useEffect(() => {

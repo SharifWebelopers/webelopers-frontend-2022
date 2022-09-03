@@ -5,7 +5,7 @@ export const getUserInfo = () => {
 };
 
 export const updateUserInfo = (params) => {
-  return axios().patch(`/accounts/profile/`, params);
+  return axios().put(`/accounts/profile/`, params);
 };
 
 export const sendCV = (params) => {

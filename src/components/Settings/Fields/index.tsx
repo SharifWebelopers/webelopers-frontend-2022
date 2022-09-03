@@ -16,7 +16,15 @@ import Context from "../../../context/context";
 
 import styles from "./Fields.module.scss";
 
-const Fields = ({ state, setState }: { state: any; setState: any }) => {
+const Fields = ({
+  state,
+  setState,
+  setRefreshInfo,
+}: {
+  state: any;
+  setState: any;
+  setRefreshInfo: any;
+}) => {
   const [context, setContext] = useContext(Context);
 
   const [loading, setLoading] = useState(false);
@@ -49,6 +57,7 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
             variant: "success",
           },
         });
+        setRefreshInfo(true);
       })
       .catch(() => {
         setContext({
@@ -433,15 +442,15 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
             <Checkbox
               disableRipple
               style={{
-                marginRight: state.share_info ? -3 : 0,
+                marginRight: state.can_sponsor_see_profile ? -3 : 0,
               }}
               icon={<CheckboxOffIcon />}
               checkedIcon={<CheckboxOnIcon />}
-              value={state.share_info}
+              checked={state.can_sponsor_see_profile}
               onChange={(e) => {
                 setState({
                   ...state,
-                  share_info: e.target.checked,
+                  can_sponsor_see_profile: e.target.checked,
                 });
               }}
             />
