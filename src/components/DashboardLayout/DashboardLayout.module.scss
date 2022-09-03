@@ -95,11 +95,11 @@
 }
 
 .nav-icon-button {
-  color: inherit;
+  color: inherit !important;
 }
 
 .nav-icon-button:disabled {
-  color: #454545;
+  color: #454545 !important;
 }
 
 @media (max-width: 768px) {
