@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { FormEvent, useContext, useEffect, useState } from "react";
 import {
   Button,
   Checkbox,
@@ -12,10 +12,13 @@ import { updateUserInfo } from "../../../actions/dashboard";
 import provinces from "../../../assets/data/provinces.json";
 import degree from "../../../assets/data/degree.json";
 import experience from "../../../assets/data/experience.json";
+import Context from "../../../context/context";
 
 import styles from "./Fields.module.scss";
 
 const Fields = ({ state, setState }: { state: any; setState: any }) => {
+  const [context, setContext] = useContext(Context);
+
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [phoneNumberError, setPhoneNumberError] = useState("");
@@ -36,9 +39,30 @@ const Fields = ({ state, setState }: { state: any; setState: any }) => {
         )
         .reduce((acc, item) => ({ ...acc, [item]: state[item] }), {}),
       university_start_date: +state.university_start_date || null,
-    }).finally(() => {
-      setLoading(false);
-    });
+    })
+      .then(() => {
+        setContext({
+          ...context,
+          snackbar: {
+            open: true,
+            message: "اطلاعات کاربری با موفقیت ویرایش شد!",
+            variant: "success",
+          },
+        });
+      })
+      .catch(() => {
+        setContext({
+          ...context,
+          snackbar: {
+            open: true,
+            message: "خطایی رخ داد!",
+            variant: "error",
+          },
+        });
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const phoneNumbervalidators = [

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button } from "@mui/material";
 import FileIcon from "./FileIcon";
 import PlusIcon from "./PlusIcon";
 import { sendCV } from "../../../actions/dashboard";
+import Context from "../../../context/context";
 
 import styles from "./UploadCV.module.scss";
 
@@ -13,6 +14,8 @@ const UploadCV = ({
   isDesktop: boolean;
   resume: null | string;
 }) => {
+  const [context, setContext] = useContext(Context);
+
   const [file, setFile] = useState<null | any>(null);
   const [loading, setLoading] = useState(false);
 
@@ -21,7 +24,26 @@ const UploadCV = ({
     const form_data = new FormData();
     form_data.append("resume", file, file.name);
     sendCV(form_data)
-      .then(() => {})
+      .then(() => {
+        setContext({
+          ...context,
+          snackbar: {
+            open: true,
+            message: "ارسال فایل موفقیت‌آمیز بود!",
+            variant: "success",
+          },
+        });
+      })
+      .catch(() => {
+        setContext({
+          ...context,
+          snackbar: {
+            open: true,
+            message: "خطایی در حین ارسال فایل رخ داد!",
+            variant: "error",
+          },
+        });
+      })
       .finally(() => {
         setLoading(false);
       });
@@ -53,7 +75,7 @@ const UploadCV = ({
             component="label"
             color="gray"
           >
-            <div>انتخاب فایل</div>
+            <div>{"انتخاب فایل"}</div>
             <input
               onChange={(e) => {
                 setFile(e.target.files?.[0]);
@@ -92,7 +114,11 @@ const UploadCV = ({
           disabled={!file || loading}
           onClick={postCV}
         >
-          ذخیره رزومه
+          {loading
+            ? "در حال ارسال..."
+            : resume
+            ? "ویرایش رزومه"
+            : "ذخیره رزومه"}
         </Button>
       </div>
     </div>
