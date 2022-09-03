@@ -230,8 +230,7 @@ const Fields = ({
           inputProps={{
             className: "settings-page-input",
             style: {
-              // @ts-ignore
-              "-webkit-text-fill-color": "unset",
+              WebkitTextFillColor: "unset",
             },
           }}
           placeholder="ایمیل*"
