@@ -2,13 +2,13 @@ import React, {useState} from "react";
 import DashboardLayout from "../../components/DashboardLayout";
 import {Divider, Grid, SvgIcon} from "@mui/material";
 import faqsData from "../../data/faqsData";
-import FaqItem from "../../components/FaqItem";
 import stylesHome from "../../components/Home/Home.module.scss";
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import styles from "./dashboard-sample.module.scss";
 import SVGLOZI from "../../../public/lozi.svg";
 import { Button } from "@mui/material";
 import useMobile from "../../utils/useMobile";
+import Notification from "../../components/Notification";
 
 function DashboardSamplePage() {
 
@@ -31,7 +31,7 @@ function DashboardSamplePage() {
                                 اطلاعات
                             </div>
                             {faqsData.map((data, index) => (
-                                <FaqItem data={data} key={index}/>
+                                <Notification data={data} key={index}/>
                             ))}
                         </Grid>
                         {isMobile ?
