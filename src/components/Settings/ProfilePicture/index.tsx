@@ -4,7 +4,7 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Close from "@mui/icons-material/Close";
 import Image from "next/image";
 import staffElipsis from "../../../assets/images/staffElipsis.png";
-import defaultImg from "../../../assets/images/default_avatar.jpeg";
+import defaultImg from "../../../assets/images/blank-profile.png";
 import { updateUserInfo } from "../../../actions/dashboard";
 import Context from "../../../context/context";
 

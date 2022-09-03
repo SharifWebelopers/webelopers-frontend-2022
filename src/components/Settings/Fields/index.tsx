@@ -13,6 +13,7 @@ import provinces from "../../../assets/data/provinces.json";
 import degree from "../../../assets/data/degree.json";
 import experience from "../../../assets/data/experience.json";
 import Context from "../../../context/context";
+import { normalizePhoneNumber } from "../../../utils";
 
 import styles from "./Fields.module.scss";
 
@@ -221,7 +222,7 @@ const Fields = ({
           onChange={(e) => {
             setState({
               ...state,
-              phone_number: e.target.value,
+              phone_number: normalizePhoneNumber(e.target.value),
             });
           }}
         />
