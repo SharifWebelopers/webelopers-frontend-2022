@@ -22,13 +22,25 @@ import useMobile from "../../utils/useMobile";
 
 import staffsData from "../../data/staffData";
 
-function shuffle(array: any) {
+function shuffle<T>(array: T[][]): T[] {
   const temp = [...array];
   const flattedStaffData = temp.flat();
   flattedStaffData.sort(() => Math.random() - 0.5);
   return flattedStaffData;
 }
 
+function getUniqueData(dataList: Person[]): Person[] {
+  const selectedNames: string[] = [];
+  const selectedData: Person[] = [];
+
+  for (const data of dataList) {
+    if (!selectedNames.includes(data.fullName)) {
+      selectedData.push({ ...data });
+      selectedNames.push(data.fullName);
+    }
+  }
+  return selectedData;
+}
 const countDownDate = new Date("Sep 11, 2022 24:00:00").getTime();
 
 function Home() {
@@ -51,16 +63,16 @@ function Home() {
   });
 
   useEffect(() => {
-    const shuffledArray = shuffle(staffsData);
+    const uniqueData = getUniqueData(shuffle(staffsData));
 
     const selectedStaffsDesktopTemp = [
-      shuffledArray[0],
-      shuffledArray[1],
-      shuffledArray[2],
-      shuffledArray[3],
+      uniqueData[0],
+      uniqueData[1],
+      uniqueData[2],
+      uniqueData[3],
     ];
 
-    const selectedStaffsMobileTemp = [shuffledArray[0], shuffledArray[1]];
+    const selectedStaffsMobileTemp = [uniqueData[0], uniqueData[1]];
 
     setSelectedStaffsDesktop(selectedStaffsDesktopTemp);
 
@@ -170,7 +182,7 @@ function Home() {
             </div>
             <div className={styles.timeItem}>
               <div className={styles.timeItemDate}>
-                ۱۱ <br />
+                ۱۸ <br />
                 شهریور
               </div>
               <div className={styles.timeItemTitle}>آغاز تیم‌کشی</div>
