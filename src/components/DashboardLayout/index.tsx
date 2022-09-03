@@ -64,7 +64,7 @@ const NavItem = ({
             style={
               router.pathname === path
                 ? {
-                    color: "#916649",
+                    color: "#916649 !important",
                   }
                 : {}
             }
@@ -169,7 +169,7 @@ function DashboardLayout({
         <div className={styles.container}>
           <nav className={styles.navbar}>
             {navItems.map((item, index) => {
-              return <NavItem {...item} key={index} />;
+              return <NavItem key={index} {...item} />;
             })}
             <div className={styles.hrSeperator}></div>
             <Tooltip title="خروج" placement={isMobile ? "top" : "left"}>
