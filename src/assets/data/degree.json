@@ -1,0 +1,24 @@
+{
+    "degree": [
+        {
+            "slug": "student",
+            "name": "دانش آموز"
+        },
+        {
+            "slug": "Bs",
+            "name": "کارشناسی"
+        },
+        {
+            "slug": "Ms",
+            "name": "کارشناسی ارشد"
+        },
+        {
+            "slug": "Phd",
+            "name": "دکتری"
+        },
+        {
+            "slug": "Graduated",
+            "name": "فارغ التحصیل"
+        }
+    ]
+}
