@@ -168,8 +168,8 @@ function DashboardLayout({
       <div className={styles.containerWrapper}>
         <div className={styles.container}>
           <nav className={styles.navbar}>
-            {navItems.map((item) => {
-              return <NavItem {...item} />;
+            {navItems.map((item, index) => {
+              return <NavItem {...item} key={index} />;
             })}
             <div className={styles.hrSeperator}></div>
             <Tooltip title="خروج" placement={isMobile ? "top" : "left"}>
