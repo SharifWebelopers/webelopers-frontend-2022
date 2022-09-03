@@ -13,12 +13,6 @@ import Notification from "../../components/Notification";
 function DashboardSamplePage() {
 
     const isMobile = useMobile();
-    const [countdown, setCountdown] = useState({
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
-    });
 
     return (
         <div>
@@ -62,32 +56,7 @@ function DashboardSamplePage() {
                                 <div className={styles.status}>
                                     مهلتت پایان ۵ شهریور
                                 </div>
-                                <div className={stylesHome.countdown}>
-                                    <div className={stylesHome.countdownItem}>
-                                        <div className={stylesHome.countdownValue}>
-                                            {String(countdown.seconds).padStart(2, "0")}
-                                        </div>
-                                        <div className={stylesHome.countdownUnit}>ثانیه</div>
-                                    </div>
-                                    <div className={stylesHome.countdownItem}>
-                                        <div className={stylesHome.countdownValue}>
-                                            {String(countdown.minutes).padStart(2, "0")}
-                                        </div>
-                                        <div className={stylesHome.countdownUnit}>دقیقه</div>
-                                    </div>
-                                    <div className={stylesHome.countdownItem}>
-                                        <div className={stylesHome.countdownValue}>
-                                            {String(countdown.hours).padStart(2, "0")}
-                                        </div>
-                                        <div className={stylesHome.countdownUnit}>ساعت</div>
-                                    </div>
-                                    <div className={stylesHome.countdownItem}>
-                                        <div className={stylesHome.countdownValue}>
-                                            {String(countdown.days).padStart(2, "0")}
-                                        </div>
-                                        <div className={stylesHome.countdownUnit}>روز</div>
-                                    </div>
-                                </div>
+                                {/*<CircleProgressbar/>*/}
                             </div>
 
                         </Grid>
