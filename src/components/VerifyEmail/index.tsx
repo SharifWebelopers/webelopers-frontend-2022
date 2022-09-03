@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { Button } from "@mui/material";
+import Context from "../../context/context";
 
 import { verify } from "../../actions/auth";
 
@@ -9,6 +10,7 @@ import styles from "../../styles/Auth.module.scss";
 
 function VerifyEmail() {
   const router = useRouter();
+  const [context, setContext] = useContext(Context);
 
   const [isValid, setIsValid] = useState(
     !!(router.query?.uid && router.query?.token)
@@ -22,8 +24,20 @@ function VerifyEmail() {
         encoded_user_id: router.query.uid,
         token: router.query.token,
       })
-        .then(() => {
+        .then((res) => {
           setVerified(true);
+          localStorage.setItem("accessToken", res.data.tokens.access);
+          localStorage.setItem("refreshToken", res.data.tokens.refresh);
+          setContext({
+            ...context,
+            snackbar: {
+              open: true,
+              message: "ورود موفقیت‌آمیز بود!",
+              variant: "success",
+            },
+            loggedIn: true,
+          });
+          router.push("/dashboard");
         })
         .catch(() => {
           setVerified(false);
@@ -63,9 +77,9 @@ function VerifyEmail() {
               </Button>
             </Link>
           )}
-          <Link href="/">
+          <Link href={verified ? "/dashboard" : "/"}>
             <Button color="primary" variant="contained">
-              بازگشت به صفحه اصلی
+              {verified ? "رفتن به داشبرد" : "بازگشت به صفحه اصلی"}
             </Button>
           </Link>
         </div>

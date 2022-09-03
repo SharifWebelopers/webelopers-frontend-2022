@@ -96,7 +96,7 @@ function Login() {
           },
           loggedIn: true,
         });
-        router.push("/");
+        router.push("/dashboard");
       })
       .catch((err) => {
         if (err.response?.status === 403) return setShowActivationPrompt(true);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProfilePicture from "./ProfilePicture";
 import Fields from "./Fields";
 import UploadCV from "./UploadCV";
@@ -15,6 +15,7 @@ import {
 import { ExpandMoreOutlined } from "@mui/icons-material";
 import { getUserInfo } from "../../actions/dashboard";
 import SwipeableViews from "react-swipeable-views";
+import Context from "../../context/context";
 
 import styles from "./Settings.module.scss";
 
@@ -74,11 +75,13 @@ interface StateType {
   django_experience: null | string;
   react_experience: null | string;
   devops_experience: null | string;
-  share_info: boolean;
+  can_sponsor_see_profile: boolean;
   resume: null | string;
 }
 
 const SettingsContainer = () => {
+  const [context, setContext] = useContext(Context);
+
   const [refreshInfo, setRefreshInfo] = useState(true);
   const [tab, setTab] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
@@ -99,7 +102,7 @@ const SettingsContainer = () => {
     django_experience: null,
     react_experience: null,
     devops_experience: null,
-    share_info: false,
+    can_sponsor_see_profile: false,
     resume: "",
   });
 
@@ -126,8 +129,13 @@ const SettingsContainer = () => {
           django_experience: res.data.django_experience,
           react_experience: res.data.react_experience,
           devops_experience: res.data.devops_experience,
-          share_info: false,
+          can_sponsor_see_profile: res.data.can_sponsor_see_profile,
           resume: res.data.resume,
+        });
+        setContext({
+          ...context,
+          first_name: res.data.first_name,
+          last_name: res.data.last_name,
         });
       });
 
@@ -191,7 +199,11 @@ const SettingsContainer = () => {
               src={state.profile_image}
               setRefreshInfo={setRefreshInfo}
             />
-            <Fields state={state} setState={setState} />
+            <Fields
+              state={state}
+              setState={setState}
+              setRefreshInfo={setRefreshInfo}
+            />
           </div>
         </TabPanel>
         <TabPanel value={tab} index={1}>
