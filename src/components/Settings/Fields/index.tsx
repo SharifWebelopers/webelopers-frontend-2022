@@ -241,6 +241,7 @@ const Fields = ({
       </div>
       <div className={styles.row}>
         <Select
+          MenuProps={{ classes: { paper: "settings-page-paper" } }}
           className={`settings-page-field ${
             !state.province ? "placeholder" : ""
           }`}
@@ -265,6 +266,7 @@ const Fields = ({
           })}
         </Select>
         <Select
+          MenuProps={{ classes: { paper: "settings-page-paper" } }}
           className={`settings-page-field ${
             !state.university_degree ? "placeholder" : ""
           }`}
@@ -361,6 +363,7 @@ const Fields = ({
           }}
         />
         <Select
+          MenuProps={{ classes: { paper: "settings-page-paper" } }}
           className={`settings-page-field ${
             !state.django_experience ? "placeholder" : ""
           }`}
@@ -387,6 +390,7 @@ const Fields = ({
       </div>
       <div className={styles.row}>
         <Select
+          MenuProps={{ classes: { paper: "settings-page-paper" } }}
           className={`settings-page-field ${
             !state.react_experience ? "placeholder" : ""
           }`}
@@ -411,6 +415,7 @@ const Fields = ({
           })}
         </Select>
         <Select
+          MenuProps={{ classes: { paper: "settings-page-paper" } }}
           className={`settings-page-field ${
             !state.devops_experience ? "placeholder" : ""
           }`}
@@ -464,6 +469,7 @@ const Fields = ({
           variant="contained"
           type="submit"
           disabled={disabled}
+          style={{ marginBottom: 20 }}
         >
           ذخیره اطلاعات
         </Button>
