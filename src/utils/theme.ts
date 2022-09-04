@@ -159,8 +159,11 @@ const theme = createTheme({
     MuiMenu: {
       styleOverrides: {
         root: {
-          "& ul": {
+          "& .settings-page-paper": {
             height: 300,
+          },
+          "& .settings-page-paper::-webkit-scrollbar": {
+            display: 'none',
           },
         },
       },
