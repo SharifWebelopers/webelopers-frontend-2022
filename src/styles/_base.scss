@@ -41,7 +41,22 @@ input.change-password-input:-webkit-autofill {
   scrollbar-width: none;
 }
 
-*::-webkit-scrollbar {
+nav::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #757575;
+  border-radius: 40px;
+}
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-corner {
   display: none;
 }
 
@@ -52,4 +67,8 @@ fieldset {
 legend {
   font-size: 1.25rem;
   font-weight: 700;
+}
+
+.react-swipeable-view-container > div {
+  overflow-x: hidden !important;
 }

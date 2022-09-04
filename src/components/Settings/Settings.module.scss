@@ -1,5 +1,5 @@
 .container {
-  padding: 17px 43px;
+  padding: 17px 43px 17px 31px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,6 +7,7 @@
   overflow-y: scroll;
   overflow-x: hidden;
   height: 100%;
+  margin-left: 12px;
 }
 
 .tab-panel {

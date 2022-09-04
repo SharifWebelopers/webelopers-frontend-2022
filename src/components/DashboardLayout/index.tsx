@@ -71,7 +71,7 @@ const NavItem = ({
                 : {}
             }
           >
-            <Icon fontSize="large" />
+            <Icon style={{ width: "4vh", height: "4vh" }} fontSize="large" />
           </IconButton>
         </div>
       </Tooltip>

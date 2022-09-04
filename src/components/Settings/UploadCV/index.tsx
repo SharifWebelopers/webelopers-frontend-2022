@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Button } from "@mui/material";
 import FileIcon from "./FileIcon";
 import PlusIcon from "./PlusIcon";
-import { sendCV } from "../../../actions/dashboard";
+import { updateUserInfo } from "../../../actions/dashboard";
 import Context from "../../../context/context";
 
 import styles from "./UploadCV.module.scss";
@@ -23,7 +23,7 @@ const UploadCV = ({
     setLoading(true);
     const form_data = new FormData();
     form_data.append("resume", file, file.name);
-    sendCV(form_data)
+    updateUserInfo(form_data)
       .then(() => {
         setContext({
           ...context,
@@ -98,7 +98,17 @@ const UploadCV = ({
             }}
             className={styles["drag-n-drop"]}
           >
-            {file || resume ? (
+            {resume ? (
+              <a
+                href={resume}
+                style={{ cursor: "pointer" }}
+                target="_blank"
+                rel="noreferrer"
+                title="دریافت رزومه"
+              >
+                <FileIcon />
+              </a>
+            ) : file ? (
               <FileIcon />
             ) : (
               <>
