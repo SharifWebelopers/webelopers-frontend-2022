@@ -82,6 +82,7 @@ interface StateType {
 const SettingsContainer = () => {
   const [context, setContext] = useContext(Context);
 
+  const [scroll, setScroll] = useState(false);
   const [refreshInfo, setRefreshInfo] = useState(true);
   const [tab, setTab] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);

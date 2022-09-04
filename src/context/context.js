@@ -1,8 +1,10 @@
+import { useRouter } from "next/router";
 import { createContext, useEffect, useState } from "react";
 
 const Context = createContext();
 
 export const ContextProvider = ({ children }) => {
+  const router = useRouter();
   const [context, setContext] = useState({
     snackbar: {
       open: false,
@@ -15,10 +17,11 @@ export const ContextProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    if (localStorage.getItem("accessToken")) {
-      setContext((old) => ({ ...old, loggedIn: true }));
-    }
-  }, []);
+    setContext((old) => ({
+      ...old,
+      loggedIn: !!localStorage.getItem("accessToken"),
+    }));
+  }, [router.pathname]);
 
   return (
     <Context.Provider value={[context, setContext]}>
