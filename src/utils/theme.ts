@@ -160,10 +160,10 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           "& .settings-page-paper": {
-            height: 300,
+            maxHeight: 300,
           },
           "& .settings-page-paper::-webkit-scrollbar": {
-            display: 'none',
+            display: "none",
           },
         },
       },

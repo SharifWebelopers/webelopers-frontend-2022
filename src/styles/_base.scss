@@ -7,6 +7,11 @@ body {
   min-height: 100vh;
 }
 
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
 #__next {
   position: absolute;
   min-height: 100%;

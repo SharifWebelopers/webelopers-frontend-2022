@@ -15,7 +15,7 @@ function convertNumberToEnglish(numberStr: string): string {
   return NUMBER_MAPPING[numberStr] ?? numberStr;
 }
 
-export function normalizePhoneNumber(phoneNumber: string): string {
+export function normalizeNumbers(phoneNumber: string): string {
   let normalizedNumber = "";
   for (const numberStr of phoneNumber) {
     normalizedNumber += convertNumberToEnglish(numberStr);
