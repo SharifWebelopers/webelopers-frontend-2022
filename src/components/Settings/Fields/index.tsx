@@ -15,7 +15,7 @@ import provinces from "../../../assets/data/provinces.json";
 import degree from "../../../assets/data/degree.json";
 import experience from "../../../assets/data/experience.json";
 import Context from "../../../context/context";
-import { normalizePhoneNumber } from "../../../utils";
+import { normalizeNumbers } from "../../../utils";
 
 import styles from "./Fields.module.scss";
 
@@ -192,6 +192,8 @@ const Fields = ({
     state.first_name,
     state.last_name,
     state.university_start_date,
+    state.github_link,
+    state.linkedin_link,
     loading,
   ]);
 
@@ -250,7 +252,7 @@ const Fields = ({
           onChange={(e) => {
             setState({
               ...state,
-              phone_number: normalizePhoneNumber(e.target.value),
+              phone_number: normalizeNumbers(e.target.value),
             });
           }}
         />
@@ -380,7 +382,7 @@ const Fields = ({
           onChange={(e) => {
             setState({
               ...state,
-              university_start_date: e.target.value,
+              university_start_date: normalizeNumbers(e.target.value),
             });
           }}
         />
