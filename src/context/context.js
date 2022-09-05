@@ -17,9 +17,10 @@ export const ContextProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    if (localStorage.getItem("accessToken")) {
-      setContext((old) => ({ ...old, loggedIn: true }));
-    }
+    setContext((old) => ({
+      ...old,
+      loggedIn: !!localStorage.getItem("accessToken"),
+    }));
   }, [router.pathname]);
 
   return (
