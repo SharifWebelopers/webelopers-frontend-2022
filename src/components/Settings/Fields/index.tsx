@@ -3,10 +3,12 @@ import {
   Button,
   Checkbox,
   FormControlLabel,
+  IconButton,
   MenuItem,
   Select,
   TextField,
 } from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
 import { CheckboxOnIcon, CheckboxOffIcon } from "./Checkbox";
 import { updateUserInfo } from "../../../actions/dashboard";
 import provinces from "../../../assets/data/provinces.json";
@@ -34,6 +36,8 @@ const Fields = ({
   const [nameError, setNameError] = useState("");
   const [lastNameError, setLastNameError] = useState("");
   const [yearError, setYearError] = useState("");
+  const [githubLinkError, setGithubLinkError] = useState("");
+  const [linkedinLinkError, setLinkedinLinkError] = useState("");
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -147,12 +151,36 @@ const Fields = ({
     return true;
   };
 
+  const linkValidators = [
+    (link: string) => {
+      const re = /^https?:\/\/.+$/;
+      return link && !re.test(link) && "لینک نامعتبر!";
+    },
+  ];
+
+  const validateLink = (
+    setError: Function,
+    linkKey: string,
+    showError = true
+  ) => {
+    for (const validator of linkValidators) {
+      const error = validator(state[linkKey]);
+      if (error) {
+        if (showError) setError(error);
+        return false;
+      }
+    }
+    return true;
+  };
+
   useEffect(() => {
     if (
       validateName(false) &&
       validateLastName(false) &&
       validatePhoneNumber(false) &&
       validateYear(false) &&
+      validateLink(setGithubLinkError, "github_link", false) &&
+      validateLink(setLinkedinLinkError, "linkedin_link", false) &&
       !loading
     ) {
       setDisabled(false);
@@ -253,6 +281,29 @@ const Fields = ({
               province: e.target.value,
             });
           }}
+          sx={{
+            paddingLeft: 0,
+            "& > div": {
+              paddingRight: state.province ? "36px !important" : "",
+            },
+          }}
+          startAdornment={
+            <IconButton
+              color="error"
+              sx={{
+                display: state.province ? "" : "none",
+                position: "absolute",
+              }}
+              onClick={() => {
+                setState({
+                  ...state,
+                  province: null,
+                });
+              }}
+            >
+              <ClearIcon sx={{ color: "inherit !important" }} />
+            </IconButton>
+          }
         >
           <MenuItem value={"placeholder"} disabled>
             استان
@@ -278,6 +329,29 @@ const Fields = ({
               university_degree: e.target.value,
             });
           }}
+          sx={{
+            paddingLeft: 0,
+            "& > div": {
+              paddingRight: state.university_degree ? "36px !important" : "",
+            },
+          }}
+          startAdornment={
+            <IconButton
+              color="error"
+              sx={{
+                display: state.university_degree ? "" : "none",
+                position: "absolute",
+              }}
+              onClick={() => {
+                setState({
+                  ...state,
+                  university_degree: null,
+                });
+              }}
+            >
+              <ClearIcon sx={{ color: "inherit !important" }} />
+            </IconButton>
+          }
         >
           <MenuItem value={"placeholder"} disabled>
             مقطع تحصیلی
@@ -341,6 +415,12 @@ const Fields = ({
           inputProps={{ className: "settings-page-input" }}
           placeholder="لینک صفحه لینکدین"
           value={state.linkedin_link}
+          error={!!linkedinLinkError}
+          helperText={linkedinLinkError}
+          onBlur={() => validateLink(setLinkedinLinkError, "linkedin_link")}
+          onFocus={() => {
+            setLinkedinLinkError("");
+          }}
           onChange={(e) => {
             setState({
               ...state,
@@ -355,6 +435,12 @@ const Fields = ({
           inputProps={{ className: "settings-page-input" }}
           placeholder="لینک صفحه گیتهاب"
           value={state.github_link}
+          error={!!githubLinkError}
+          helperText={githubLinkError}
+          onBlur={() => validateLink(setGithubLinkError, "github_link")}
+          onFocus={() => {
+            setGithubLinkError("");
+          }}
           onChange={(e) => {
             setState({
               ...state,
@@ -375,6 +461,29 @@ const Fields = ({
               django_experience: e.target.value,
             });
           }}
+          sx={{
+            paddingLeft: 0,
+            "& > div": {
+              paddingRight: state.django_experience ? "36px !important" : "",
+            },
+          }}
+          startAdornment={
+            <IconButton
+              color="error"
+              sx={{
+                display: state.django_experience ? "" : "none",
+                position: "absolute",
+              }}
+              onClick={() => {
+                setState({
+                  ...state,
+                  django_experience: null,
+                });
+              }}
+            >
+              <ClearIcon sx={{ color: "inherit !important" }} />
+            </IconButton>
+          }
         >
           <MenuItem value={"placeholder"} disabled>
             سابقه جنگو
@@ -402,6 +511,29 @@ const Fields = ({
               react_experience: e.target.value,
             });
           }}
+          sx={{
+            paddingLeft: 0,
+            "& > div": {
+              paddingRight: state.react_experience ? "36px !important" : "",
+            },
+          }}
+          startAdornment={
+            <IconButton
+              color="error"
+              sx={{
+                display: state.react_experience ? "" : "none",
+                position: "absolute",
+              }}
+              onClick={() => {
+                setState({
+                  ...state,
+                  react_experience: null,
+                });
+              }}
+            >
+              <ClearIcon sx={{ color: "inherit !important" }} />
+            </IconButton>
+          }
         >
           <MenuItem value={"placeholder"} disabled>
             سابقه ری‌اکت
@@ -427,6 +559,29 @@ const Fields = ({
               devops_experience: e.target.value,
             });
           }}
+          sx={{
+            paddingLeft: 0,
+            "& > div": {
+              paddingRight: state.devops_experience ? "36px !important" : "",
+            },
+          }}
+          startAdornment={
+            <IconButton
+              color="error"
+              sx={{
+                display: state.devops_experience ? "" : "none",
+                position: "absolute",
+              }}
+              onClick={() => {
+                setState({
+                  ...state,
+                  devops_experience: null,
+                });
+              }}
+            >
+              <ClearIcon sx={{ color: "inherit !important" }} />
+            </IconButton>
+          }
         >
           <MenuItem value={"placeholder"} disabled>
             سابقه زیرساخت
