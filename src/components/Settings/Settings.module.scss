@@ -24,3 +24,9 @@
   align-items: center;
   padding-bottom: 20px;
 }
+
+@media screen and (max-width: 600px) {
+  .container {
+    padding-right: 16px;
+  }
+}
