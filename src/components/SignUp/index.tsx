@@ -150,7 +150,7 @@ function SignUp() {
                 setEmailError("");
               }}
               onChange={(e) => {
-                setEmail(e.target.value);
+                setEmail(e.target.value.toLowerCase());
               }}
               tabIndex={1}
             />
