@@ -100,7 +100,7 @@ function RequestVerification() {
                 setEmailError("");
               }}
               onChange={(e) => {
-                setEmail(e.target.value);
+                setEmail(e.target.value.toLowerCase());
               }}
             />
             <Button
