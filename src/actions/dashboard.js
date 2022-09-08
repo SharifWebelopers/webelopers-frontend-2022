@@ -11,3 +11,7 @@ export const updateUserInfo = (params) => {
 export const changePassword = (params) => {
   return axios().post(`/accounts/change-password/`, params);
 };
+
+export const getNotifs = () => {
+  return axios().get(`/dashboard/announcements/`);
+};

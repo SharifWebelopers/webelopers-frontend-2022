@@ -4,17 +4,17 @@ import useCollapse from "react-collapsed";
 import SouthIcon from "@mui/icons-material/South";
 import styles from "./Notification.module.scss";
 
-interface FaqProps {
-  data: { question: string; answer: string };
+interface NotificationProps {
+  data: { header: string; body: string };
 }
 
-function Notification({ data }: FaqProps) {
+function Notification({ data }: NotificationProps) {
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
 
   return (
     <div className={styles.faq}>
       <div className={styles.faqSummary} {...getToggleProps()}>
-        <div className={styles.faqTitle}>{data.question}</div>
+        <div className={styles.faqTitle}>{data.header}</div>
         <SouthIcon
           className={classNames(styles.arrowIcon, {
             [styles.arrowFlip]: isExpanded,
@@ -22,7 +22,7 @@ function Notification({ data }: FaqProps) {
         />
       </div>
       <div className={styles.faqDescriptionWrapper} {...getCollapseProps()}>
-        <div className={styles.faqDescription}>{data.answer}</div>
+        <div className={styles.faqDescription}>{data.body}</div>
       </div>
     </div>
   );
