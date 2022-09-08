@@ -158,7 +158,7 @@ function Login() {
                 setEmailError("");
               }}
               onChange={(e) => {
-                setEmail(e.target.value);
+                setEmail(e.target.value.toLowerCase());
               }}
             />
             <TextField

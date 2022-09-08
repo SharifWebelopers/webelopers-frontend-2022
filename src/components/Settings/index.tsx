@@ -82,7 +82,6 @@ interface StateType {
 const SettingsContainer = () => {
   const [context, setContext] = useContext(Context);
 
-  const [scroll, setScroll] = useState(false);
   const [refreshInfo, setRefreshInfo] = useState(true);
   const [tab, setTab] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
@@ -122,7 +121,7 @@ const SettingsContainer = () => {
           email: res.data.email,
           province: res.data.province,
           university_degree: res.data.university_degree,
-          university_start_date: res.data.start_date,
+          university_start_date: res.data.university_start_date,
           field_study: res.data.field_study,
           university: res.data.university,
           linkedin_link: res.data.linkedin_link,

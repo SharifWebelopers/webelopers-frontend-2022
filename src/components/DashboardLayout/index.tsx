@@ -180,15 +180,19 @@ function DashboardLayout({
             <div className={styles.hrSeperator}></div>
             <Tooltip title="خروج" placement={isMobile ? "top" : "left"}>
               <div className={styles.navItem}>
-                <LogoutOutlinedIcon
+                <IconButton
+                  className={styles["nav-icon-button"]}
                   onClick={() => {
                     localStorage.removeItem("accessToken");
                     localStorage.removeItem("refreshToken");
                     router.push("/auth");
                   }}
-                  fontSize="large"
-                  className={styles.logoutIcon}
-                />
+                >
+                  <LogoutOutlinedIcon
+                    fontSize="large"
+                    className={styles.logoutIcon}
+                  />
+                </IconButton>
               </div>
             </Tooltip>
           </nav>
