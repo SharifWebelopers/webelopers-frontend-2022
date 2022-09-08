@@ -17,7 +17,7 @@ export default function Layout({ children }: Props) {
   const [context, _] = useContext(Context);
 
   if (context.loggedIn) {
-    router.replace("/");
+    router.replace("/dashboard");
   }
 
   return (
