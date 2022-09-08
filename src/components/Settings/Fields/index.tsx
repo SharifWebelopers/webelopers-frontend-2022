@@ -39,6 +39,29 @@ const Fields = ({
   const [githubLinkError, setGithubLinkError] = useState("");
   const [linkedinLinkError, setLinkedinLinkError] = useState("");
 
+  const [selects, setSelects] = useState({
+    province: state.province || "placeholder",
+    university_degree: state.university_degree || "placeholder",
+    django_experience: state.django_experience || "placeholder",
+    react_experience: state.react_experience || "placeholder",
+    devops_experience: state.devops_experience || "placeholder",
+  });
+  useEffect(() => {
+    setSelects({
+      province: state.province || "placeholder",
+      university_degree: state.university_degree || "placeholder",
+      django_experience: state.django_experience || "placeholder",
+      react_experience: state.react_experience || "placeholder",
+      devops_experience: state.devops_experience || "placeholder",
+    });
+  }, [
+    state.province,
+    state.university_degree,
+    state.django_experience,
+    state.react_experience,
+    state.devops_experience,
+  ]);
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
@@ -276,7 +299,7 @@ const Fields = ({
             !state.province ? "placeholder" : ""
           }`}
           inputProps={{ className: "settings-page-input" }}
-          value={state.province || "placeholder"}
+          value={selects.province}
           onChange={(e) => {
             setState({
               ...state,
@@ -324,7 +347,7 @@ const Fields = ({
             !state.university_degree ? "placeholder" : ""
           }`}
           inputProps={{ className: "settings-page-input" }}
-          value={state.university_degree || "placeholder"}
+          value={selects.university_degree}
           onChange={(e) => {
             setState({
               ...state,
@@ -456,7 +479,7 @@ const Fields = ({
             !state.django_experience ? "placeholder" : ""
           }`}
           inputProps={{ className: "settings-page-input" }}
-          value={state.django_experience || "placeholder"}
+          value={selects.django_experience}
           onChange={(e) => {
             setState({
               ...state,
@@ -506,7 +529,7 @@ const Fields = ({
             !state.react_experience ? "placeholder" : ""
           }`}
           inputProps={{ className: "settings-page-input" }}
-          value={state.react_experience || "placeholder"}
+          value={selects.react_experience}
           onChange={(e) => {
             setState({
               ...state,
@@ -554,7 +577,7 @@ const Fields = ({
             !state.devops_experience ? "placeholder" : ""
           }`}
           inputProps={{ className: "settings-page-input" }}
-          value={state.devops_experience || "placeholder"}
+          value={selects.devops_experience}
           onChange={(e) => {
             setState({
               ...state,
