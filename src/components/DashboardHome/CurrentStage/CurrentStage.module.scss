@@ -1,4 +1,6 @@
 .container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   margin: 12px;
 }
@@ -14,5 +16,38 @@
 
   & svg {
     width: 22px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  margin-top: 12px;
+  height: 100%;
+}
+
+.stage-info {
+  color: #fff;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #c2a090;
+  padding: 16px;
+  border-radius: 64px;
+  font-size: 1.5rem;
+  font-weight: 300;
+
+  & .identifier {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  & .data {
+    width: 100%;
+    text-align: center;
   }
 }
