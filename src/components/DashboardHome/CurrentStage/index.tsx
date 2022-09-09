@@ -110,6 +110,7 @@ const CurrentStage = () => {
             }}
             component={"a"}
             href={stage.document_url}
+            target="_blank"
             download
           >
             دانلود فایل
