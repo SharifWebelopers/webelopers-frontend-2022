@@ -1,0 +1,89 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 12px;
+  margin-left: 0;
+  padding-left: 20px;
+  overflow-y: scroll;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  gap: 12px;
+  color: #c2a090;
+
+  & svg {
+    width: 22px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  margin-top: 12px;
+  height: 100%;
+}
+
+.stage-info {
+  color: #fff;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #c2a090;
+  padding: 16px;
+  border-radius: 64px;
+  font-size: 1.5rem;
+  font-weight: 300;
+
+  & .identifier {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  & .data {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.timer-container {
+  position: relative;
+  padding: 40px;
+  font-size: 2rem;
+  font-weight: 100;
+  width: 240px;
+  height: 240px;
+  min-height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+.circular-timer {
+  position: absolute;
+  width: 100% !important;
+  height: 100% !important;
+  font-size: 4px;
+  top: 0;
+  right: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    margin: 12px;
+    width: calc(100% - 24px);
+    padding-left: 0;
+    overflow-y: visible;
+    height: 100%;
+  }
+}

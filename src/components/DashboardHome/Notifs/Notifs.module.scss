@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+  margin: 12px;
+  overflow-y: scroll;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  gap: 12px;
+  color: #c2a090;
+
+  & svg {
+    width: 22px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    margin: 12px;
+    width: calc(100% - 24px);
+    overflow-y: visible;
+    margin-bottom: 40px;
+  }
+}
