@@ -15,3 +15,7 @@ export const changePassword = (params) => {
 export const getNotifs = () => {
   return axios().get(`/dashboard/announcements/`);
 };
+
+export const getStages = () => {
+  return axios().get(`/dashboard/stages/`);
+};
