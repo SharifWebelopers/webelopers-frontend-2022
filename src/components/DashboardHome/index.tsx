@@ -10,6 +10,7 @@ const DashboardHome = () => {
     <div className={styles.container}>
       <Notifs />
       <Divider
+        className={styles.divider}
         orientation="vertical"
         sx={{ color: "#1d1b26", height: "100%", borderColor: "unset" }}
       />

@@ -34,7 +34,7 @@ const CurrentStage = () => {
     name: "",
     document_url: "",
     deadline: 0,
-    start_time: 1662704393652,
+    start_time: 0,
   });
   const [remainingTime, setRemainingTime] = useState({
     Days: "00",
@@ -74,7 +74,7 @@ const CurrentStage = () => {
         name: lastStage.name,
         document_url: lastStage.document_url,
         deadline: +lastStage.deadline_timestamp,
-        start_time: 1662704393652,
+        start_time: +lastStage.start_timestamp,
       });
     });
   }, []);

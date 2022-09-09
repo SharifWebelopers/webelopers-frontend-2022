@@ -1,12 +1,10 @@
 .faq {
-  background: #1D1B26;
+  background: #1d1b26;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  //background-color: rgba(203, 203, 203, 0.1);
   backdrop-filter: blur(50px);
   margin: 12px;
   padding: 24px 32px;
-  //border-radius: 8px;
   width: calc(100% - 32px);
   max-width: 1224px;
   font-weight: 500;
@@ -40,12 +38,17 @@
   color: #757575;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
+  .faq {
+    margin: 12px 0;
+    width: 100%;
+  }
+
   .faqSummary {
     font-size: 20px;
     line-height: 32px;
   }
-  
+
   .faqDescription {
     font-size: 16px;
   }
