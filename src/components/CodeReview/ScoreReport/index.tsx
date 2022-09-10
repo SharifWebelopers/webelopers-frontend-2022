@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import FileDownloadRoundedIcon from '@mui/icons-material/FileDownloadRounded';
 
 import styles from "./ScoreReport.module.scss";
-import shamsiDate from "../../utils/shamsiDate";
+import shamsiDate from "../../../utils/shamsiDate";
 
 function ScoreReport(){
 

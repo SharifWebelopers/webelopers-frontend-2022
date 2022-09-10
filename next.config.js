@@ -7,6 +7,9 @@ const nextConfig = {
       allowFutureImage: true,
     },
   },
+  images: {
+    domains: ["webeloperssut.com"],
+  },
 };
 
 module.exports = nextConfig;

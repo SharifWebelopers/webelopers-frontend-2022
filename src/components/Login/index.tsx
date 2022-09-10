@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import {
   Button,
@@ -79,7 +79,7 @@ function Login() {
     }
   }, [password, email, loading]);
 
-  const handleFormSubmit = (e: any) => {
+  const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
 
     setLoading(true);
@@ -96,7 +96,7 @@ function Login() {
           },
           loggedIn: true,
         });
-        router.push("/");
+        router.push("/dashboard");
       })
       .catch((err) => {
         if (err.response?.status === 403) return setShowActivationPrompt(true);
@@ -158,7 +158,7 @@ function Login() {
                 setEmailError("");
               }}
               onChange={(e) => {
-                setEmail(e.target.value);
+                setEmail(e.target.value.toLowerCase());
               }}
             />
             <TextField

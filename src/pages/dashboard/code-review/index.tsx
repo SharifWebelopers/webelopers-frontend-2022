@@ -1,16 +1,18 @@
-import React from "react";
-import DashboardLayout from "../../../components/DashboardLayout";
-import CodeReviewLayout from "../../../components/CodeReviewLayout";
-// import documentTutorialData from "../../../../data/documentTutorialData";
+import React, { ReactElement } from "react";
+import Layout from "../../../components/DashboardLayout";
 
-function Tutorials() {
-  return (
-    <div>
-      <DashboardLayout>
-        <CodeReviewLayout />
-      </DashboardLayout>
-    </div>
-  );
+import CodeReviewContainer from "../../../components/CodeReview";
+
+function DashboardCodeReviewPage() {
+  return <CodeReviewContainer />;
 }
 
-export default Tutorials;
+DashboardCodeReviewPage.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <>
+      <Layout>{page}</Layout>
+    </>
+  );
+};
+
+export default DashboardCodeReviewPage;

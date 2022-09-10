@@ -7,6 +7,11 @@ body {
   min-height: 100vh;
 }
 
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
 #__next {
   position: absolute;
   min-height: 100%;
@@ -27,10 +32,37 @@ input:-webkit-autofill {
   box-shadow: 0 0 0px 1000px #fff inset !important;
 }
 
+input.settings-page-input:-webkit-autofill,
+input.change-password-input:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px #1d1b26 inset !important;
+  -webkit-text-fill-color: #bf846b !important;
+}
+
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+nav::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #757575;
+  border-radius: 40px;
+}
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-corner {
+  display: none;
 }
 
 fieldset {
@@ -40,4 +72,8 @@ fieldset {
 legend {
   font-size: 1.25rem;
   font-weight: 700;
+}
+
+.react-swipeable-view-container > div {
+  overflow-x: hidden !important;
 }

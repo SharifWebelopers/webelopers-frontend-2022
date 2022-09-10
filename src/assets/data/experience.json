@@ -1,0 +1,16 @@
+{
+    "experience": [
+        {
+            "slug": "beginner",
+            "name": "کمتر از یک سال"
+        },
+        {
+            "slug": "intermediate",
+            "name": "بین یک تا دو سال"
+        },
+        {
+            "slug": "advanced",
+            "name": "بیشتر از دو سال"
+        }
+    ]
+}
