@@ -189,14 +189,14 @@ function Home() {
             </div>
             <div className={styles.timeItem}>
               <div className={styles.timeItemDate}>
-                ۲۱ <br />
+                ۲۳ <br />
                 شهریور
               </div>
               <div className={styles.timeItemTitle}>افتتاحیه</div>
             </div>
             <div className={styles.timeItem}>
               <div className={styles.timeItemDate}>
-                ۲۲ <br />
+                ۲۴ <br />
                 شهریور
               </div>
               <div className={styles.timeItemTitle}>آموزش و پیاده‌سازی</div>
