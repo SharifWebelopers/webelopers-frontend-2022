@@ -1,0 +1,49 @@
+.invitation {
+  color: #fff;
+  background-color: #1d1b26;
+  border: 1px solid rgba(237, 237, 237, 0.66);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1024px;
+  margin: 24px auto;
+}
+
+.buttons {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.accept,
+.reject {
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  width: 96px;
+  border: none;
+  color: #fff;
+}
+
+.accept {
+  margin-left: 16px;
+  background-color: #26ad3a;
+}
+
+.reject {
+  background-color: #d82d23;
+}
+
+@media (max-width: 768px) {
+  .invitation {
+    flex-direction: column;
+  }
+
+  .buttons {
+    margin-top: 16px;
+  }
+}

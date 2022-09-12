@@ -150,7 +150,7 @@ function DashboardLayout({
       title: "تیم",
       isMobile,
       Icon: GroupsIcon,
-      disabled: true,
+      disabled: false,
     },
     {
       path: "/dashboard/code",
