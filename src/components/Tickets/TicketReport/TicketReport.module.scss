@@ -1,0 +1,192 @@
+.ticketReport{
+    background-color: #1D1B26;
+    border-radius: 15px;
+    border: 1px solid white;
+
+    width: 100%;
+    max-width: 1200px; 
+    margin: 50px 0px;
+}
+
+.upSection{
+    padding: 10px;
+    width: 100%;
+
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+
+    & > div{
+        font-size: 18px;
+        padding: 5px;
+        color: white;
+
+        position: relative;
+
+        div{
+            padding: 10px 0px;
+        }
+    }
+
+    & > div:nth-of-type(1){
+        border-left: 1px solid rgba(255,255,255,0.1);
+        width: 5%;
+        font-size: 32px;
+    }
+
+    & > div:nth-of-type(2){
+        border-left: 1px solid rgba(255,255,255,0.1);
+        width: 60%;
+
+        span{
+            padding: 0px 10px;
+        }
+    }
+
+    & > div:nth-of-type(3){
+        width: 35%;
+
+        div{
+            display: flex;
+            align-items: center;
+            span:nth-of-type(2){
+                padding: 0px 10px;
+                color: #CCB0A1;
+            }
+
+            svg{
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+.bottomSection{
+    width: 100%;
+    padding: 10px;
+
+    & > div{
+        margin-top: 10px;
+        p:nth-of-type(1){
+            font-size: 24px;
+            color: #CCB0A1;
+            font-weight: 700;
+        }
+        p:nth-of-type(2){
+            color: white;
+            font-size: 14px;
+            line-height: 30px;
+        }
+    }
+}
+
+.arrowIcon {
+    transition: all 0.3s;
+    font-size: 32px !important;
+    font-weight: 600 !important;
+    margin-right: 8px;
+}
+
+.arrowFlip {
+    transform: rotate(180deg);
+    color: #757575;
+}
+
+.label{
+    position: absolute;
+    padding: 5px 10px;
+    font-size: 14px;
+
+    bottom:30px;
+    background-color: #1D1B26;
+    border-radius: 40px;
+
+    color: #CCB0A1;
+}
+
+@media only screen and (max-width: 768px){
+    .upSection{
+        flex-direction: column !important;
+        justify-content: flex-start;
+    
+        padding: 5px;
+
+        position: relative;
+    
+        & > div{
+            font-size: 14px;
+            padding: 0px;
+            color: white;
+    
+            display: flex;
+            align-items: center;
+
+            p.label{
+                width: 60px;
+            }
+
+            p, span{
+                line-height: 20px;
+            }
+        }
+    
+        & > div:nth-of-type(1){
+            border-left: none;
+            width: auto;
+            font-size: 16px;
+
+            position: absolute;
+            background-color: #1D1B26;
+            padding: 5px 10px;
+
+            bottom: 110px;
+            right: 20px;
+            border-radius: 40px;
+        }
+    
+        & > div:nth-of-type(2){
+            border-left: none;
+            width: 100%;
+    
+            span{
+                padding: 0px 10px;
+            }
+
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+        }
+    
+        & > div:nth-of-type(3){
+            width: 100%;
+        }
+    }
+
+    .bottomSection{
+        width: 100%;
+        padding: 10px;
+    
+        & > div{
+            margin-top: 10px;
+            p:nth-of-type(1){
+                font-size: 18px;
+                color: #CCB0A1;
+                font-weight: 700;
+            }
+            p:nth-of-type(2){
+                color: white;
+                font-size: 12px;
+                line-height: 30px;
+            }
+        }
+    }
+    
+    .label{
+        position: static;
+        border-left: 1px solid rgba(255,255,255,0.1);
+        border-radius: 0px;
+
+        background-color: transparent;
+    }
+    
+}

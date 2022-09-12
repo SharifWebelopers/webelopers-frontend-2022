@@ -153,11 +153,11 @@ function DashboardLayout({
       disabled: true,
     },
     {
-      path: "/dashboard/code",
+      path: "/dashboard/code-review",
       title: "بررسی کد",
       isMobile,
       Icon: CodeIcon,
-      disabled: true,
+      disabled: false,
     },
     {
       path: "/dashboard/settings",
@@ -167,11 +167,11 @@ function DashboardLayout({
       disabled: false,
     },
     {
-      path: "/dashboard/request",
+      path: "/dashboard/tickets",
       title: "ارسال درخواست",
       isMobile,
       Icon: BorderColorOutlinedIcon,
-      disabled: true,
+      disabled: false,
     },
   ]);
 
