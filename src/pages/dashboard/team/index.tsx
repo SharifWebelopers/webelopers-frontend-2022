@@ -1,6 +1,6 @@
 import React from "react";
 import DashboardLayout from "../../../components/DashboardLayout";
-import DashBoardTeamContent from "../../../components/DashBoardTeamContent";
+import DashBoardTeamContent from "../../../components/Team/DashBoardTeamContent";
 
 function DashboardTeam() {
   return (

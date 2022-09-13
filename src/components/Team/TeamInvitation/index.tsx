@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./TeamInvitation.module.scss";
 
 interface TeamInvitationProps {
-  title: string;
+  title?: string;
 }
 
 function TeamInvitation({

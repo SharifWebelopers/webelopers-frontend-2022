@@ -13,6 +13,7 @@ import SwipeableViews from "react-swipeable-views";
 
 import styles from "./DashBoardTeamContent.module.scss";
 import TeamInvitations from "../TeamInvitaions";
+import CreateTeam from "../CreateTeam";
 
 interface TabPanelProps {
   children: any;
@@ -55,7 +56,7 @@ const PanelsWrapper = ({
 };
 
 const SettingsContainer = () => {
-  const [tab, setTab] = useState(2);
+  const [tab, setTab] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
   const [accordion, setAccordion] = useState(false);
 
@@ -114,7 +115,7 @@ const SettingsContainer = () => {
 
       <PanelsWrapper tab={tab} isDesktop={isDesktop}>
         <TabPanel value={tab} index={0}>
-          <div>0</div>
+          <CreateTeam />
         </TabPanel>
         <TabPanel value={tab} index={1}>
           <div>1</div>
