@@ -14,6 +14,7 @@ import SwipeableViews from "react-swipeable-views";
 import styles from "./DashBoardTeamContent.module.scss";
 import TeamInvitations from "../TeamInvitaions";
 import CreateTeam from "../CreateTeam";
+import FindTeammate from "../FindTeammate";
 
 interface TabPanelProps {
   children: any;
@@ -118,7 +119,7 @@ const SettingsContainer = () => {
           <CreateTeam />
         </TabPanel>
         <TabPanel value={tab} index={1}>
-          <div>1</div>
+          <FindTeammate />
         </TabPanel>
         <TabPanel value={tab} index={2}>
           <TeamInvitations />
