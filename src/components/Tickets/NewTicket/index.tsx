@@ -1,28 +1,69 @@
 import react from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styles from "./NewTicket.module.scss";
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import { Formik } from 'formik';
 import Link from "next/link";
+import { submitTicket } from "../../../actions/dashboard";
+import Context from "../../../context/context";
+import { useRouter } from "next/router";
+import { CircularProgress } from "@mui/material";
 
 interface NewTicketData {
-    subject: null | string;
+    title: null | string;
     body: null | string;
 }
 
 const NewTicket = () => {
 
-    const isSubmitting = useState(false);
+    const [context, setContext] = useContext(Context);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    const router = useRouter();
 
     const validate = (values: NewTicketData) => {
         const errors: any = {};
-        if (!values.subject) {
-            errors.subject = 'لطفا موضوع رو هم وارد کن :)';
+        if (!values.title) {
+            errors.title = 'لطفا موضوع رو هم وارد کن :)';
         }
         if (!values.body) {
             errors.body = 'پیامت کو پس!';
         }
         return errors;
+    }
+
+    const handleSubmit = (values: NewTicketData) => {
+        setIsSubmitting(true);
+        setLoading(true);
+        submitTicket(values)
+            .then(res => {
+                setContext({
+                    ...context,
+                    snackbar: {
+                    open: true,
+                    message: "پیام شما با موفقیت ارسال شد",
+                    variant: "success",
+                    },
+                });
+                setTimeout(() => {
+                    router.push("/dashboard/tickets/");
+                },2000);
+            })
+            .catch(err => {
+                setContext({
+                    ...context,
+                    snackbar: {
+                    open: true,
+                    message: "خطایی در حین ارسال پیام رخ داد!",
+                    variant: "error",
+                    },
+                });
+            })
+            .finally(()=>{
+                setIsSubmitting(false);
+                setLoading(false);
+            })
     }
 
     return (
@@ -35,39 +76,40 @@ const NewTicket = () => {
 
                 <div className={styles.newTicket}>
                     <Formik
-                        initialValues={{ subject: '', body: '' }}
+                        initialValues={{ title: '', body: '' }}
                         validate={validate}
-                        onSubmit={(values, { setSubmitting }) => {
-                            setTimeout(() => {
-                            alert(JSON.stringify(values, null, 2));
-                            setSubmitting(false);
-                            }, 400);
-                    }}>
+                        onSubmit={handleSubmit}>
                     {({
                         values,
                         errors,
                         touched,
                         handleChange,
-                        handleBlur,
                         handleSubmit,
                         isSubmitting,
                     }) => (
                         <form onSubmit={handleSubmit}>
+
+                            {loading &&
+                                (
+                                    <CircularProgress/>
+                                )
+                            }
+
                             <input
                                 type="text"
-                                name="subject"
+                                name="title"
                                 onChange={handleChange}
-                                value={values.subject}
+                                value={values.title}
                                 placeholder="عنوان..."
                             />
-                            {errors.subject && touched.subject && errors.subject}
+                            {errors.title && touched.title && (<div className={styles.errorMessage}>{errors.title}</div>)}
                             <textarea
                                 name="body"
                                 onChange={handleChange}
                                 value={values.body}
                                 placeholder="پیام شما..."
                             />
-                            {errors.body && touched.body && errors.body}
+                            {errors.body && touched.body && (<div className={styles.errorMessage}>{errors.body}</div>)}
                             <div className={styles.buttons}>
                                 <button type="submit" disabled={isSubmitting}>
                                     ثبت

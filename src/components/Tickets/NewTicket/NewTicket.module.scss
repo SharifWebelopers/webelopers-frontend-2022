@@ -80,6 +80,18 @@
     }
 }
 
+.errorMessage{
+    background-color: rgb(226, 60, 60);
+    color: white;
+    font-size: 14px;
+
+    padding: 5px;
+    border-radius: 20px;
+    margin-top: 10px;
+
+    width: 90%;
+}
+
 .buttons{
     display: flex;
     flex-wrap: wrap;
@@ -98,6 +110,12 @@
     button{
         background-color: #C2A090;
         color: #1D1B26;
+        cursor: pointer;
+
+        &:disabled{
+            opacity: 0.4;
+            cursor: initial;
+        }
     }
 
     a{
