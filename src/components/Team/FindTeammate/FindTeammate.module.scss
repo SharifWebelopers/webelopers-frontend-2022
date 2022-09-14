@@ -4,3 +4,107 @@
   flex-direction: column;
   align-items: center;
 }
+
+.requests-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 40px;
+  color: #ededed;
+  padding-left: 8px;
+}
+
+.find-teammate-box {
+  background-color: #1d1b26;
+  border: 1px solid #ededed;
+  padding: 32px 16px;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: unset;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+
+  & > div {
+    width: 100%;
+  }
+}
+
+.info-container {
+  height: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  font-size: 1rem;
+  padding-left: 8px;
+  width: 100%;
+}
+
+.lone-wolf {
+  margin: 8px 0;
+
+  & button {
+    font-size: 1rem;
+    width: auto;
+  }
+}
+
+.request-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-left: 8px;
+}
+
+.request-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #b9b7b7;
+  white-space: nowrap;
+  font-size: 1rem;
+
+  & > div:nth-child(1) {
+    min-width: 5%;
+  }
+  & > div:nth-child(3) {
+    min-width: 40%;
+  }
+  & > div:nth-child(5) {
+    min-width: 40%;
+  }
+  & > div:nth-child(7) {
+    min-width: 5%;
+  }
+}
+
+.status {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  & svg {
+    width: 41px;
+  }
+  &.accepted {
+    color: #26ad3a;
+  }
+  &.rejected {
+    color: #d82d23;
+  }
+}
+
+.request-index {
+  color: #fff;
+  text-decoration: underline;
+}

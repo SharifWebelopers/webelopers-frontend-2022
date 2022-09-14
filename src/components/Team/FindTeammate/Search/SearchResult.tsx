@@ -2,17 +2,24 @@ import { Button } from "@mui/material";
 import React from "react";
 import Image from "next/image";
 import defaultImg from "../../../../assets/images/blank-profile.png";
+
 import styles from "./Search.module.scss";
 
 interface SearchResultProps {
+  className?: string;
   imageSrc?: string;
   username: string;
   email: string;
 }
 
-const SearchResult = ({ imageSrc, username, email }: SearchResultProps) => {
+const SearchResult = ({
+  className,
+  imageSrc,
+  username,
+  email,
+}: SearchResultProps) => {
   return (
-    <div className={styles["search-result-row"]}>
+    <div className={`${styles["search-result-row"]} ${className}`}>
       <div
         style={{
           display: "flex",
