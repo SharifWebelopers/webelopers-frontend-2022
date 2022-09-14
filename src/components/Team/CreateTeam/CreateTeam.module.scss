@@ -1,3 +1,55 @@
+.modal {
+  background-color: #c8c8c8;
+  border-radius: 16px;
+  padding: 24px;
+  width: calc(100% - 32px);
+  max-width: 480px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+}
+
+.modalAccept,
+.modalReject {
+  width: 128px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: #000;
+  border: 1px solid transparent;
+  padding: 8px;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #757575;
+    color: #fff;
+    border: 1px solid transparent;
+  }
+}
+
+.modalTitle {
+  text-align: center;
+  line-height: 32px;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.modalAccept {
+  background-color: #757575;
+  margin-left: 16px;
+}
+
+.modalReject {
+  border: 1px solid #000;
+}
+
 .noTeam {
   color: #fff;
   background-color: #1d1b26;
@@ -50,6 +102,15 @@
   }
 }
 
+.returnBtn {
+  color: #1d1b26;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 32px 0;
+}
+
 .seperator {
   width: 1px;
   height: 40px;
@@ -77,11 +138,13 @@
   right: -12px;
 }
 
-.teamImageWrapper {
+.teamImageWrapper,
+.teamImage {
   background-color: #d9d9d9;
   border-radius: 50%;
   width: 160px;
   height: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.25);
 }
 
 .camera {
@@ -115,6 +178,18 @@
   }
 }
 
+.githubDescription {
+  max-width: 400px;
+  margin: 0px 16px;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+}
+
+.fileUploader {
+  display: none;
+}
+
 .createTeamBtn {
   border-radius: 24px;
   border: 1px solid #ccb0a1;
@@ -130,6 +205,12 @@
     background-color: #ccb0a1;
     color: #1d1b26;
   }
+
+  &:disabled {
+    background-color: #757575;
+    border: 1px solid #757575;
+    color: #fff;
+  }
 }
 
 .teamNameWrapper,
@@ -141,6 +222,8 @@
   align-items: center;
   position: relative;
   margin: 16px 0;
+  max-width: calc(100% - 8px);
+  overflow: auto;
 }
 
 .teamNameTitle,
@@ -149,7 +232,7 @@
 }
 
 .teamNameTitle {
-  padding-left: 4px;
+  padding-left: 16px;
   display: flex;
   align-items: center;
   border-left: 1px solid #757575;
@@ -169,7 +252,7 @@
 
 .member {
   display: flex;
-  margin: 16px 0;
+  margin: 8px 0;
   align-items: center;
 }
 
@@ -186,6 +269,23 @@
   width: 1px;
   min-height: 32px;
   background-color: #757575;
+}
+
+.deleteTeamBtn {
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  border: none;
+  color: #fff;
+  background-color: #d82d23;
+  cursor: pointer;
+  margin-right: 16px;
+
+  &:disabled {
+    background-color: #757575;
+  }
 }
 
 @media (max-width: 768px) {
