@@ -29,8 +29,10 @@ function CreateTeam() {
   const [teamImage, setTeamImage] = useState<any>();
   const [teamId, setTeamId] = useState("");
   const [pageLoading, setPageLoading] = useState(true);
+  const [hasChosenRegion, setHasChosenRegion] = useState<string | null>("");
 
   useEffect(() => {
+    setHasChosenRegion(localStorage.getItem("has-chosen-region"));
     getTeam()
       .then((res) => res.data)
       .then((data) => {
@@ -53,10 +55,12 @@ function CreateTeam() {
     <>
       {!pageLoading && (
         <div>
-          {teamState === "no-team" &&
-            !localStorage.getItem("has-chosen-region") && (
-              <ChooseRegion setTeamState={setTeamState} />
-            )}
+          {!hasChosenRegion && (
+            <ChooseRegion
+              setTeamState={setTeamState}
+              setHasChosenRegion={setHasChosenRegion}
+            />
+          )}
           {teamState === "is-editing" && (
             <EditTeam
               id={teamId}
@@ -80,10 +84,9 @@ function CreateTeam() {
               teamId={teamId}
             />
           )}
-          {teamState === "no-team" &&
-            localStorage.getItem("has-chosen-region") && (
-              <NoTeam setContext={setContext} setTeamState={setTeamState} />
-            )}
+          {teamState === "no-team" && hasChosenRegion && (
+            <NoTeam setContext={setContext} setTeamState={setTeamState} />
+          )}
           {teamState === "is-creating" && (
             <CreateTeamForm
               setBaseTeamName={setTeamName}
@@ -101,7 +104,7 @@ function CreateTeam() {
   );
 }
 
-function ChooseRegion({ setTeamState }) {
+function ChooseRegion({ setTeamState, setHasChosenRegion }) {
   return (
     <div className={styles.chooseRegion}>
       <div className={styles.chooseRegionTitle}>
@@ -113,6 +116,7 @@ function ChooseRegion({ setTeamState }) {
           onClick={() => {
             setTeamState("no-team");
             localStorage.setItem("has-chosen-region", "true");
+            setHasChosenRegion(true);
           }}
         >
           <LaptopChromebookIcon className={styles.regionIcon} />
@@ -123,6 +127,7 @@ function ChooseRegion({ setTeamState }) {
           onClick={() => {
             setTeamState("no-team");
             localStorage.setItem("has-chosen-region", "true");
+            setHasChosenRegion(true);
           }}
         >
           <TipsAndUpdatesIcon className={styles.regionIcon} />
