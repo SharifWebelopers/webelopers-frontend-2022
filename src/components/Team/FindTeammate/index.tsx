@@ -25,6 +25,12 @@ const FindTeammate = () => {
     { name: "فلانی", status: "pending" },
     { name: "فلانی", status: "accepted" },
     { name: "فلانی", status: "rejected" },
+    { name: "فلانی", status: "pending" },
+    { name: "فلانی", status: "accepted" },
+    { name: "فلانی", status: "rejected" },
+    { name: "فلانی", status: "pending" },
+    { name: "فلانی", status: "accepted" },
+    { name: "فلانی", status: "rejected" },
   ]);
   const [loneWolves, setLoneWolves] = useState<any[]>([
     {
@@ -121,7 +127,7 @@ const FindTeammate = () => {
                       return (
                         <div className={styles["request-row"]}>
                           <div className={styles["request-index"]}>
-                            {index + 1}
+                            {(index + 1).toLocaleString("fa")}
                           </div>
                           <Divider
                             orientation="vertical"
