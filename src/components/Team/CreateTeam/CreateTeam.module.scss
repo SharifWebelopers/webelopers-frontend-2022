@@ -142,7 +142,7 @@
 .chooseRegion {
   background-color: #1d1b26;
   border-radius: 8px;
-  margin: 32px auto;
+  margin: 32px auto 64px;
   width: calc(100% - 32px);
   max-width: 1024px;
   color: #fff;
@@ -157,10 +157,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 32px;
+  margin: 48px 0 32px;
+}
+
+.regionIcon {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  width: 96px;
+  height: 96px;
+  color: #757575;
 }
 
 .region {
+  position: relative;
   border: 1px solid #757575;
   border-radius: 16px;
   width: 240px;
@@ -177,7 +188,17 @@
   &:hover {
     background-color: #c2a090;
     color: #000;
+
+    .regionIcon {
+      color: #a4482d;
+    }
   }
+}
+
+.regionDifference {
+  color: #a4482d;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .returnBtn {
@@ -369,6 +390,10 @@
 @media (max-width: 768px) {
   .noTeam {
     flex-direction: column;
+  }
+
+  .chooseRegionTitle {
+    text-align: center;
   }
 
   .regions {

@@ -1,7 +1,9 @@
 import Image from "next/future/image";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
+import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import {
   createTeam,
   deleteRequestRandomTeammate,
@@ -20,7 +22,7 @@ import { Modal } from "@mui/material";
 
 function CreateTeam() {
   const [context, setContext] = useContext(Context);
-  const [teamState, setTeamState] = useState("choose-region");
+  const [teamState, setTeamState] = useState("no-team");
   const [teamName, setTeamName] = useState("");
   const [teamMembers, setTeamMembers] = useState([]);
   const [githubRepo, setGithubRepo] = useState("");
@@ -51,8 +53,10 @@ function CreateTeam() {
     <>
       {!pageLoading && (
         <div>
-          {teamState === "choose-region" &&
-            !localStorage.getItem("has-chosen-region") && <ChooseRegion />}
+          {teamState === "no-team" &&
+            !localStorage.getItem("has-chosen-region") && (
+              <ChooseRegion setTeamState={setTeamState} />
+            )}
           {teamState === "is-editing" && (
             <EditTeam
               id={teamId}
@@ -76,9 +80,10 @@ function CreateTeam() {
               teamId={teamId}
             />
           )}
-          {teamState === "no-team" && (
-            <NoTeam setContext={setContext} setTeamState={setTeamState} />
-          )}
+          {teamState === "no-team" &&
+            localStorage.getItem("has-chosen-region") && (
+              <NoTeam setContext={setContext} setTeamState={setTeamState} />
+            )}
           {teamState === "is-creating" && (
             <CreateTeamForm
               setBaseTeamName={setTeamName}
@@ -96,16 +101,42 @@ function CreateTeam() {
   );
 }
 
-function ChooseRegion() {
+function ChooseRegion({ setTeamState }) {
   return (
     <div className={styles.chooseRegion}>
       <div className={styles.chooseRegionTitle}>
         تمایل دارید در کدام بخش شرکت کنید؟
       </div>
       <div className={styles.regions}>
-        <div className={styles.region}>می‌خواهم در بخش وب شرکت کنم.</div>
-        <div className={styles.region}>می‌خواهم در بخش ایده شرکت کنم.</div>
+        <div
+          className={styles.region}
+          onClick={() => {
+            setTeamState("no-team");
+            localStorage.setItem("has-chosen-region", "true");
+          }}
+        >
+          <LaptopChromebookIcon className={styles.regionIcon} />
+          می‌خواهم در بخش وب شرکت کنم.
+        </div>
+        <div
+          className={styles.region}
+          onClick={() => {
+            setTeamState("no-team");
+            localStorage.setItem("has-chosen-region", "true");
+          }}
+        >
+          <TipsAndUpdatesIcon className={styles.regionIcon} />
+          می‌خواهم در بخش ایده شرکت کنم.
+        </div>
       </div>
+      <a
+        className={styles.regionDifference}
+        target="_blank"
+        href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTc3NTIzNTU3NjI5ODc2?igshid=YmMyMTA2M2Y="
+        rel="noreferrer"
+      >
+        تفاوت بخش وب و ایده چیست؟
+      </a>
     </div>
   );
 }
