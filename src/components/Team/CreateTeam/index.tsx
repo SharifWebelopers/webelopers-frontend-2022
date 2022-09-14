@@ -4,8 +4,11 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import {
   createTeam,
+  deleteRequestRandomTeammate,
   deleteTeam,
+  getRequestRandomTeammate,
   getTeam,
+  requestRandomTeammate,
   updateTeam,
 } from "../../../actions/team";
 import Context from "../../../context/context";
@@ -17,7 +20,7 @@ import { Modal } from "@mui/material";
 
 function CreateTeam() {
   const [context, setContext] = useContext(Context);
-  const [teamState, setTeamState] = useState("no-team");
+  const [teamState, setTeamState] = useState("choose-region");
   const [teamName, setTeamName] = useState("");
   const [teamMembers, setTeamMembers] = useState([]);
   const [githubRepo, setGithubRepo] = useState("");
@@ -48,6 +51,8 @@ function CreateTeam() {
     <>
       {!pageLoading && (
         <div>
+          {teamState === "choose-region" &&
+            !localStorage.getItem("has-chosen-region") && <ChooseRegion />}
           {teamState === "is-editing" && (
             <EditTeam
               id={teamId}
@@ -72,18 +77,7 @@ function CreateTeam() {
             />
           )}
           {teamState === "no-team" && (
-            <div className={styles.noTeam}>
-              <div>شما تاکنون تیمی تشکیل نداده‌اید.</div>
-              <div className={styles.noTeamLeft}>
-                <div className={styles.seperator}></div>
-                <button
-                  onClick={() => setTeamState("is-creating")}
-                  className={styles.newTeamBtn}
-                >
-                  تشکیل تیم جدید
-                </button>
-              </div>
-            </div>
+            <NoTeam setContext={setContext} setTeamState={setTeamState} />
           )}
           {teamState === "is-creating" && (
             <CreateTeamForm
@@ -96,6 +90,165 @@ function CreateTeam() {
               setContext={setContext}
             />
           )}
+        </div>
+      )}
+    </>
+  );
+}
+
+function ChooseRegion() {
+  return (
+    <div className={styles.chooseRegion}>
+      <div className={styles.chooseRegionTitle}>
+        تمایل دارید در کدام بخش شرکت کنید؟
+      </div>
+      <div className={styles.regions}>
+        <div className={styles.region}>می‌خواهم در بخش وب شرکت کنم.</div>
+        <div className={styles.region}>می‌خواهم در بخش ایده شرکت کنم.</div>
+      </div>
+    </div>
+  );
+}
+
+function NoTeam({ setTeamState, setContext }) {
+  const [findTeamModalOpen, setFindTeamModalOpen] = useState(false);
+  const handleOpenFindTeamModal = () => setFindTeamModalOpen(true);
+  const handleCloseFindTeamModal = () => setFindTeamModalOpen(false);
+  const [findLoading, setFindLoading] = useState(false);
+  const [alreadyWantFindTeammate, setAlreadyWantFindTeammate] = useState(false);
+
+  useEffect(() => {
+    getRequestRandomTeammate()
+      .then((res) => res.data)
+      .then((data) => {
+        setAlreadyWantFindTeammate(data.is_active);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+  const handleFindRandomTeammate = () => {
+    setFindLoading(true);
+    requestRandomTeammate()
+      .then((res) => res.data)
+      .then((data) => {
+        console.log(data);
+        setContext((old) => ({
+          ...old,
+          snackbar: {
+            open: true,
+            message: "درخواست شما با موفقیت ثبت شد.",
+            variant: "success",
+          },
+        }));
+      })
+      .catch((error) => {
+        console.log(error);
+        setContext((old) => ({
+          ...old,
+          snackbar: {
+            open: true,
+            message: "مشکلی در سامانه رخ داده است.",
+            variant: "error",
+          },
+        }));
+      })
+      .finally(() => {
+        setFindLoading(false);
+        handleCloseFindTeamModal;
+      });
+  };
+
+  const handleDeleteFindTeammate = () => {
+    deleteRequestRandomTeammate()
+      .then((res) => res.data)
+      .then((data) => {
+        setAlreadyWantFindTeammate(false);
+        setContext((old) => ({
+          ...old,
+          snackbar: {
+            open: true,
+            message: "درخواست شما با موفقیت حذف شد.",
+            variant: "success",
+          },
+        }));
+      })
+      .catch((error) => {
+        console.log(error);
+        setContext((old) => ({
+          ...old,
+          snackbar: {
+            open: true,
+            message: "مشکلی در سامانه رخ داده است.",
+            variant: "error",
+          },
+        }));
+      });
+  };
+  return (
+    <>
+      <Modal open={findTeamModalOpen} onClose={handleCloseFindTeamModal}>
+        <div className={styles.modal}>
+          <div className={styles.modalTitle}>
+            با تایید این گزینه، نام شما به عنوان کسانی که به دنبال هم‌تیمی
+            هستند، نمایش داده می‌شود و اگر تا پایان رویداد تیمی پیدا نکردید، تیم
+            شما به صورت رندوم انتخاب می‌شود.
+          </div>
+          <div className={styles.modalButtons}>
+            <button
+              disabled={findLoading}
+              className={styles.modalAccept}
+              onClick={handleFindRandomTeammate}
+            >
+              تایید
+            </button>
+            <button
+              disabled={findLoading}
+              className={styles.modalReject}
+              onClick={handleCloseFindTeamModal}
+            >
+              بازگشت
+            </button>
+          </div>
+        </div>
+      </Modal>
+      <div className={styles.noTeam}>
+        <div>میخوام سرگروه باشم و تیم تشکیل بدم.</div>
+        <div className={styles.noTeamLeft}>
+          <div className={styles.seperator}></div>
+          <button
+            onClick={() => setTeamState("is-creating")}
+            className={styles.newTeamBtn}
+            disabled={alreadyWantFindTeammate}
+          >
+            تشکیل تیم جدید
+          </button>
+        </div>
+      </div>
+      <div className={styles.noTeam}>
+        <div className={styles.noTeamDescription}>
+          نمی‌خوام سرگروه باشم و دنبال هم‌تیمی می‌گردم.
+        </div>
+        <div className={styles.noTeamLeft}>
+          <div className={styles.seperator}></div>
+          <button
+            onClick={handleOpenFindTeamModal}
+            className={styles.newTeamBtn}
+            disabled={alreadyWantFindTeammate}
+          >
+            یافتن هم‌تیمی رندوم
+          </button>
+        </div>
+      </div>
+      {alreadyWantFindTeammate && (
+        <div className={styles.alreadyWantFindTeammate}>
+          شما قبلا درخواست یافتن هم‌تیمی رندوم را ثبت کرده‌اید.
+          <button
+            className={styles.alreadyWantFindTeammateCancel}
+            onClick={handleDeleteFindTeammate}
+          >
+            لغو درخواست
+          </button>
         </div>
       )}
     </>
@@ -300,10 +453,18 @@ function ViewTeam({
             خروج سرگروه به منزله حذف تیم است ، آیا از خروج خود اطمینان دارید؟
           </div>
           <div className={styles.modalButtons}>
-            <button disabled={deleteLoading} className={styles.modalAccept} onClick={handleDeleteTeam}>
+            <button
+              disabled={deleteLoading}
+              className={styles.modalAccept}
+              onClick={handleDeleteTeam}
+            >
               بله
             </button>
-            <button disabled={deleteLoading} className={styles.modalReject} onClick={handleClose}>
+            <button
+              disabled={deleteLoading}
+              className={styles.modalReject}
+              onClick={handleClose}
+            >
               خیر
             </button>
           </div>
