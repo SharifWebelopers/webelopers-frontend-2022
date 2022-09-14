@@ -64,9 +64,35 @@
   margin: 24px auto;
 }
 
+.alreadyWantFindTeammate {
+  max-width: 1024px;
+  margin: 24px auto;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.alreadyWantFindTeammateCancel {
+  color: #d82d23;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #757575;
+    color: #fff;
+    cursor: not-allowed;
+  }
+}
+
 .noTeamLeft {
   display: flex;
   align-items: center;
+}
+
+.noTeamDescription {
+  line-height: 32px;
 }
 
 .editBtnWrapper {
@@ -89,7 +115,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px 24px;
+  padding: 12px 0;
   border: 1px solid #ccb0a1;
   background-color: transparent;
   color: #fff;
@@ -99,6 +125,58 @@
   &:hover {
     background-color: #ccb0a1;
     color: #1d1b26;
+  }
+}
+
+.newTeamBtn {
+  width: 200px;
+
+  &:disabled {
+    background-color: #757575;
+    color: #fff;
+    border: 1px solid transparent;
+    cursor: not-allowed !important;
+  }
+}
+
+.chooseRegion {
+  background-color: #1d1b26;
+  border-radius: 8px;
+  margin: 32px auto;
+  width: calc(100% - 32px);
+  max-width: 1024px;
+  color: #fff;
+  padding: 32px 48px;
+}
+
+.chooseRegionTitle {
+  font-size: 32px;
+}
+
+.regions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.region {
+  border: 1px solid #757575;
+  border-radius: 16px;
+  width: 240px;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 8px;
+  margin: 32px;
+  font-size: 24px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #c2a090;
+    color: #000;
   }
 }
 
@@ -182,8 +260,8 @@
   max-width: 400px;
   margin: 0px 16px;
   width: 100%;
-  text-align: center;
   font-size: 16px;
+  line-height: 24px;
 }
 
 .fileUploader {
@@ -291,6 +369,14 @@
 @media (max-width: 768px) {
   .noTeam {
     flex-direction: column;
+  }
+
+  .regions {
+    flex-direction: column;
+  }
+
+  .noTeamDescription {
+    text-align: center;
   }
 
   .seperator {

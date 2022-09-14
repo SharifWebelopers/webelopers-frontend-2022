@@ -15,3 +15,15 @@ export const deleteTeam = (id) => {
 export const getTeam = (params) => {
   return axios().get("/teams/crud");
 };
+
+export const requestRandomTeammate = () => {
+  return axios().post("/teams/request_team/");
+};
+
+export const getRequestRandomTeammate = () => {
+  return axios().get("/teams/request_team/");
+};
+
+export const deleteRequestRandomTeammate = () => {
+  return axios().delete("/teams/request_team/");
+};
