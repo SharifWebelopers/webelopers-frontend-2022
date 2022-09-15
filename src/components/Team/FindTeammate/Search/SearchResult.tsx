@@ -1,9 +1,11 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import defaultImg from "../../../../assets/images/blank-profile.png";
+import { sendInvitation } from "../../../../actions/team";
 
 import styles from "./Search.module.scss";
+import Context from "../../../../context/context";
 
 interface SearchResultProps {
   className?: string;
@@ -18,6 +20,32 @@ const SearchResult = ({
   username,
   email,
 }: SearchResultProps) => {
+  const [context, setContext] = useContext(Context);
+
+  const invite = (email: string, username: string) => {
+    sendInvitation({ receiver_email: email })
+      .then(() => {
+        setContext({
+          ...context,
+          snackbar: {
+            open: true,
+            message: `دعوت شما به ${username} ارسال شد.`,
+            variant: "success",
+          },
+        });
+      })
+      .catch(() => {
+        setContext({
+          ...context,
+          snackbar: {
+            open: true,
+            message: "ارسال دعوت با مشکل مواجه شد!",
+            variant: "error",
+          },
+        });
+      });
+  };
+
   return (
     <div className={`${styles["search-result-row"]} ${className}`}>
       <div
@@ -29,6 +57,7 @@ const SearchResult = ({
         }}
       >
         <Image
+          loading="lazy"
           className={styles.avatar}
           src={imageSrc || defaultImg}
           alt="no picture!"
@@ -42,7 +71,11 @@ const SearchResult = ({
           </div>
         </div>
       </div>
-      <Button className={styles.invite} variant="outlined">
+      <Button
+        className={styles.invite}
+        variant="outlined"
+        onClick={() => invite(email, username)}
+      >
         ارسال دعوت
       </Button>
     </div>

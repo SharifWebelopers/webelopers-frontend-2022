@@ -27,3 +27,19 @@ export const getRequestRandomTeammate = () => {
 export const deleteRequestRandomTeammate = () => {
   return axios().delete("/teams/request_team/");
 };
+
+export const findTeammates = () => {
+  return axios().get(`/accounts/emails/`);
+};
+
+export const getTeamRequests = () => {
+  return axios().get(`/accounts/team_requests/`);
+};
+
+export const getSentInvitations = () => {
+  return axios().get(`/teams/invitations/sent/`);
+};
+
+export const sendInvitation = (params) => {
+  return axios().post(`/teams/invitations/sent/`, params);
+};
