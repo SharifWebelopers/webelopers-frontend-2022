@@ -26,9 +26,7 @@ const TabPanel = ({ children, value, index }: TabPanelProps) => {
   return (
     <div
       style={{
-        minHeight: "100%",
         minWidth: "100%",
-        height: "fit-content",
         direction: "rtl",
       }}
       hidden={value !== index}

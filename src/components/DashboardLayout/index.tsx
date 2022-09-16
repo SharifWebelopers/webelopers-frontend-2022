@@ -115,6 +115,7 @@ function DashboardLayout({
             devops_experience: res.data.devops_experience,
             can_sponsor_see_profile: res.data.can_sponsor_see_profile,
             resume: res.data.resume || "",
+            contest_type: res.data.contest_type || "",
           },
         });
       });

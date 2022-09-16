@@ -42,7 +42,8 @@
 }
 
 .modalAccept {
-  background-color: #757575;
+  background-color: #1d1b26;
+  color: #c8c8c8;
   margin-left: 16px;
 }
 
@@ -101,14 +102,6 @@
   margin: 16px 32px;
 }
 
-.editBtn {
-  svg {
-    width: 20px;
-    height: 20px;
-    margin-left: 8px;
-  }
-}
-
 .newTeamBtn,
 .editBtn {
   border-radius: 24px;
@@ -125,6 +118,15 @@
   &:hover {
     background-color: #ccb0a1;
     color: #1d1b26;
+  }
+}
+
+.editBtn {
+  padding: 12px 8px;
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
   }
 }
 
@@ -184,6 +186,8 @@
   margin: 32px;
   font-size: 24px;
   cursor: pointer;
+  max-width: calc(100% - 8px);
+  transition: all 0.2s;
 
   &:hover {
     background-color: #c2a090;
@@ -199,6 +203,10 @@
   color: #a4482d;
   cursor: pointer;
   text-decoration: none;
+  border-top: 1px solid #757575;
+  width: 100%;
+  display: block;
+  padding-top: 16px;
 }
 
 .returnBtn {
@@ -390,6 +398,10 @@
 @media (max-width: 768px) {
   .noTeam {
     flex-direction: column;
+  }
+
+  .chooseRegion {
+    padding: 24px 32px;
   }
 
   .chooseRegionTitle {

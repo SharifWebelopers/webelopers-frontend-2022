@@ -19,9 +19,11 @@ import noTeamImg from "../../../assets/images/blank-profile.png";
 
 import styles from "./CreateTeam.module.scss";
 import { Modal } from "@mui/material";
+import { updateUserInfo } from "../../../actions/dashboard";
 
 function CreateTeam() {
   const [context, setContext] = useContext(Context);
+  console.log("context", context.profile);
   const [teamState, setTeamState] = useState("no-team");
   const [teamName, setTeamName] = useState("");
   const [teamMembers, setTeamMembers] = useState([]);
@@ -29,10 +31,10 @@ function CreateTeam() {
   const [teamImage, setTeamImage] = useState<any>();
   const [teamId, setTeamId] = useState("");
   const [pageLoading, setPageLoading] = useState(true);
-  const [hasChosenRegion, setHasChosenRegion] = useState<string | null>("");
+  const [hasChosenRegion, setHasChosenRegion] = useState<boolean | null>(null);
 
   useEffect(() => {
-    setHasChosenRegion(localStorage.getItem("has-chosen-region"));
+    setHasChosenRegion(!!context.profile.contest_type);
     getTeam()
       .then((res) => res.data)
       .then((data) => {
@@ -50,15 +52,16 @@ function CreateTeam() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [context.profile]);
   return (
     <>
       {!pageLoading && (
-        <div>
+        <>
           {!hasChosenRegion && (
             <ChooseRegion
               setTeamState={setTeamState}
               setHasChosenRegion={setHasChosenRegion}
+              setContext={setContext}
             />
           )}
           {teamState === "is-editing" && (
@@ -98,13 +101,37 @@ function CreateTeam() {
               setContext={setContext}
             />
           )}
-        </div>
+        </>
       )}
     </>
   );
 }
 
-function ChooseRegion({ setTeamState, setHasChosenRegion }) {
+function ChooseRegion({ setTeamState, setHasChosenRegion, setContext }) {
+  const handleSetRegion = (type) => {
+    updateUserInfo({ contest_type: type })
+      .then((res) => {
+        console.log("res", res.data);
+        setContext((old) => ({
+          ...old,
+          snackbar: {
+            open: true,
+            message: "انتخاب شما با موفقیت ثبت شد.",
+            variant: "success",
+          },
+        }));
+      })
+      .catch((error) => {
+        setContext((old) => ({
+          ...old,
+          snackbar: {
+            open: true,
+            message: "مشکلی در سامانه رخ داده است.",
+            variant: "error",
+          },
+        }));
+      });
+  };
   return (
     <div className={styles.chooseRegion}>
       <div className={styles.chooseRegionTitle}>
@@ -114,8 +141,8 @@ function ChooseRegion({ setTeamState, setHasChosenRegion }) {
         <div
           className={styles.region}
           onClick={() => {
+            handleSetRegion("web");
             setTeamState("no-team");
-            localStorage.setItem("has-chosen-region", "true");
             setHasChosenRegion(true);
           }}
         >
@@ -125,8 +152,9 @@ function ChooseRegion({ setTeamState, setHasChosenRegion }) {
         <div
           className={styles.region}
           onClick={() => {
+            handleSetRegion("idea");
             setTeamState("no-team");
-            localStorage.setItem("has-chosen-region", "true");
+
             setHasChosenRegion(true);
           }}
         >
@@ -137,7 +165,7 @@ function ChooseRegion({ setTeamState, setHasChosenRegion }) {
       <a
         className={styles.regionDifference}
         target="_blank"
-        href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTc3NTIzNTU3NjI5ODc2?igshid=YmMyMTA2M2Y="
+        href="https://www.instagram.com/p/Cg4kl1dj55d/"
         rel="noreferrer"
       >
         تفاوت بخش وب و ایده چیست؟
@@ -191,7 +219,7 @@ function NoTeam({ setTeamState, setContext }) {
       })
       .finally(() => {
         setFindLoading(false);
-        handleCloseFindTeamModal;
+        handleCloseFindTeamModal();
       });
   };
 

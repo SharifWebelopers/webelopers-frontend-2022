@@ -15,6 +15,7 @@ export const ContextProvider = ({ children }) => {
     profile: {
       profile_image: "",
       first_name: "",
+      contest_type: null,
       last_name: "",
       phone_number: "",
       email: "",
