@@ -61,7 +61,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1024px;
+  width: 1024px;
+  max-width: calc(100vw - 200px);
   margin: 24px auto;
 }
 
@@ -144,9 +145,9 @@
 .chooseRegion {
   background-color: #1d1b26;
   border-radius: 8px;
-  margin: 32px auto 64px;
-  width: calc(100% - 32px);
-  max-width: 1024px;
+  margin: 64px auto;
+  max-width: calc(100vw - 200px);
+  width: 1024px;
   color: #fff;
   padding: 32px 48px;
 }
@@ -398,14 +399,24 @@
 @media (max-width: 768px) {
   .noTeam {
     flex-direction: column;
+    max-width: calc(100vw - 80px);
   }
 
   .chooseRegion {
     padding: 24px 32px;
+    margin: 32px auto;
+    width: 100%;
+    max-width: unset;
   }
 
   .chooseRegionTitle {
+    font-size: 24px;
+    line-height: 32px;
     text-align: center;
+  }
+
+  .region {
+    font-size: 20px;
   }
 
   .regions {

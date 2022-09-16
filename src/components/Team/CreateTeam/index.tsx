@@ -21,7 +21,11 @@ import styles from "./CreateTeam.module.scss";
 import { Modal } from "@mui/material";
 import { updateUserInfo } from "../../../actions/dashboard";
 
-function CreateTeam() {
+interface CreateTeamProps {
+  isTeamCreator: boolean;
+}
+
+function CreateTeam({ isTeamCreator }: CreateTeamProps) {
   const [context, setContext] = useContext(Context);
   console.log("context", context.profile);
   const [teamState, setTeamState] = useState("no-team");
@@ -85,6 +89,7 @@ function CreateTeam() {
               setTeamState={setTeamState}
               setContext={setContext}
               teamId={teamId}
+              isTeamCreator={isTeamCreator}
             />
           )}
           {teamState === "no-team" && hasChosenRegion && (
@@ -508,6 +513,7 @@ function ViewTeam({
   setTeamState,
   setContext,
   teamId,
+  isTeamCreator,
 }) {
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [deleteTeamOpen, setDeleteTeamOpen] = useState(false);
@@ -575,12 +581,14 @@ function ViewTeam({
           <BorderColorOutlinedIcon />
           ویرایش
         </button>
-        <button
-          onClick={() => setDeleteTeamOpen(true)}
-          className={styles.deleteTeamBtn}
-        >
-          حذف تیم
-        </button>
+        {isTeamCreator && (
+          <button
+            onClick={() => setDeleteTeamOpen(true)}
+            className={styles.deleteTeamBtn}
+          >
+            حذف تیم
+          </button>
+        )}
       </div>
       <div className={styles.createTeam}>
         <div className={styles.imageWrapper}>

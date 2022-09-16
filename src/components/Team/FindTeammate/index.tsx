@@ -79,7 +79,7 @@ const FindTeammate = ({ isDesktop }: { isDesktop: boolean }) => {
           >
             درخواست‌های شما
           </AccordionSummary>
-          <AccordionDetails>
+          <AccordionDetails style={{ whiteSpace: "break-spaces" }}>
             <div>
               {requests.length ? (
                 <>
