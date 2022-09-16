@@ -54,7 +54,7 @@ function CreateTeam() {
       });
   }, [context.profile]);
   return (
-    <>
+    <div style={{ marginBottom: 96 }}>
       {!pageLoading && (
         <>
           {!hasChosenRegion && (
@@ -103,15 +103,22 @@ function CreateTeam() {
           )}
         </>
       )}
-    </>
+    </div>
   );
 }
 
 function ChooseRegion({ setTeamState, setHasChosenRegion, setContext }) {
-  const handleSetRegion = (type) => {
-    updateUserInfo({ contest_type: type })
+  const [chooseRegionModalOpen, setChooseRegionModalOpen] = useState(false);
+  const handleChooseRegionModalOpen = () => setChooseRegionModalOpen(true);
+  const [selectedRegion, setSelectedRegion] = useState("");
+  const handleCloseChooseRegionModalModal = () =>
+    setChooseRegionModalOpen(false);
+  const handleSetRegion = () => {
+    updateUserInfo({ contest_type: selectedRegion })
       .then((res) => {
         console.log("res", res.data);
+        setTeamState("no-team");
+        setHasChosenRegion(true);
         setContext((old) => ({
           ...old,
           snackbar: {
@@ -133,44 +140,70 @@ function ChooseRegion({ setTeamState, setHasChosenRegion, setContext }) {
       });
   };
   return (
-    <div className={styles.chooseRegion}>
-      <div className={styles.chooseRegionTitle}>
-        تمایل دارید در کدام بخش شرکت کنید؟
-      </div>
-      <div className={styles.regions}>
-        <div
-          className={styles.region}
-          onClick={() => {
-            handleSetRegion("web");
-            setTeamState("no-team");
-            setHasChosenRegion(true);
-          }}
-        >
-          <LaptopChromebookIcon className={styles.regionIcon} />
-          می‌خواهم در بخش وب شرکت کنم.
-        </div>
-        <div
-          className={styles.region}
-          onClick={() => {
-            handleSetRegion("idea");
-            setTeamState("no-team");
-
-            setHasChosenRegion(true);
-          }}
-        >
-          <TipsAndUpdatesIcon className={styles.regionIcon} />
-          می‌خواهم در بخش ایده شرکت کنم.
-        </div>
-      </div>
-      <a
-        className={styles.regionDifference}
-        target="_blank"
-        href="https://www.instagram.com/p/Cg4kl1dj55d/"
-        rel="noreferrer"
+    <>
+      <Modal
+        open={chooseRegionModalOpen}
+        onClose={handleCloseChooseRegionModalModal}
       >
-        تفاوت بخش وب و ایده چیست؟
-      </a>
-    </div>
+        <div className={styles.modal}>
+          <div className={styles.modalTitle}>
+            این فیلد غیر قابل تغییر است و برای تغییر آن باید به پشتیبانی رویداد
+            تیکت بزنید.
+          </div>
+          <div className={styles.modalButtons}>
+            <button
+              // disabled={findLoading}
+              className={styles.modalAccept}
+              onClick={handleSetRegion}
+            >
+              تایید
+            </button>
+            <button
+              // disabled={findLoading}
+              className={styles.modalReject}
+              onClick={handleCloseChooseRegionModalModal}
+            >
+              بازگشت
+            </button>
+          </div>
+        </div>
+      </Modal>
+      <div className={styles.chooseRegion}>
+        <div className={styles.chooseRegionTitle}>
+          تمایل دارید در کدام بخش شرکت کنید؟
+        </div>
+        <div className={styles.regions}>
+          <div
+            className={styles.region}
+            onClick={() => {
+              handleChooseRegionModalOpen();
+              setSelectedRegion("web");
+            }}
+          >
+            <LaptopChromebookIcon className={styles.regionIcon} />
+            می‌خواهم در بخش وب شرکت کنم.
+          </div>
+          <div
+            className={styles.region}
+            onClick={() => {
+              handleChooseRegionModalOpen();
+              setSelectedRegion("idea");
+            }}
+          >
+            <TipsAndUpdatesIcon className={styles.regionIcon} />
+            می‌خواهم در بخش ایده شرکت کنم.
+          </div>
+        </div>
+        <a
+          className={styles.regionDifference}
+          target="_blank"
+          href="https://www.instagram.com/p/Cg4kl1dj55d/"
+          rel="noreferrer"
+        >
+          تفاوت بخش وب و ایده چیست؟
+        </a>
+      </div>
+    </>
   );
 }
 
