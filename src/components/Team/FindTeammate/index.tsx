@@ -59,7 +59,7 @@ const FindTeammate = ({ isDesktop }: { isDesktop: boolean }) => {
               ? "pending"
               : item.state === 2
               ? "accepted"
-              : item.status === 3
+              : item.state === 3
               ? "rejected"
               : "expired",
         }))
