@@ -43,3 +43,7 @@ export const getSentInvitations = () => {
 export const sendInvitation = (params) => {
   return axios().post(`/teams/invitations/sent/`, params);
 };
+
+export const expireInvitation = (invitationId) => {
+  return axios().put(`/teams/invitations/sent/${invitationId}/`, { state: 4 });
+};

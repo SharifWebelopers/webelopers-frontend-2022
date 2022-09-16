@@ -15,11 +15,15 @@ import PendingIcon from "./icons/PendingIcon";
 import SearchResult from "./Search/SearchResult";
 import DeleteIcon from "./icons/DeleteIcon";
 import Context from "../../../context/context";
-import { getTeamRequests, getSentInvitations } from "../../../actions/team";
+import {
+  getTeamRequests,
+  getSentInvitations,
+  expireInvitation,
+} from "../../../actions/team";
 
 import styles from "./FindTeammate.module.scss";
 
-const FindTeammate = () => {
+const FindTeammate = ({ isDesktop }: { isDesktop: boolean }) => {
   const [requests, setRequests] = useState<any[]>([]);
   const [loneWolves, setLoneWolves] = useState<any[]>([]);
 
@@ -51,11 +55,13 @@ const FindTeammate = () => {
           id: item.id,
           name: item.receiver.first_name + " " + item.receiver.last_name,
           status:
-            item.state === 0
+            item.state === 1
               ? "pending"
-              : item.state === 1
+              : item.state === 2
               ? "accepted"
-              : "rejected",
+              : item.status === 3
+              ? "rejected"
+              : "expired",
         }))
       );
     });
@@ -83,18 +89,19 @@ const FindTeammate = () => {
                       fontSize: "1.25rem",
                       color: "#ccb0a1",
                       width: "100%",
+                      display: isDesktop ? "" : "none",
                     }}
                   >
                     <div className={styles["request-index"]}></div>
                     <Divider
-                      orientation="vertical"
+                      orientation={isDesktop ? "vertical" : "horizontal"}
                       sx={{
                         borderColor: "unset",
                       }}
                     />
                     <div>درخواست‌ها</div>
                     <Divider
-                      orientation="vertical"
+                      orientation={isDesktop ? "vertical" : "horizontal"}
                       sx={{
                         borderColor: "unset",
                       }}
@@ -106,7 +113,7 @@ const FindTeammate = () => {
                       وضعیت
                     </div>
                     <Divider
-                      orientation="vertical"
+                      orientation={isDesktop ? "vertical" : "horizontal"}
                       sx={{
                         borderColor: "unset",
                       }}
@@ -116,69 +123,130 @@ const FindTeammate = () => {
                   <div className={styles["request-table"]}>
                     {requests.map((item, index) => {
                       return (
-                        <div key={item.id} className={styles["request-row"]}>
-                          <div className={styles["request-index"]}>
-                            {(index + 1).toLocaleString("fa")}
-                          </div>
-                          <Divider
-                            orientation="vertical"
-                            sx={{
-                              color: "#a3a2a2",
-                              height: "30px",
-                              width: "2px",
-                              borderColor: "unset",
-                            }}
-                          />
-                          <div>شما به {item.name} درخواست داده‌اید.</div>
-                          <Divider
-                            orientation="vertical"
-                            sx={{
-                              color: "#a3a2a2",
-                              height: "30px",
-                              width: "2px",
-                              borderColor: "unset",
-                            }}
-                          />
-                          <div
-                            className={`${styles.status} ${
-                              styles[item.status]
-                            }`}
-                          >
-                            {item.status === "pending" ? (
-                              <PendingIcon />
-                            ) : item.status === "accepted" ? (
-                              <AcceptedIcon />
-                            ) : (
-                              <RejectedIcon />
-                            )}
-                            <div>
-                              {item.status === "pending"
-                                ? "در انتظار دیده شدن..."
-                                : item.status === "accepted"
-                                ? "درخواست شما پذیرفته شد."
-                                : "درخواست شما رد شد."}
+                        <>
+                          <div key={item.id} className={styles["request-row"]}>
+                            <div className={styles["request-index"]}>
+                              {(index + 1).toLocaleString("fa")}
                             </div>
+                            <Divider
+                              orientation={
+                                isDesktop ? "vertical" : "horizontal"
+                              }
+                              sx={{
+                                color: "#a3a2a2",
+                                margin: isDesktop ? 0 : "8px 0",
+                                height: isDesktop ? "30px" : "2px",
+                                width: isDesktop ? "2px" : "80px",
+                                borderColor: "unset",
+                              }}
+                            />
+                            <div>شما به {item.name} درخواست داده‌اید.</div>
+                            <Divider
+                              orientation={
+                                isDesktop ? "vertical" : "horizontal"
+                              }
+                              sx={{
+                                color: "#a3a2a2",
+                                margin: isDesktop ? 0 : "8px 0",
+                                height: isDesktop ? "30px" : "2px",
+                                width: isDesktop ? "2px" : "80px",
+                                borderColor: "unset",
+                              }}
+                            />
+                            <div
+                              className={`${styles.status} ${
+                                styles[item.status]
+                              }`}
+                            >
+                              {item.status === "pending" ? (
+                                <PendingIcon />
+                              ) : item.status === "accepted" ? (
+                                <AcceptedIcon />
+                              ) : item.status === "rejected" ? (
+                                <RejectedIcon />
+                              ) : (
+                                <div className={styles["status-icon"]}>
+                                  <DeleteIcon />
+                                </div>
+                              )}
+                              <div>
+                                {item.status === "pending"
+                                  ? "در انتظار دیده شدن..."
+                                  : item.status === "accepted"
+                                  ? "درخواست شما پذیرفته شد."
+                                  : item.status === "rejected"
+                                  ? "درخواست شما رد شد."
+                                  : "درخواست لغو شده است."}
+                              </div>
+                            </div>
+                            <Divider
+                              orientation={
+                                isDesktop ? "vertical" : "horizontal"
+                              }
+                              sx={{
+                                color: "#a3a2a2",
+                                margin: isDesktop ? 0 : "8px 0",
+                                height: isDesktop ? "30px" : "2px",
+                                width: isDesktop ? "2px" : "80px",
+                                borderColor: "unset",
+                              }}
+                            />
+                            <IconButton
+                              size="small"
+                              disabled={item.status !== "pending"}
+                              sx={{
+                                color: "#9f6d61",
+
+                                "&.Mui-disabled": {
+                                  color: "#888",
+                                },
+
+                                "& svg": {
+                                  width: 25,
+                                },
+                              }}
+                              onClick={() => {
+                                expireInvitation(item.id)
+                                  .then(() => {
+                                    return getTeamRequests();
+                                  })
+                                  .then(() => {
+                                    setContext({
+                                      ...context,
+                                      snackbar: {
+                                        open: true,
+                                        message: "لغو درخواست موفقیت‌آمیز بود.",
+                                        variant: "success",
+                                      },
+                                    });
+                                  })
+                                  .catch(() => {
+                                    setContext({
+                                      ...context,
+                                      snackbar: {
+                                        open: true,
+                                        message:
+                                          "خطا در انجام درخواست، لطفا دوباره تلاش کنید!",
+                                        variant: "error",
+                                      },
+                                    });
+                                  });
+                              }}
+                            >
+                              <DeleteIcon />
+                            </IconButton>
                           </div>
                           <Divider
-                            orientation="vertical"
+                            orientation="horizontal"
                             sx={{
                               color: "#a3a2a2",
-                              height: "30px",
-                              width: "2px",
+                              margin: "16px 0",
+                              height: "2px",
+                              width: "100%",
                               borderColor: "unset",
                             }}
                           />
-                          <IconButton
-                            size="small"
-                            sx={{
-                              "& svg": {
-                                width: 25,
-                              },
-                            }}
-                          >
-                            <DeleteIcon />
-                          </IconButton>
-                        </div>
+                        </>
                       );
                     })}
                   </div>
@@ -196,13 +264,22 @@ const FindTeammate = () => {
 
         <Accordion className={styles["find-teammate-box"]}>
           <AccordionSummary
+            style={{ whiteSpace: "break-spaces" }}
             expandIcon={
-              <ExpandMoreIcon sx={{ color: "#fff", width: 36, height: 36 }} />
+              <ExpandMoreIcon
+                sx={{
+                  color: "#fff",
+                  width: 36,
+                  height: 36,
+                }}
+              />
             }
           >
             افرادی که نیاز به تیم دارند:
           </AccordionSummary>
-          <AccordionDetails style={{ width: "100%" }}>
+          <AccordionDetails
+            style={{ width: "100%", whiteSpace: "break-spaces" }}
+          >
             <div>
               {loneWolves.length ? (
                 <>

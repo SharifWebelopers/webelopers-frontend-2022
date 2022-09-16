@@ -27,6 +27,7 @@ const TabPanel = ({ children, value, index }: TabPanelProps) => {
     <div
       style={{
         minWidth: "100%",
+        maxWidth: "100%",
         direction: "rtl",
       }}
       hidden={value !== index}
@@ -117,7 +118,7 @@ const SettingsContainer = () => {
           <CreateTeam />
         </TabPanel>
         <TabPanel value={tab} index={1}>
-          <FindTeammate />
+          <FindTeammate isDesktop={isDesktop} />
         </TabPanel>
         <TabPanel value={tab} index={2}>
           <TeamInvitations />

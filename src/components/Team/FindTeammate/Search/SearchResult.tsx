@@ -48,14 +48,7 @@ const SearchResult = ({
 
   return (
     <div className={`${styles["search-result-row"]} ${className}`}>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row-reverse",
-          maxWidth: "56%",
-          overflow: "hidden",
-        }}
-      >
+      <div className={styles["left-side"]}>
         <Image
           loading="lazy"
           className={styles.avatar}
