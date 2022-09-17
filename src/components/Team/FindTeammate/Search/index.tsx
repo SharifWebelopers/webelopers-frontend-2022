@@ -13,7 +13,7 @@ import { findTeammates } from "../../../../actions/team";
 import styles from "./Search.module.scss";
 import Context from "../../../../context/context";
 
-const SearchBar = () => {
+const SearchBar = ({ setRefresh }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [users, setUsers] = useState<any[]>([]);
@@ -76,6 +76,10 @@ const SearchBar = () => {
                 "& > svg": {
                   height: "60%",
                   width: "100%",
+                },
+                "&:-webkit-autofill": {
+                  boxShadow: "0 0 0px 1000px #1d1b26 inset !important",
+                  WebkitTextFillColor: "#bf846b !important",
                 },
               }}
               position="start"
@@ -142,6 +146,7 @@ const SearchBar = () => {
                         imageSrc={user.profile_image}
                         username={user.username}
                         email={user.email}
+                        setRefresh={setRefresh}
                       />
                     );
                   })
