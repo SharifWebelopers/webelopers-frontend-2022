@@ -44,6 +44,16 @@ export const sendInvitation = (params) => {
   return axios().post(`/teams/invitations/sent/`, params);
 };
 
+export const getRecievedInvitations = () => {
+  return axios().get(`/teams/invitations/received/`);
+};
+export const acceptRecievedInvitations = (id) => {
+  return axios().patch(`/teams/invitations/received/${id}`, { state: 2 });
+};
+export const rejectRecievedInvitations = (id) => {
+  return axios().patch(`/teams/invitations/received/${id}`, { state: 3 });
+};
+
 export const expireInvitation = (invitationId) => {
   return axios().put(`/teams/invitations/sent/${invitationId}/`, { state: 4 });
 };

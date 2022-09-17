@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Accordion,
   AccordionDetails,
@@ -15,6 +15,7 @@ import styles from "./DashBoardTeamContent.module.scss";
 import TeamInvitations from "../TeamInvitaions";
 import CreateTeam from "../CreateTeam";
 import FindTeammate from "../FindTeammate";
+import Context from "../../../context/context";
 
 interface TabPanelProps {
   children: any;
@@ -46,13 +47,7 @@ const PanelsWrapper = ({
   children: any;
   tab: number;
 }) => {
-  return isDesktop ? (
-    <SwipeableViews axis="x-reverse" index={tab}>
-      {children}
-    </SwipeableViews>
-  ) : (
-    <>{children}</>
-  );
+  return <>{children}</>;
 };
 
 const SettingsContainer = () => {
@@ -65,66 +60,101 @@ const SettingsContainer = () => {
   }, []);
 
   const tabLabel = ["تشکیل تیم", "یافتن هم‌تیمی", "صندوق پیام"];
+  const [context, setContext] = useContext(Context);
+  const is_team_creator = context.profile.is_team_creator;
+  const needs_team = context.profile.needs_team;
+  const contest_type = context.profile.contest_type;
 
   return (
-    <div className={styles.container}>
-      {isDesktop ? (
-        <Box className={styles["tab-panel"]}>
-          <Tabs
-            value={tab}
-            onChange={(_, newValue) => {
-              setTab(newValue);
-            }}
-            TabIndicatorProps={{ style: { display: "none" } }}
-          >
-            <Tab style={{ transition: "all 0.7s" }} label={tabLabel[0]} />
-            <Tab style={{ transition: "all 0.7s" }} label={tabLabel[1]} />
-            <Tab style={{ transition: "all 0.7s" }} label={tabLabel[2]} />
-          </Tabs>
-        </Box>
-      ) : (
-        <Accordion
-          expanded={accordion}
-          onChange={(_, newValue) => {
-            setAccordion(newValue);
-          }}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreOutlined sx={{ color: "#fff" }} />}
-          >
-            {tabLabel[tab]}
-          </AccordionSummary>
-
-          {[0, 1, 2]
-            .filter((number) => number !== tab)
-            .map((number) => (
-              <AccordionDetails key={number}>
-                <Button
-                  className="settings-accordion"
-                  onClick={() => {
-                    setAccordion(false);
-                    setTab(number);
+    <>
+      <div className={styles.container}>
+        {contest_type && (
+          <>
+            {isDesktop ? (
+              <Box className={styles["tab-panel"]}>
+                <Tabs
+                  value={tab}
+                  onChange={(_, newValue) => {
+                    setTab(newValue);
                   }}
+                  TabIndicatorProps={{ style: { display: "none" } }}
                 >
-                  {tabLabel[number]}
-                </Button>
-              </AccordionDetails>
-            ))}
-        </Accordion>
-      )}
+                  <Tab style={{ transition: "all 0.7s" }} label={tabLabel[0]} />
+                  <Tab
+                    style={{
+                      transition: "all 0.7s",
+                      display: is_team_creator ? "" : "none",
+                    }}
+                    label={tabLabel[1]}
+                  />
 
-      <PanelsWrapper tab={tab} isDesktop={isDesktop}>
-        <TabPanel value={tab} index={0}>
-          <CreateTeam />
-        </TabPanel>
-        <TabPanel value={tab} index={1}>
-          <FindTeammate isDesktop={isDesktop} />
-        </TabPanel>
-        <TabPanel value={tab} index={2}>
-          <TeamInvitations />
-        </TabPanel>
-      </PanelsWrapper>
-    </div>
+                  <Tab
+                    style={{
+                      transition: "all 0.7s",
+                      display: !is_team_creator ? "" : "none",
+                    }}
+                    label={tabLabel[2]}
+                  />
+                </Tabs>
+              </Box>
+            ) : (
+              <Accordion
+                expanded={accordion}
+                onChange={(_, newValue) => {
+                  setAccordion(newValue);
+                }}
+              >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreOutlined sx={{ color: "#fff" }} />}
+                >
+                  {tabLabel[tab]}
+                </AccordionSummary>
+
+                {[0, 1, 2]
+                  .filter(
+                    (number) =>
+                      number !== tab &&
+                      ((number === 1 && is_team_creator) ||
+                        (number === 2 && !is_team_creator) ||
+                        number === 0)
+                  )
+                  .map((number) => (
+                    <>
+                      <AccordionDetails key={number}>
+                        <Button
+                          className="settings-accordion"
+                          onClick={() => {
+                            setAccordion(false);
+                            setTab(number);
+                          }}
+                        >
+                          {tabLabel[number]}
+                        </Button>
+                      </AccordionDetails>
+                    </>
+                  ))}
+              </Accordion>
+            )}
+          </>
+        )}
+
+        <PanelsWrapper tab={tab} isDesktop={isDesktop}>
+          <TabPanel value={tab} index={0}>
+            <CreateTeam tabState={tab} isTeamCreator={is_team_creator} />
+          </TabPanel>
+          {is_team_creator && (
+            <TabPanel value={tab} index={1}>
+              <FindTeammate isDesktop={isDesktop} />
+            </TabPanel>
+          )}
+          {!is_team_creator && (
+            <TabPanel value={tab} index={2}>
+              <TeamInvitations tabState={tab} />
+            </TabPanel>
+          )}
+        </PanelsWrapper>
+      </div>
+    </>
   );
 };
 

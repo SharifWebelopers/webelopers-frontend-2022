@@ -116,6 +116,8 @@ function DashboardLayout({
             can_sponsor_see_profile: res.data.can_sponsor_see_profile,
             resume: res.data.resume || "",
             contest_type: res.data.contest_type || "",
+            needs_team: res.data.needs_team || "",
+            is_team_creator: res.data.is_team_creator || "",
           },
         });
       });

@@ -19,11 +19,17 @@ import noTeamImg from "../../../assets/images/blank-profile.png";
 
 import styles from "./CreateTeam.module.scss";
 import { Modal } from "@mui/material";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { updateUserInfo } from "../../../actions/dashboard";
+import { profile } from "console";
 
-function CreateTeam() {
+interface CreateTeamProps {
+  isTeamCreator: boolean;
+  tabState: number;
+}
+
+function CreateTeam({ isTeamCreator, tabState }: CreateTeamProps) {
   const [context, setContext] = useContext(Context);
-  console.log("context", context.profile);
   const [teamState, setTeamState] = useState("no-team");
   const [teamName, setTeamName] = useState("");
   const [teamMembers, setTeamMembers] = useState([]);
@@ -52,7 +58,7 @@ function CreateTeam() {
       .catch((error) => {
         console.log(error);
       });
-  }, [context.profile]);
+  }, [context.profile, tabState]);
   return (
     <div style={{ marginBottom: 96 }}>
       {!pageLoading && (
@@ -85,6 +91,8 @@ function CreateTeam() {
               setTeamState={setTeamState}
               setContext={setContext}
               teamId={teamId}
+              isTeamCreator={isTeamCreator}
+              currentEmail={context.profile.email}
             />
           )}
           {teamState === "no-team" && hasChosenRegion && (
@@ -508,6 +516,8 @@ function ViewTeam({
   setTeamState,
   setContext,
   teamId,
+  isTeamCreator,
+  currentEmail,
 }) {
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [deleteTeamOpen, setDeleteTeamOpen] = useState(false);
@@ -522,7 +532,7 @@ function ViewTeam({
           ...old,
           snackbar: {
             open: true,
-            message: "تیم با موفقیت حذف شد.",
+            message: "شما با موفقیت از تیم خارج شدید.",
             variant: "success",
           },
         }));
@@ -547,7 +557,9 @@ function ViewTeam({
       <Modal open={deleteTeamOpen} onClose={handleClose}>
         <div className={styles.modal}>
           <div className={styles.modalTitle}>
-            خروج سرگروه به منزله حذف تیم است ، آیا از خروج خود اطمینان دارید؟
+            آیا از خروج خود از تیم اطمینان دارید؟
+            <br />
+            خروج سرگروه به منزله حذف تیم است.
           </div>
           <div className={styles.modalButtons}>
             <button
@@ -568,19 +580,20 @@ function ViewTeam({
         </div>
       </Modal>
       <div className={styles.editBtnWrapper}>
-        <button
-          className={styles.editBtn}
-          onClick={() => setTeamState("is-editing")}
-        >
-          <BorderColorOutlinedIcon />
-          ویرایش
-        </button>
-        <button
-          onClick={() => setDeleteTeamOpen(true)}
-          className={styles.deleteTeamBtn}
-        >
-          حذف تیم
-        </button>
+        {isTeamCreator && (
+          <button
+            className={styles.editBtn}
+            onClick={() => setTeamState("is-editing")}
+          >
+            <BorderColorOutlinedIcon />
+            ویرایش
+          </button>
+        )}
+        {isTeamCreator && (
+          <button onClick={handleOpen} className={styles.deleteTeamBtn}>
+            حذف تیم
+          </button>
+        )}
       </div>
       <div className={styles.createTeam}>
         <div className={styles.imageWrapper}>
@@ -606,17 +619,29 @@ function ViewTeam({
         <div className={styles.membersWrapper}>
           <div className={styles.membersTitle}>اعضا</div>
           <div className={styles.members}>
-            {teamMembers.map((member) => (
+            {teamMembers.map((member, index) => (
               <div key={member.id} className={styles.member}>
-                <div className={styles.memberName}>{member.email}</div>
+                <div className={styles.memberImage}>
+                  <Image
+                    src={member.profile_image || noTeamImg}
+                    alt="member image"
+                    width={32}
+                    height={32}
+                  />
+                </div>
+                <div className={styles.memberName}>{`${member.first_name} ${
+                  member.last_name
+                } ${index === teamMembers.length - 1 ? "(سرگروه)" : ""}`}</div>
+                <div className={styles.exitMember} onClick={handleOpen}>
+                  {member.email === currentEmail && (
+                    <LogoutIcon fontSize="large" />
+                  )}
+                </div>
               </div>
+              // <div key={member.id} className={styles.member}>
+              //   <div className={styles.memberName}>{member.email}</div>
+              // </div>
             ))}
-            {/* <div className={styles.member}>
-    <div className={styles.memberImage}>
-      <Image src={""} />
-    </div>
-    <div className={styles.memberName}>اسم فرد</div>
-  </div> */}
           </div>
         </div>
       </div>
