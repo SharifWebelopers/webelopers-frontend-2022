@@ -1,0 +1,151 @@
+.searchbar {
+  min-width: 50%;
+
+  & fieldset {
+    border: none;
+  }
+  & > div {
+    background-color: #1d1b26;
+    padding-left: 0;
+  }
+  & input::placeholder {
+    color: #ededed;
+  }
+  & input {
+    caret-color: transparent;
+  }
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+
+  & > div {
+    background-color: unset;
+  }
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  background-color: #1d1b26 !important;
+  padding: 16px 24px;
+  border-radius: 20px;
+  width: 60%;
+}
+
+.search-input {
+  width: 100%;
+  direction: ltr;
+  min-width: unset;
+
+  & fieldset {
+    border: none;
+  }
+  & > div {
+    background-color: #1d1b26;
+    padding-right: 0;
+  }
+  & input {
+    color: #fff;
+    padding-left: 0;
+  }
+}
+
+.search-result-container {
+  max-height: 300px;
+  min-height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 12px;
+}
+
+.search-result-row {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  margin: 18px 0;
+
+  & .left-side {
+    display: flex;
+    flex-direction: row-reverse;
+    max-width: 56%;
+    overflow: hidden;
+  }
+
+  & .avatar {
+    border-radius: 50%;
+  }
+
+  & .info-container {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 4px 0 4px 12px;
+    max-width: calc(100% - 72px);
+    overflow: hidden;
+    direction: ltr;
+
+    & .email {
+      color: #777;
+    }
+  }
+
+  & .invite {
+    color: #fff;
+  }
+
+  & .invite:hover {
+    color: #1d1b26;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .searchbar {
+    min-width: 90%;
+  }
+
+  .modal-container {
+    padding: 8px 12px;
+    width: 90%;
+  }
+
+  .search-result-row {
+    flex-wrap: wrap;
+
+    & .left-side {
+      max-width: 100%;
+    }
+
+    & .avatar {
+      min-height: 32px !important;
+      min-width: 32px !important;
+    }
+
+    & .invite {
+      width: 80%;
+      min-width: unset;
+      margin: auto;
+      margin-top: 8px;
+    }
+
+    & .info-container {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    & .invite {
+      color: #fff;
+    }
+  }
+}
