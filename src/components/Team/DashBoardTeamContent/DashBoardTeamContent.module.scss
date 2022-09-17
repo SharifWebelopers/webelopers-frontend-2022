@@ -25,6 +25,25 @@
   padding-bottom: 20px;
 }
 
+.completeInfo {
+  color: #fff;
+  background-color: #1d1b26;
+  border: 1px solid rgba(237, 237, 237, 0.66);
+  border-radius: 8px;
+  padding: 24px 32px;
+  font-size: 20px;
+  max-width: 1024px;
+  width: calc(100% - 32px);
+  margin: 64px auto 24px;
+  line-height: 32px;
+}
+
+.completeInfoLink {
+  color: deepskyblue;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 600px) {
   .container {
     padding-right: 16px;

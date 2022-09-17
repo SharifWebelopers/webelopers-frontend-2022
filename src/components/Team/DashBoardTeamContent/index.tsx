@@ -16,6 +16,7 @@ import TeamInvitations from "../TeamInvitaions";
 import CreateTeam from "../CreateTeam";
 import FindTeammate from "../FindTeammate";
 import Context from "../../../context/context";
+import Link from "next/link";
 
 interface TabPanelProps {
   children: any;
@@ -67,93 +68,106 @@ const SettingsContainer = () => {
 
   return (
     <>
-      <div className={styles.container}>
-        {contest_type && (
-          <>
-            {isDesktop ? (
-              <Box className={styles["tab-panel"]}>
-                <Tabs
-                  value={tab}
+      {!context.profile.phone_number && (
+        <div className={styles.completeInfo}>
+          برای تشکیل تیم ابتدا به بخش تنظیمات رفته و اطلاعات خود را تکمیل کنید.{" "}
+          <Link href={"/dashboard/settings"}>
+            <a className={styles.completeInfoLink}>تکمیل اطلاعات</a>
+          </Link>
+        </div>
+      )}
+      {context.profile.phone_number && (
+        <div className={styles.container}>
+          {contest_type && (
+            <>
+              {isDesktop ? (
+                <Box className={styles["tab-panel"]}>
+                  <Tabs
+                    value={tab}
+                    onChange={(_, newValue) => {
+                      setTab(newValue);
+                    }}
+                    TabIndicatorProps={{ style: { display: "none" } }}
+                  >
+                    <Tab
+                      style={{ transition: "all 0.7s" }}
+                      label={tabLabel[0]}
+                    />
+                    <Tab
+                      style={{
+                        transition: "all 0.7s",
+                        display: is_team_creator ? "" : "none",
+                      }}
+                      label={tabLabel[1]}
+                    />
+
+                    <Tab
+                      style={{
+                        transition: "all 0.7s",
+                        display: !is_team_creator ? "" : "none",
+                      }}
+                      label={tabLabel[2]}
+                    />
+                  </Tabs>
+                </Box>
+              ) : (
+                <Accordion
+                  expanded={accordion}
                   onChange={(_, newValue) => {
-                    setTab(newValue);
+                    setAccordion(newValue);
                   }}
-                  TabIndicatorProps={{ style: { display: "none" } }}
                 >
-                  <Tab style={{ transition: "all 0.7s" }} label={tabLabel[0]} />
-                  <Tab
-                    style={{
-                      transition: "all 0.7s",
-                      display: is_team_creator ? "" : "none",
-                    }}
-                    label={tabLabel[1]}
-                  />
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreOutlined sx={{ color: "#fff" }} />}
+                  >
+                    {tabLabel[tab]}
+                  </AccordionSummary>
 
-                  <Tab
-                    style={{
-                      transition: "all 0.7s",
-                      display: !is_team_creator ? "" : "none",
-                    }}
-                    label={tabLabel[2]}
-                  />
-                </Tabs>
-              </Box>
-            ) : (
-              <Accordion
-                expanded={accordion}
-                onChange={(_, newValue) => {
-                  setAccordion(newValue);
-                }}
-              >
-                <AccordionSummary
-                  expandIcon={<ExpandMoreOutlined sx={{ color: "#fff" }} />}
-                >
-                  {tabLabel[tab]}
-                </AccordionSummary>
+                  {[0, 1, 2]
+                    .filter(
+                      (number) =>
+                        number !== tab &&
+                        ((number === 1 && is_team_creator) ||
+                          (number === 2 && !is_team_creator) ||
+                          number === 0)
+                    )
+                    .map((number) => (
+                      <>
+                        <AccordionDetails key={number}>
+                          <Button
+                            className="settings-accordion"
+                            onClick={() => {
+                              setAccordion(false);
+                              setTab(number);
+                            }}
+                          >
+                            {tabLabel[number]}
+                          </Button>
+                        </AccordionDetails>
+                      </>
+                    ))}
+                </Accordion>
+              )}
+            </>
+          )}
 
-                {[0, 1, 2]
-                  .filter(
-                    (number) =>
-                      number !== tab &&
-                      ((number === 1 && is_team_creator) ||
-                        (number === 2 && !is_team_creator) ||
-                        number === 0)
-                  )
-                  .map((number) => (
-                    <>
-                      <AccordionDetails key={number}>
-                        <Button
-                          className="settings-accordion"
-                          onClick={() => {
-                            setAccordion(false);
-                            setTab(number);
-                          }}
-                        >
-                          {tabLabel[number]}
-                        </Button>
-                      </AccordionDetails>
-                    </>
-                  ))}
-              </Accordion>
+          <PanelsWrapper tab={tab} isDesktop={isDesktop}>
+            <TabPanel value={tab} index={0}>
+              <CreateTeam tabState={tab} isTeamCreator={is_team_creator} />
+            </TabPanel>
+            {is_team_creator && (
+              <TabPanel value={tab} index={1}>
+                <FindTeammate isDesktop={isDesktop} />
+              </TabPanel>
             )}
-          </>
-        )}
-
-        <PanelsWrapper tab={tab} isDesktop={isDesktop}>
-          <TabPanel value={tab} index={0}>
-            <CreateTeam tabState={tab} isTeamCreator={is_team_creator} />
-          </TabPanel>
-          {is_team_creator && (
-            <TabPanel value={tab} index={1}>
-              <FindTeammate isDesktop={isDesktop} />
-            </TabPanel>
-          )}
-          {!is_team_creator && (
-            <TabPanel value={tab} index={2}>
-              <TeamInvitations tabState={tab} />
-            </TabPanel>
-          )}
-        </PanelsWrapper>
-      </div>
+            {!is_team_creator && (
+              <TabPanel value={tab} index={2}>
+                <TeamInvitations tabState={tab} />
+              </TabPanel>
+            )}
+          </PanelsWrapper>
+        </div>
+      )}
     </>
   );
 };
