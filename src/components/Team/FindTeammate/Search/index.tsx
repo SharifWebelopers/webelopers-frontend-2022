@@ -77,10 +77,6 @@ const SearchBar = ({ setRefresh }) => {
                   height: "60%",
                   width: "100%",
                 },
-                "&:-webkit-autofill": {
-                  boxShadow: "0 0 0px 1000px #1d1b26 inset !important",
-                  WebkitTextFillColor: "#bf846b !important",
-                },
               }}
               position="start"
             >
