@@ -26,8 +26,42 @@ import styles from "./FindTeammate.module.scss";
 const FindTeammate = ({ isDesktop }: { isDesktop: boolean }) => {
   const [requests, setRequests] = useState<any[]>([]);
   const [loneWolves, setLoneWolves] = useState<any[]>([]);
+  const [refreshInvitations, setRefreshInvitations] = useState<boolean>(false);
 
   const [context, setContext] = useContext(Context);
+
+  useEffect(() => {
+    if (refreshInvitations) {
+      getSentInvitations()
+        .then((res) => {
+          setRequests(
+            res.data.map((item: any) => ({
+              id: item.id,
+              name: item.receiver.first_name + " " + item.receiver.last_name,
+              status:
+                item.state === 1
+                  ? "pending"
+                  : item.state === 2
+                  ? "accepted"
+                  : item.state === 3
+                  ? "rejected"
+                  : "expired",
+            }))
+          );
+        })
+        .catch(() => {
+          setContext({
+            ...context,
+            snackbar: {
+              open: true,
+              message: "دریافت اطلاعات با خطا مواجه شد، لطفا دوباره تلاش کنید!",
+              variant: "error",
+            },
+          });
+        });
+      setRefreshInvitations(false);
+    }
+  }, [refreshInvitations]);
 
   useEffect(() => {
     getTeamRequests()
@@ -49,27 +83,38 @@ const FindTeammate = ({ isDesktop }: { isDesktop: boolean }) => {
           },
         });
       });
-    getSentInvitations().then((res) => {
-      setRequests(
-        res.data.map((item: any) => ({
-          id: item.id,
-          name: item.receiver.first_name + " " + item.receiver.last_name,
-          status:
-            item.state === 1
-              ? "pending"
-              : item.state === 2
-              ? "accepted"
-              : item.state === 3
-              ? "rejected"
-              : "expired",
-        }))
-      );
-    });
+    getSentInvitations()
+      .then((res) => {
+        setRequests(
+          res.data.map((item: any) => ({
+            id: item.id,
+            name: item.receiver.first_name + " " + item.receiver.last_name,
+            status:
+              item.state === 1
+                ? "pending"
+                : item.state === 2
+                ? "accepted"
+                : item.state === 3
+                ? "rejected"
+                : "expired",
+          }))
+        );
+      })
+      .catch(() => {
+        setContext({
+          ...context,
+          snackbar: {
+            open: true,
+            message: "دریافت اطلاعات با خطا مواجه شد، لطفا دوباره تلاش کنید!",
+            variant: "error",
+          },
+        });
+      });
   }, []);
 
   return (
     <div className={styles.container}>
-      <Search />
+      <Search setRefresh={setRefreshInvitations} />
       <div className={styles["requests-container"]}>
         <Accordion className={styles["find-teammate-box"]}>
           <AccordionSummary
@@ -208,7 +253,26 @@ const FindTeammate = ({ isDesktop }: { isDesktop: boolean }) => {
                               onClick={() => {
                                 expireInvitation(item.id)
                                   .then(() => {
-                                    return getTeamRequests();
+                                    return getSentInvitations();
+                                  })
+                                  .then((res) => {
+                                    setRequests(
+                                      res.data.map((item: any) => ({
+                                        id: item.id,
+                                        name:
+                                          item.receiver.first_name +
+                                          " " +
+                                          item.receiver.last_name,
+                                        status:
+                                          item.state === 1
+                                            ? "pending"
+                                            : item.state === 2
+                                            ? "accepted"
+                                            : item.state === 3
+                                            ? "rejected"
+                                            : "expired",
+                                      }))
+                                    );
                                   })
                                   .then(() => {
                                     setContext({
@@ -292,6 +356,7 @@ const FindTeammate = ({ isDesktop }: { isDesktop: boolean }) => {
                             imageSrc={item.profile_image}
                             username={item.username}
                             email={item.email}
+                            setRefresh={setRefreshInvitations}
                           />
                           <Divider
                             sx={{
