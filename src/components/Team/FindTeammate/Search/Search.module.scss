@@ -1,5 +1,5 @@
 .searchbar {
-  min-width: 50%;
+  min-width: 50% !important;
 
   & fieldset {
     border: none;
@@ -39,7 +39,7 @@
 }
 
 .search-input {
-  width: 100%;
+  width: 100% !important;
   direction: ltr;
   min-width: unset;
 
@@ -112,7 +112,7 @@
 
 @media screen and (max-width: 768px) {
   .searchbar {
-    min-width: 90%;
+    min-width: 90% !important;
   }
 
   .modal-container {

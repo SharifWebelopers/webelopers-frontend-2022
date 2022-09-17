@@ -238,9 +238,11 @@ const FindTeammate = ({ isDesktop }: { isDesktop: boolean }) => {
                             />
                             <IconButton
                               size="small"
-                              disabled={item.status !== "pending"}
+                              // disabled={item.status !== "pending"}
                               sx={{
                                 color: "#9f6d61",
+                                visibility:
+                                  item.status === "pending" ? "" : "hidden",
 
                                 "&.Mui-disabled": {
                                   color: "#888",
