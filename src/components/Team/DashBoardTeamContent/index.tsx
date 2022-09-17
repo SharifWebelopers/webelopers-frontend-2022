@@ -140,16 +140,16 @@ const SettingsContainer = () => {
 
         <PanelsWrapper tab={tab} isDesktop={isDesktop}>
           <TabPanel value={tab} index={0}>
-            <CreateTeam isTeamCreator={is_team_creator} />
+            <CreateTeam tabState={tab} isTeamCreator={is_team_creator} />
           </TabPanel>
           {is_team_creator && (
             <TabPanel value={tab} index={1}>
               <FindTeammate isDesktop={isDesktop} />
             </TabPanel>
           )}
-          {needs_team && (
+          {!is_team_creator && (
             <TabPanel value={tab} index={2}>
-              <TeamInvitations />
+              <TeamInvitations tabState={tab} />
             </TabPanel>
           )}
         </PanelsWrapper>

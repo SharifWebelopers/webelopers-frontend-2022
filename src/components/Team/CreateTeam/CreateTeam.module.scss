@@ -360,7 +360,7 @@
 
 .member {
   display: flex;
-  margin: 8px 0;
+  margin: 8px 0 16px;
   align-items: center;
 }
 
@@ -370,6 +370,16 @@
   background-color: #d9d9d9;
   border-radius: 50%;
   margin-left: 16px;
+
+  img {
+    border-radius: 50%;
+  }
+}
+
+.exitMember {
+  color: #ccb0a1;
+  cursor: pointer;
+  margin-right: 8px;
 }
 
 .nameVerticalSeperator,

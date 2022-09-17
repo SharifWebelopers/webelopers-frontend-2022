@@ -1,5 +1,23 @@
+.noInvitation {
+  color: #fff;
+  background-color: #1d1b26;
+  border: 1px solid rgba(237, 237, 237, 0.66);
+  border-radius: 8px;
+  padding: 24px 32px;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1024px;
+  margin: 24px auto;
+}
+
 @media (max-width: 768px) {
   .invitations {
     padding-bottom: 96px;
+  }
+
+  .noInvitation {
+    padding: 16px 24px;
   }
 }
