@@ -19,16 +19,23 @@ import noTeamImg from "../../../assets/images/blank-profile.png";
 
 import styles from "./CreateTeam.module.scss";
 import { Modal } from "@mui/material";
+import Tooltip from "@mui/material/Tooltip";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { updateUserInfo } from "../../../actions/dashboard";
 import { profile } from "console";
+import { createRouteLoader } from "next/dist/client/route-loader";
 
 interface CreateTeamProps {
   isTeamCreator: boolean;
   tabState: number;
+  setRefreshPage: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function CreateTeam({ isTeamCreator, tabState }: CreateTeamProps) {
+function CreateTeam({
+  isTeamCreator,
+  tabState,
+  setRefreshPage,
+}: CreateTeamProps) {
   const [context, setContext] = useContext(Context);
   const [teamState, setTeamState] = useState("no-team");
   const [teamName, setTeamName] = useState("");
@@ -37,6 +44,7 @@ function CreateTeam({ isTeamCreator, tabState }: CreateTeamProps) {
   const [teamImage, setTeamImage] = useState<any>();
   const [teamId, setTeamId] = useState("");
   const [pageLoading, setPageLoading] = useState(true);
+  const [teamCreator, setTeamCreator] = useState({});
   const [hasChosenRegion, setHasChosenRegion] = useState<boolean | null>(null);
 
   useEffect(() => {
@@ -52,6 +60,7 @@ function CreateTeam({ isTeamCreator, tabState }: CreateTeamProps) {
           setGithubRepo(data[0].github_link);
           setTeamMembers(data[0].members);
           setTeamImage(data[0].image);
+          setTeamCreator(data[0].creator);
         }
         setPageLoading(false);
       })
@@ -93,6 +102,8 @@ function CreateTeam({ isTeamCreator, tabState }: CreateTeamProps) {
               teamId={teamId}
               isTeamCreator={isTeamCreator}
               currentEmail={context.profile.email}
+              setRefreshPage={setRefreshPage}
+              teamCreator={teamCreator}
             />
           )}
           {teamState === "no-team" && hasChosenRegion && (
@@ -107,6 +118,7 @@ function CreateTeam({ isTeamCreator, tabState }: CreateTeamProps) {
               setBaseTeamGithub={setGithubRepo}
               setTeamState={setTeamState}
               setContext={setContext}
+              setRefreshPage={setRefreshPage}
             />
           )}
         </>
@@ -368,6 +380,7 @@ function CreateTeamForm({
   setBaseTeamGithub,
   setTeamState,
   setContext,
+  setRefreshPage,
 }) {
   const imageUploaderRef = useRef(null);
   const [teamName, setTeamName] = useState("");
@@ -420,6 +433,7 @@ function CreateTeamForm({
         setBaseTeamGithub(githubRepo);
         setBaseTeamId(data.id);
         setBaseTeamMembers(data.members);
+        setRefreshPage((old) => !old);
       })
       .catch((error) => {
         const status = error.response?.status;
@@ -518,6 +532,8 @@ function ViewTeam({
   teamId,
   isTeamCreator,
   currentEmail,
+  setRefreshPage,
+  teamCreator,
 }) {
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [deleteTeamOpen, setDeleteTeamOpen] = useState(false);
@@ -536,6 +552,7 @@ function ViewTeam({
             variant: "success",
           },
         }));
+        setRefreshPage((old) => !old);
       })
       .catch((error) => {
         setContext((old) => ({
@@ -631,16 +648,15 @@ function ViewTeam({
                 </div>
                 <div className={styles.memberName}>{`${member.first_name} ${
                   member.last_name
-                } ${index === teamMembers.length - 1 ? "(سرگروه)" : ""}`}</div>
-                <div className={styles.exitMember} onClick={handleOpen}>
-                  {member.email === currentEmail && (
-                    <LogoutIcon fontSize="large" />
-                  )}
-                </div>
+                } ${member.id === teamCreator.id ? "(سرگروه)" : ""}`}</div>
+                <Tooltip placement="top" title="خروج از تیم">
+                  <div className={styles.exitMember} onClick={handleOpen}>
+                    {member.email === currentEmail && (
+                      <LogoutIcon fontSize="large" />
+                    )}
+                  </div>
+                </Tooltip>
               </div>
-              // <div key={member.id} className={styles.member}>
-              //   <div className={styles.memberName}>{member.email}</div>
-              // </div>
             ))}
           </div>
         </div>
