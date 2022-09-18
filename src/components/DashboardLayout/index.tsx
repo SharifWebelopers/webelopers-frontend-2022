@@ -115,6 +115,9 @@ function DashboardLayout({
             devops_experience: res.data.devops_experience,
             can_sponsor_see_profile: res.data.can_sponsor_see_profile,
             resume: res.data.resume || "",
+            contest_type: res.data.contest_type || "",
+            needs_team: res.data.needs_team || "",
+            is_team_creator: res.data.is_team_creator || "",
           },
         });
       });
@@ -150,7 +153,7 @@ function DashboardLayout({
       title: "تیم",
       isMobile,
       Icon: GroupsIcon,
-      disabled: true,
+      disabled: false,
     },
     {
       path: "/dashboard/code",

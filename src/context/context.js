@@ -15,8 +15,11 @@ export const ContextProvider = ({ children }) => {
     profile: {
       profile_image: "",
       first_name: "",
+      contest_type: null,
+      needs_team: "",
+      is_team_creator: "",
       last_name: "",
-      phone_number: "",
+      phone_number: undefined,
       email: "",
       province: "",
       university_degree: "",
