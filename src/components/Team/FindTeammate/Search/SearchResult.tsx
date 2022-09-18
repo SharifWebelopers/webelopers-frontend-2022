@@ -12,6 +12,7 @@ interface SearchResultProps {
   imageSrc?: string;
   username: string;
   email: string;
+  setRefresh: Function;
 }
 
 const SearchResult = ({
@@ -19,6 +20,7 @@ const SearchResult = ({
   imageSrc,
   username,
   email,
+  setRefresh,
 }: SearchResultProps) => {
   const [context, setContext] = useContext(Context);
 
@@ -33,6 +35,7 @@ const SearchResult = ({
             variant: "success",
           },
         });
+        setRefresh(true);
       })
       .catch(() => {
         setContext({

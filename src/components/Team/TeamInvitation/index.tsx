@@ -94,7 +94,7 @@ function TeamInvitation({
         handleRejectModalClose();
       });
   };
-  const fullName = creator.first_name + creator.last_name;
+  const fullName = creator.first_name + " " + creator.last_name;
   return (
     <>
       <Modal

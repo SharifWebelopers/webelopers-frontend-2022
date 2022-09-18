@@ -17,6 +17,7 @@ import CreateTeam from "../CreateTeam";
 import FindTeammate from "../FindTeammate";
 import Context from "../../../context/context";
 import Link from "next/link";
+import { getUserInfo } from "../../../actions/dashboard";
 
 interface TabPanelProps {
   children: any;
@@ -65,10 +66,43 @@ const SettingsContainer = () => {
   const is_team_creator = context.profile.is_team_creator;
   const needs_team = context.profile.needs_team;
   const contest_type = context.profile.contest_type;
+  const [refreshPage, setRefreshPage] = useState(false);
+
+  useEffect(() => {
+    getUserInfo().then((res) => {
+      setContext({
+        ...context,
+        profile: {
+          profile_image: res.data.profile_image || "",
+          first_name: res.data.first_name || "",
+          last_name: res.data.last_name || "",
+          phone_number: res.data.phone_number || "",
+          email: res.data.email || "",
+          province: res.data.province,
+          university_degree: res.data.university_degree,
+          university_start_date: res.data.university_start_date || "",
+          field_study: res.data.field_study || "",
+          university: res.data.university || "",
+          linkedin_link: res.data.linkedin_link || "",
+          github_link: res.data.github_link || "",
+          django_experience: res.data.django_experience,
+          react_experience: res.data.react_experience,
+          devops_experience: res.data.devops_experience,
+          can_sponsor_see_profile: res.data.can_sponsor_see_profile,
+          resume: res.data.resume || "",
+          contest_type: res.data.contest_type || "",
+          needs_team: res.data.needs_team || "",
+          is_team_creator: res.data.is_team_creator || "",
+        },
+      });
+    });
+  }, [refreshPage]);
+
+  const isLoading = context.profile.phone_number === undefined;
 
   return (
     <>
-      {!context.profile.phone_number && (
+      {!context.profile.phone_number && !isLoading && (
         <div className={styles.completeInfo}>
           برای تشکیل تیم ابتدا به بخش تنظیمات رفته و اطلاعات خود را تکمیل کنید.{" "}
           <Link href={"/dashboard/settings"}>
@@ -76,7 +110,7 @@ const SettingsContainer = () => {
           </Link>
         </div>
       )}
-      {context.profile.phone_number && (
+      {context.profile.phone_number && !isLoading && (
         <div className={styles.container}>
           {contest_type && (
             <>
@@ -153,7 +187,11 @@ const SettingsContainer = () => {
 
           <PanelsWrapper tab={tab} isDesktop={isDesktop}>
             <TabPanel value={tab} index={0}>
-              <CreateTeam tabState={tab} isTeamCreator={is_team_creator} />
+              <CreateTeam
+                setRefreshPage={setRefreshPage}
+                tabState={tab}
+                isTeamCreator={is_team_creator}
+              />
             </TabPanel>
             {is_team_creator && (
               <TabPanel value={tab} index={1}>

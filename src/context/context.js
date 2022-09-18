@@ -19,7 +19,7 @@ export const ContextProvider = ({ children }) => {
       needs_team: "",
       is_team_creator: "",
       last_name: "",
-      phone_number: "",
+      phone_number: undefined,
       email: "",
       province: "",
       university_degree: "",
