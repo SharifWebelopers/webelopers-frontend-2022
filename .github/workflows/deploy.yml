@@ -1,0 +1,21 @@
+name: deploy prod branch
+
+on:
+  push:
+    branches: [ "prod" ]
+
+jobs:
+  deploy-front:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ${{ secrets.TARGET_PATH }}
+            git checkout prod
+            git pull origin prod
+            docker-compose down && docker-compose up --build -d

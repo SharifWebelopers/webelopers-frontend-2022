@@ -41,7 +41,8 @@ function getUniqueData(dataList: Person[]): Person[] {
   }
   return selectedData;
 }
-const countDownDate = new Date("Sep 11, 2022 24:00:00").getTime();
+// the timestamp of 18 sep 2022 24:00
+const countDownDate = 1663529400000;
 
 function Home() {
   const router = useRouter();
@@ -145,7 +146,7 @@ function Home() {
               <div className={styles.countdownUnit}>روز</div>
             </div>
           </div>
-          <div className={styles.timeToStartTitle}>تا شروع رویداد!</div>
+          <div className={styles.timeToStartTitle}>تا شروع تیم کشی!</div>
         </div>
       </div>
       <div className={styles.section2}>
@@ -182,21 +183,21 @@ function Home() {
             </div>
             <div className={styles.timeItem}>
               <div className={styles.timeItemDate}>
-                ۱۸ <br />
-                شهریور
-              </div>
-              <div className={styles.timeItemTitle}>آغاز تیم‌کشی</div>
-            </div>
-            <div className={styles.timeItem}>
-              <div className={styles.timeItemDate}>
-                ۲۱ <br />
+                ۲۳ <br />
                 شهریور
               </div>
               <div className={styles.timeItemTitle}>افتتاحیه</div>
             </div>
             <div className={styles.timeItem}>
               <div className={styles.timeItemDate}>
-                ۲۲ <br />
+                ۲۶ <br />
+                شهریور
+              </div>
+              <div className={styles.timeItemTitle}>آغاز تیم‌کشی</div>
+            </div>
+            <div className={styles.timeItem}>
+              <div className={styles.timeItemDate}>
+                ۲۷ <br />
                 شهریور
               </div>
               <div className={styles.timeItemTitle}>آموزش و پیاده‌سازی</div>

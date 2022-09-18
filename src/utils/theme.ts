@@ -4,15 +4,24 @@ import { createTheme } from "@mui/material/styles";
 declare module "@mui/material/styles" {
   interface Palette {
     gray: Palette["primary"];
+    timer: Palette["primary"];
+    timerContrast: Palette["primary"];
   }
   interface PaletteOptions {
     gray: PaletteOptions["primary"];
+    timer: PaletteOptions["primary"];
+    timerContrast: PaletteOptions["primary"];
   }
 }
 
 declare module "@mui/material" {
   interface ButtonPropsColorOverrides {
     gray;
+  }
+
+  interface CircularProgressPropsColorOverrides {
+    timer;
+    timerContrast;
   }
 }
 
@@ -34,6 +43,12 @@ const theme = createTheme({
     },
     gray: {
       main: "#757575",
+    },
+    timer: {
+      main: "#b06747",
+    },
+    timerContrast: {
+      main: "#c2a090",
     },
   },
   typography: {

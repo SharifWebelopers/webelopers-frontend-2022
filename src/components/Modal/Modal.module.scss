@@ -1,0 +1,52 @@
+.modal {
+  background-color: #c8c8c8;
+  border-radius: 16px;
+  padding: 24px;
+  width: calc(100% - 32px);
+  max-width: 480px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+}
+
+.modalAccept,
+.modalReject {
+  width: 128px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: #000;
+  border: 1px solid transparent;
+  padding: 8px;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #757575;
+    color: #fff;
+    border: 1px solid transparent;
+  }
+}
+
+.modalTitle {
+  text-align: center;
+  line-height: 32px;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.modalAccept {
+  background-color: #1d1b26;
+  color: #c8c8c8;
+  margin-left: 16px;
+}
+
+.modalReject {
+  border: 1px solid #000;
+}
