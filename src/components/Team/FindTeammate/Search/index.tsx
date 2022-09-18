@@ -42,12 +42,13 @@ const SearchBar = ({ setRefresh }) => {
             }))
           );
         })
-        .catch(() => {
+        .catch((err) => {
           setContext({
             ...context,
             snackbar: {
               open: true,
               message:
+                err?.response?.data?.message_fa ||
                 "دریافت اطلاعات شرکت‌کنندگان با خطا مواجه شد، لطفا دوباره تلاش کنید!",
               variant: "error",
             },

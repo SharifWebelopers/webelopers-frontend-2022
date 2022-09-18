@@ -47,12 +47,13 @@ function TeamInvitation({
         }));
         setInvitations([]);
       })
-      .catch((error) => {
+      .catch((err) => {
         setContext((old) => ({
           ...old,
           snackbar: {
             open: true,
-            message: "مشکلی در سامانه رخ داده است.",
+            message:
+              err?.response?.data?.message_fa || "مشکلی در سامانه رخ داده است.",
             variant: "success",
           },
         }));
@@ -79,12 +80,13 @@ function TeamInvitation({
           old.filter((item: any) => item.id !== invitationId)
         );
       })
-      .catch((error) => {
+      .catch((err) => {
         setContext((old) => ({
           ...old,
           snackbar: {
             open: true,
-            message: "مشکلی در سامانه رخ داده است.",
+            message:
+              err?.response?.data?.message_fa || "مشکلی در سامانه رخ داده است.",
             variant: "success",
           },
         }));
