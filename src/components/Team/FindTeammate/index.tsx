@@ -49,12 +49,14 @@ const FindTeammate = ({ isDesktop }: { isDesktop: boolean }) => {
             }))
           );
         })
-        .catch(() => {
+        .catch((err) => {
           setContext({
             ...context,
             snackbar: {
               open: true,
-              message: "دریافت اطلاعات با خطا مواجه شد، لطفا دوباره تلاش کنید!",
+              message:
+                err?.response?.data?.message_fa ||
+                "دریافت اطلاعات با خطا مواجه شد، لطفا دوباره تلاش کنید!",
               variant: "error",
             },
           });
@@ -73,12 +75,14 @@ const FindTeammate = ({ isDesktop }: { isDesktop: boolean }) => {
           }))
         );
       })
-      .catch(() => {
+      .catch((err) => {
         setContext({
           ...context,
           snackbar: {
             open: true,
-            message: "دریافت اطلاعات با خطا مواجه شد، لطفا دوباره تلاش کنید!",
+            message:
+              err?.response?.data?.message_fa ||
+              "دریافت اطلاعات با خطا مواجه شد، لطفا دوباره تلاش کنید!",
             variant: "error",
           },
         });
@@ -100,12 +104,14 @@ const FindTeammate = ({ isDesktop }: { isDesktop: boolean }) => {
           }))
         );
       })
-      .catch(() => {
+      .catch((err) => {
         setContext({
           ...context,
           snackbar: {
             open: true,
-            message: "دریافت اطلاعات با خطا مواجه شد، لطفا دوباره تلاش کنید!",
+            message:
+              err?.response?.data?.message_fa ||
+              "دریافت اطلاعات با خطا مواجه شد، لطفا دوباره تلاش کنید!",
             variant: "error",
           },
         });
@@ -286,12 +292,13 @@ const FindTeammate = ({ isDesktop }: { isDesktop: boolean }) => {
                                       },
                                     });
                                   })
-                                  .catch(() => {
+                                  .catch((err) => {
                                     setContext({
                                       ...context,
                                       snackbar: {
                                         open: true,
                                         message:
+                                          err?.response?.data?.message_fa ||
                                           "خطا در انجام درخواست، لطفا دوباره تلاش کنید!",
                                         variant: "error",
                                       },

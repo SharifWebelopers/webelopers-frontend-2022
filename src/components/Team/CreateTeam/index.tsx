@@ -148,12 +148,13 @@ function ChooseRegion({ setTeamState, setHasChosenRegion, setContext }) {
           },
         }));
       })
-      .catch((error) => {
+      .catch((err) => {
         setContext((old) => ({
           ...old,
           snackbar: {
             open: true,
-            message: "مشکلی در سامانه رخ داده است.",
+            message:
+              err?.response?.data?.message_fa || "مشکلی در سامانه رخ داده است.",
             variant: "error",
           },
         }));
@@ -259,13 +260,14 @@ function NoTeam({ setTeamState, setContext }) {
           },
         }));
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
         setContext((old) => ({
           ...old,
           snackbar: {
             open: true,
-            message: "مشکلی در سامانه رخ داده است.",
+            message:
+              err?.response?.data?.message_fa || "مشکلی در سامانه رخ داده است.",
             variant: "error",
           },
         }));
@@ -290,13 +292,14 @@ function NoTeam({ setTeamState, setContext }) {
           },
         }));
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
         setContext((old) => ({
           ...old,
           snackbar: {
             open: true,
-            message: "مشکلی در سامانه رخ داده است.",
+            message:
+              err?.response?.data?.message_fa || "مشکلی در سامانه رخ داده است.",
             variant: "error",
           },
         }));
@@ -442,7 +445,9 @@ function CreateTeamForm({
             ...old,
             snackbar: {
               open: true,
-              message: "نام تیم قبلا انتخاب شده است.",
+              message:
+                error?.response?.data?.message_fa ||
+                "نام تیم قبلا انتخاب شده است.",
               variant: "error",
             },
           }));
@@ -554,12 +559,14 @@ function ViewTeam({
         }));
         setRefreshPage((old) => !old);
       })
-      .catch((error) => {
+      .catch((err) => {
         setContext((old) => ({
           ...old,
           snackbar: {
             open: true,
-            message: "مشکلی در حذف تیم رخ داده است.",
+            message:
+              err?.response?.data?.message_fa ||
+              "مشکلی در حذف تیم رخ داده است.",
             variant: "error",
           },
         }));
@@ -738,7 +745,9 @@ function EditTeam({
             ...old,
             snackbar: {
               open: true,
-              message: "نام تیم قبلا انتخاب شده است.",
+              message:
+                error?.response?.data?.message_fa ||
+                "نام تیم قبلا انتخاب شده است.",
               variant: "error",
             },
           }));

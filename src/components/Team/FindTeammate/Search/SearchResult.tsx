@@ -37,12 +37,13 @@ const SearchResult = ({
         });
         setRefresh(true);
       })
-      .catch(() => {
+      .catch((err) => {
         setContext({
           ...context,
           snackbar: {
             open: true,
-            message: "ارسال دعوت با مشکل مواجه شد!",
+            message:
+              err?.response?.data?.message_fa || "ارسال دعوت با مشکل مواجه شد!",
             variant: "error",
           },
         });
