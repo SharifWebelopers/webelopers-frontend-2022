@@ -136,7 +136,7 @@ function DashboardLayout({
       title: "آموزش‌ها",
       isMobile,
       Icon: MenuBookOutlinedIcon,
-      disabled: true,
+      disabled: false,
     },
     {
       path: "/dashboard/leaderboard",
@@ -157,7 +157,7 @@ function DashboardLayout({
       title: "بررسی کد",
       isMobile,
       Icon: CodeIcon,
-      disabled: false,
+      disabled: true,
     },
     {
       path: "/dashboard/settings",
