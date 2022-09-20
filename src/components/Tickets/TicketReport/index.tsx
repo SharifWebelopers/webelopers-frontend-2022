@@ -4,7 +4,7 @@ import SouthIcon from "@mui/icons-material/South";
 import classNames from "classnames";
 
 import styles from "./TicketReport.module.scss";
-import shamsiDate from "../../../utils/shamsiDate";
+import { faNumConverter } from "../../../utils/farsiNum";
 
 interface Data {
     id: number;
@@ -24,7 +24,7 @@ function TicketReport({ data }: DataProps){
     return(
         <div className={styles.ticketReport}>
             <div className={styles.upSection}>
-                <div>{data.id}</div>
+                <div>{faNumConverter(data.id)}</div>
                 <div className={styles.date}>
                     <p className={styles.label}>عنوان</p>
                     <div>

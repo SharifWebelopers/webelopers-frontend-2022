@@ -6,6 +6,7 @@ specifiers:
   '@mui/icons-material': ^5.8.4
   '@mui/material': ^5.9.2
   '@react-oauth/google': ^0.2.6
+  '@tanstack/react-virtual': ^3.0.0-alpha.0
   '@types/node': 18.6.3
   '@types/react': 18.0.15
   '@types/react-dom': 18.0.6
@@ -33,6 +34,7 @@ dependencies:
   '@mui/icons-material': 5.10.3_wtuwynegxwyqpbt53d2n2vkiia
   '@mui/material': 5.10.5_njmfh6tqiikqhlkdqi5f76pbxy
   '@react-oauth/google': 0.2.6_biqbaboplfbrettd7655fr4n2y
+  '@tanstack/react-virtual': 3.0.0-alpha.0_react@18.2.0
   axios: 0.27.2
   classnames: 2.3.2
   formik: 2.2.9_react@18.2.0
@@ -618,6 +620,10 @@ packages:
     resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
     dev: false
 
+  /@reach/observe-rect/1.2.0:
+    resolution: {integrity: sha512-Ba7HmkFgfQxZqqaeIWWkNK0rEhpxVQHIoVyW1YDSkGsGIXzcaW4deC8B0pZrNSSyLTdIk7y+5olKt5+g0GmFIQ==}
+    dev: false
+
   /@react-oauth/google/0.2.6_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-Az6w/EL3QHSvWVbfX2WbUB15PGqM0hm86bpAoyvjw2nhDdPp9IOjpFg5HfSGJQJBydjbCFnZjI8PJskTzLOhew==}
     peerDependencies:
@@ -636,6 +642,17 @@ packages:
     resolution: {integrity: sha512-6JrF+fdUK2zbGpJIlN7G3v966PQjyx/dPt1T9km2wj+EUBqgrxCk3uX4Kct16MIm9gGxfKRcfax2hVf5jvlTzA==}
     dependencies:
       tslib: 2.4.0
+    dev: false
+
+  /@tanstack/react-virtual/3.0.0-alpha.0_react@18.2.0:
+    resolution: {integrity: sha512-WpHU/dt34NwZZ8qtiE05TF+nX/b1W6qrWZarO+s8jJFpPVicrTbJKp5Bjt4eSJuk7aYw272oEfsH3ABBRgj+3A==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      '@babel/runtime': 7.19.0
+      '@reach/observe-rect': 1.2.0
+      react: 18.2.0
     dev: false
 
   /@types/json5/0.0.29:

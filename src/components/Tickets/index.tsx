@@ -6,6 +6,7 @@ import RateReviewIcon from '@mui/icons-material/RateReview';
 import Link from 'next/link'
 import { getTickets } from "../../actions/dashboard";
 import { CircularProgress } from "@mui/material";
+import { faNumConverter } from "../../utils/farsiNum";
 
 interface Ticket {
     id: number;
@@ -45,7 +46,7 @@ const TicketsLayout = () => {
                     <div>
                         {tickets ? (
                                 <div>
-                                    شما تاکنون {tickets.length} درخواست ثبت کرده اید
+                                    شما تاکنون {faNumConverter(tickets.length)} درخواست ثبت کرده اید
                                 </div>
                             ) :
                             (
@@ -68,7 +69,7 @@ const TicketsLayout = () => {
 
                 <div className={styles.ticketContainer}>
                     {tickets && (
-                        tickets.map(data => (<TicketReport data={data} />))
+                        tickets.map(data => (<TicketReport data={data} key={data.id.toString()} />))
                     )}
                 </div>
             </div>
