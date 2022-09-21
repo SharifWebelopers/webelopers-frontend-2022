@@ -16,6 +16,6 @@
     "incremental": true,
     "noImplicitAny": false
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/utils/shamsiDate.js"],
   "exclude": ["node_modules"]
 }

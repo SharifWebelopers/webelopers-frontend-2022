@@ -1,0 +1,141 @@
+.dashboardChildContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    height: 100%;
+    overflow-y: auto;
+}
+
+.ticketLayout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 90%;
+    max-width: 1500px;
+}
+
+.layoutTitle{
+    color: #C2A090;
+    display: flex;
+    align-items: center;
+
+    margin-top: 80px;
+    width: 100%;
+
+    span{
+        font-weight: 700;
+        margin-right: 10px;
+        font-size: 36px;
+    }
+
+    svg{
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.newTicket{
+    background-color: #1D1B26;
+    border-radius: 15px;
+    border: 1px solid white;
+
+    max-width: 1200px; 
+    margin-top: 50px;
+    padding: 10px;
+
+    width: 100%;
+
+    form{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        
+        align-items: center;
+
+        input, textarea{
+            border: none;
+            background-color: transparent;
+            color: white;
+
+            padding: 20px 0px;
+            width: 90%;
+
+            &:focus{
+                outline: none;
+            }
+        }
+
+        input{
+            border-bottom: 2px solid rgba(255,255,255,0.5);
+        }
+
+        textarea{
+            resize: none;
+            height: 200px;
+            margin-top: 20px;
+        }
+
+    }
+}
+
+.errorMessage{
+    background-color: rgb(226, 60, 60);
+    color: white;
+    font-size: 14px;
+
+    padding: 5px;
+    border-radius: 20px;
+    margin-top: 10px;
+
+    width: 90%;
+}
+
+.buttons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    button, a{
+        padding: 10px 40px;
+        font-size: 20px;
+        text-decoration: none;
+
+        border: 1px solid #C2A090;
+        border-radius: 40px;
+        margin: 10px;
+    }
+
+    button{
+        background-color: #C2A090;
+        color: #1D1B26;
+        cursor: pointer;
+
+        &:disabled{
+            opacity: 0.4;
+            cursor: initial;
+        }
+    }
+
+    a{
+        color: white;
+    }
+}
+
+@media only screen and (max-width:768px){    
+    .layoutTitle{
+        margin-top: 40px;
+        span{
+            font-size: 24px;
+        }
+        svg{
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .newTicket{
+        margin-top: 20px;
+    }
+}
