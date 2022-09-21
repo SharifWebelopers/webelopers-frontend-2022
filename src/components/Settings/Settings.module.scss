@@ -1,0 +1,32 @@
+.container {
+  padding: 16px 44px 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100%;
+  margin-left: 12px;
+}
+
+.container > div:nth-child(2) {
+  width: 100%;
+}
+
+.tab-panel {
+  align-self: flex-start;
+}
+
+.tab-panel-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    padding-right: 16px;
+  }
+}

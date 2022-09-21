@@ -22,14 +22,27 @@ import useMobile from "../../utils/useMobile";
 
 import staffsData from "../../data/staffData";
 
-function shuffle(array: any) {
+function shuffle<T>(array: T[][]): T[] {
   const temp = [...array];
   const flattedStaffData = temp.flat();
   flattedStaffData.sort(() => Math.random() - 0.5);
   return flattedStaffData;
 }
 
-const countDownDate = new Date("Sep 11, 2022 24:00:00").getTime();
+function getUniqueData(dataList: Person[]): Person[] {
+  const selectedNames: string[] = [];
+  const selectedData: Person[] = [];
+
+  for (const data of dataList) {
+    if (!selectedNames.includes(data.fullName)) {
+      selectedData.push({ ...data });
+      selectedNames.push(data.fullName);
+    }
+  }
+  return selectedData;
+}
+// the timestamp of 18 sep 2022 24:00
+const countDownDate = 1663529400000;
 
 function Home() {
   const router = useRouter();
@@ -51,16 +64,16 @@ function Home() {
   });
 
   useEffect(() => {
-    const shuffledArray = shuffle(staffsData);
+    const uniqueData = getUniqueData(shuffle(staffsData));
 
     const selectedStaffsDesktopTemp = [
-      shuffledArray[0],
-      shuffledArray[1],
-      shuffledArray[2],
-      shuffledArray[3],
+      uniqueData[0],
+      uniqueData[1],
+      uniqueData[2],
+      uniqueData[3],
     ];
 
-    const selectedStaffsMobileTemp = [shuffledArray[0], shuffledArray[1]];
+    const selectedStaffsMobileTemp = [uniqueData[0], uniqueData[1]];
 
     setSelectedStaffsDesktop(selectedStaffsDesktopTemp);
 
@@ -133,7 +146,7 @@ function Home() {
               <div className={styles.countdownUnit}>روز</div>
             </div>
           </div>
-          <div className={styles.timeToStartTitle}>تا شروع رویداد!</div>
+          <div className={styles.timeToStartTitle}>تا شروع تیم کشی!</div>
         </div>
       </div>
       <div className={styles.section2}>
@@ -170,21 +183,21 @@ function Home() {
             </div>
             <div className={styles.timeItem}>
               <div className={styles.timeItemDate}>
-                ۱۱ <br />
-                شهریور
-              </div>
-              <div className={styles.timeItemTitle}>آغاز تیم‌کشی</div>
-            </div>
-            <div className={styles.timeItem}>
-              <div className={styles.timeItemDate}>
-                ۲۱ <br />
+                ۲۳ <br />
                 شهریور
               </div>
               <div className={styles.timeItemTitle}>افتتاحیه</div>
             </div>
             <div className={styles.timeItem}>
               <div className={styles.timeItemDate}>
-                ۲۲ <br />
+                ۲۶ <br />
+                شهریور
+              </div>
+              <div className={styles.timeItemTitle}>آغاز تیم‌کشی</div>
+            </div>
+            <div className={styles.timeItem}>
+              <div className={styles.timeItemDate}>
+                ۲۷ <br />
                 شهریور
               </div>
               <div className={styles.timeItemTitle}>آموزش و پیاده‌سازی</div>
