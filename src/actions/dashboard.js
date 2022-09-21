@@ -19,3 +19,11 @@ export const getNotifs = () => {
 export const getStages = () => {
   return axios().get(`/dashboard/stages/`);
 };
+
+export const getTickets = () => {
+  return axios().get(`/dashboard/tickets/`);
+}
+
+export const submitTicket = (params) => {
+  return axios().post(`/dashboard/tickets/`, params);
+}
