@@ -24,6 +24,7 @@
     "react-collapsed": "^3.3.2",
     "react-dom": "18.2.0",
     "react-github-login": "^1.0.3",
+    "react-player": "^2.11.0",
     "react-swipeable-views": "^0.14.0",
     "react-toastify": "^9.0.7",
     "sass": "^1.54.0",

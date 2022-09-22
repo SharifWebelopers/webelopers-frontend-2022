@@ -139,7 +139,7 @@ function DashboardLayout({
       title: "آموزش‌ها",
       isMobile,
       Icon: MenuBookOutlinedIcon,
-      disabled: true,
+      disabled: false,
     },
     {
       path: "/dashboard/leaderboard",
