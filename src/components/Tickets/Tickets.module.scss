@@ -1,0 +1,165 @@
+.dashboardChildContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    height: 100%;
+    overflow-y: auto;
+}
+
+.ticketLayout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 90%;
+    max-width: 1500px;
+}
+
+.layoutTitle{
+    color: #C2A090;
+    display: flex;
+    align-items: center;
+
+    margin-top: 80px;
+    width: 100%;
+
+    span{
+        font-weight: 700;
+        margin-right: 10px;
+        font-size: 36px;
+    }
+
+    svg{
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.ticketStatus{
+    background-color: #1D1B26;
+    border-radius: 15px;
+    border: 1px solid white;
+
+    width: 90%;
+    max-width: 1200px; 
+    margin-top: 50px;
+
+    padding: 10px;
+    width: 100%;
+
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+
+    & > div{
+        font-size: 18px;
+        padding: 5px;
+        color: white;
+
+        position: relative;
+
+        div{
+            padding: 10px 0px;
+        }
+    }
+
+    & > div:nth-of-type(1){
+        border-left: 1px solid rgba(255,255,255,0.1);
+        width: 65%;
+
+        span{
+            padding: 0px 10px;
+        }
+    }
+
+    & > div:nth-of-type(2){
+        width: 35%;
+        display: flex;
+        justify-content: center;
+
+        a{
+            padding: 10px 30px;
+            border-radius: 40px;
+            border: 1px solid #CCB0A1;
+
+            text-decoration: none;
+            color: white;
+            &:hover{
+                background-color: #CCB0A1;
+            }
+        }
+    }
+}
+
+.ticketContainer{
+    width: 100%;
+    margin-top: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    & > *{
+        margin: 20px;
+    }
+}
+
+@media only screen and (max-width:768px){    
+    .layoutTitle{
+        margin-top: 40px;
+        span{
+            font-size: 24px;
+        }
+        svg{
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .ticketStatus{
+        flex-direction: column !important;
+        justify-content: flex-start;
+    
+        padding: 5px;
+    
+        & > div{
+            font-size: 14px;
+            padding: 0px;
+            color: white;
+    
+            display: flex;
+            align-items: center;
+
+            p.label{
+                width: 60px;
+            }
+
+            p, span{
+                line-height: 20px;
+            }
+        }
+    
+        & > div:nth-of-type(1){
+            border-left: none;
+            width: 90%;
+            display: flex;
+
+            justify-content: center;
+            padding: 20px 0px 10px 0px;
+    
+            span{
+                padding: 0px 10px;
+            }
+
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+        }
+    
+        & > div:nth-of-type(2){
+            width: 100%;
+            padding: 30px 0px;
+        }
+    }
+}
