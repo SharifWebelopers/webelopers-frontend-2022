@@ -23,14 +23,16 @@ function VideoTutorial({ data }: VideoProps){
 
     const videoRef = useRef<HTMLDivElement>(null);
 
-    const convertToEmbFormat = (link: string) => {
-        return `<div id=${data?.id}><script type="text/JavaScript" src="https://www.aparat.com/embed/${link.split("/v/")[1]}?data[rnddiv]=${data?.id}&data[responsive]=yes"></script></div>`;
-    }
-
     useEffect(() => {
+
+        const convertToEmbFormat = (link: string) => {
+            return `<div id=${data?.id}><script type="text/JavaScript" src="https://www.aparat.com/embed/${link.split("/v/")[1]}?data[rnddiv]=${data?.id}&data[responsive]=yes"></script></div>`;
+        }
+
         let convertedFormat: string = convertToEmbFormat(data?.aparat_url);
         const fragment = document.createRange().createContextualFragment(convertedFormat);
         videoRef.current!.append(fragment);
+        
     }, [])
 
     return (

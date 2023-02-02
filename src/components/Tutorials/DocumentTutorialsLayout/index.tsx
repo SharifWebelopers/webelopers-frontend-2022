@@ -23,7 +23,7 @@ const DocumentTutorialsLayout = ({ documents }: DownloadFileProps) => {
                 <div className={styles.documentContainer}>
                     {
                         documents && documents.map(document => (
-                            <DownloadFile data={document}/>
+                            <DownloadFile data={document} key={document.id} />
                         ))
                     }
                 </div>
