@@ -24,7 +24,7 @@ const VideoTutorialsLayout = ({ videos }: videoTutorialDataProps) => {
                 <div className={styles.videoContainer}>
                     {
                         videos && videos.map(video => (
-                            <VideoTutorial data={video}/>
+                            <VideoTutorial data={video} key={video.id} />
                         ))
                     }
                 </div>
