@@ -139,7 +139,7 @@ function DashboardLayout({
       title: "آموزش‌ها",
       isMobile,
       Icon: MenuBookOutlinedIcon,
-      disabled: true,
+      disabled: false,
     },
     {
       path: "/dashboard/leaderboard",
@@ -170,11 +170,11 @@ function DashboardLayout({
       disabled: false,
     },
     {
-      path: "/dashboard/request",
+      path: "/dashboard/tickets",
       title: "ارسال درخواست",
       isMobile,
       Icon: BorderColorOutlinedIcon,
-      disabled: true,
+      disabled: false,
     },
   ]);
 
