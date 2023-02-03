@@ -42,7 +42,7 @@ function getUniqueData(dataList: Person[]): Person[] {
   return selectedData;
 }
 // the timestamp of 18 sep 2022 24:00
-const countDownDate = 1663529400000;
+const countDownDate = 1680912000000;
 
 function Home() {
   const router = useRouter();
@@ -146,7 +146,7 @@ function Home() {
               <div className={styles.countdownUnit}>روز</div>
             </div>
           </div>
-          <div className={styles.timeToStartTitle}>تا شروع تیم کشی!</div>
+          <div className={styles.timeToStartTitle}>تا آغاز مسابقه!</div>
         </div>
       </div>
       <div className={styles.section2}>
@@ -197,26 +197,26 @@ function Home() {
             </div>
             <div className={styles.timeItem}>
               <div className={styles.timeItemDate}>
-                ۲۷ <br />
-                شهریور
+                ۱۲ <br />
+                بهمن
               </div>
-              <div className={styles.timeItemTitle}>آموزش و پیاده‌سازی</div>
+              <div className={styles.timeItemTitle}>آموزش و تمارین</div>
             </div>
             <div className={styles.timeItem}>
               <div className={styles.timeItemDate}>
-                ۳۰ <br />
-                مهر
+                ۱۹ <br />
+                فروردین
+              </div>
+              <div className={styles.timeItemTitle}>آغاز مسابقه</div>
+            </div>
+            <div className={styles.timeItem}>
+              <div className={styles.timeItemDate}>
+                ۲۵ <br />
+                فروردین
               </div>
               <div className={styles.timeItemTitle}>
                 ارائه و جذب سرمایه‌گذار
               </div>
-            </div>
-            <div className={styles.timeItem}>
-              <div className={styles.timeItemDate}>
-                ۱۴ <br />
-                آبان
-              </div>
-              <div className={styles.timeItemTitle}>اختتامیه</div>
             </div>
           </div>
         </div>
