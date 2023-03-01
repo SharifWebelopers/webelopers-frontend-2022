@@ -18,4 +18,4 @@ jobs:
             cd ${{ secrets.TARGET_PATH }}
             git checkout prod
             git pull origin prod
-            docker-compose down && docker-compose up --build -d
+            sudo docker-compose up --build -d
