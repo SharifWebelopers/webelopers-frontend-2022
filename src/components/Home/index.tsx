@@ -41,7 +41,8 @@ function getUniqueData(dataList: Person[]): Person[] {
   }
   return selectedData;
 }
-const countDownDate = new Date("Sep 11, 2022 24:00:00").getTime();
+// the timestamp of 18 sep 2022 24:00
+const countDownDate = 1680912000000;
 
 function Home() {
   const router = useRouter();
@@ -145,7 +146,7 @@ function Home() {
               <div className={styles.countdownUnit}>روز</div>
             </div>
           </div>
-          <div className={styles.timeToStartTitle}>تا شروع رویداد!</div>
+          <div className={styles.timeToStartTitle}>تا آغاز مسابقه!</div>
         </div>
       </div>
       <div className={styles.section2}>
@@ -182,40 +183,40 @@ function Home() {
             </div>
             <div className={styles.timeItem}>
               <div className={styles.timeItemDate}>
-                ۱۸ <br />
-                شهریور
-              </div>
-              <div className={styles.timeItemTitle}>آغاز تیم‌کشی</div>
-            </div>
-            <div className={styles.timeItem}>
-              <div className={styles.timeItemDate}>
-                ۲۱ <br />
+                ۲۳ <br />
                 شهریور
               </div>
               <div className={styles.timeItemTitle}>افتتاحیه</div>
             </div>
             <div className={styles.timeItem}>
               <div className={styles.timeItemDate}>
-                ۲۲ <br />
+                ۲۶ <br />
                 شهریور
               </div>
-              <div className={styles.timeItemTitle}>آموزش و پیاده‌سازی</div>
+              <div className={styles.timeItemTitle}>آغاز تیم‌کشی</div>
             </div>
             <div className={styles.timeItem}>
               <div className={styles.timeItemDate}>
-                ۳۰ <br />
-                مهر
+                ۱۲ <br />
+                بهمن
+              </div>
+              <div className={styles.timeItemTitle}>آموزش و تمارین</div>
+            </div>
+            <div className={styles.timeItem}>
+              <div className={styles.timeItemDate}>
+                ۱۹ <br />
+                فروردین
+              </div>
+              <div className={styles.timeItemTitle}>آغاز مسابقه</div>
+            </div>
+            <div className={styles.timeItem}>
+              <div className={styles.timeItemDate}>
+                ۲۵ <br />
+                فروردین
               </div>
               <div className={styles.timeItemTitle}>
                 ارائه و جذب سرمایه‌گذار
               </div>
-            </div>
-            <div className={styles.timeItem}>
-              <div className={styles.timeItemDate}>
-                ۱۴ <br />
-                آبان
-              </div>
-              <div className={styles.timeItemTitle}>اختتامیه</div>
             </div>
           </div>
         </div>
